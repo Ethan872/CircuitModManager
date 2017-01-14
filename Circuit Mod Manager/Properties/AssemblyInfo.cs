@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Circuit Mod Manager")]
+[assembly: AssemblyTitle("Pinned Mod Manager")]
 [assembly: AssemblyDescription("A streamlined mod manager for MX Simulator")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ethan87")]
-[assembly: AssemblyProduct("Circuit Mod Manager")]
+[assembly: AssemblyProduct("Pinned Mod Manager")]
 [assembly: AssemblyCopyright("Copyright © Ethan Jaramillo 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

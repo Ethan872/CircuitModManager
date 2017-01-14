@@ -1,13 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+#region License
 /*
 Circuit Manager Source Code File
 By Ethan87
@@ -36,6 +31,7 @@ Links & Emails
 mailto:ethan872100@gmail.com
 
 */
+#endregion
 //|------DO-NOT-REMOVE------|
 //
 // Creator: Ethan87
@@ -58,6 +54,7 @@ namespace Circuit_Mod_Manager
         {
             InitializeComponent();
             sr.CheckCircuitData();
+            mxDirTbox.Text = sr.CheckMXdir();
         }
 
         private void modTbox_DragEnter(object sender, DragEventArgs e)
@@ -72,8 +69,6 @@ namespace Circuit_Mod_Manager
             modTbox.Text = files[0];
             vManager.setInstallingMod(files[0]);
             vManager.setInstallingModWithoutPath(Path.GetFileName(files[0]));
-            MessageBox.Show("File: " + vManager.getInstallingMod());
-            MessageBox.Show("File without path: " + vManager.getInstallingModWithoutPath());
         }
 
         private void installModButton_Click(object sender, EventArgs e)
@@ -87,13 +82,50 @@ namespace Circuit_Mod_Manager
             {
                 if (trackRadioButton.Checked == true)
                 {
-                    dbManager.installMod(vManager.getInstallingModWithoutPath(), "track", vManager.getInstallingModExtension(), vManager.getLoadedDatabase());
+                    dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "track", vManager.getInstallingModExtension(), vManager.getLoadedDatabase(), mxDirTbox.Text);
                 }
                 else if (gearRadioButton.Checked == true)
                 {
-                    dbManager.installMod(vManager.getInstallingModWithoutPath(), "gear", vManager.getInstallingModExtension(), vManager.getLoadedDatabase());
+                    dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), vManager.getLoadedDatabase(), mxDirTbox.Text);
                 }
             }
+        }
+
+        private void ethan87Link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.twitter.com/Ethan8721");
+        }
+
+        private void nunrarlink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/adamhathcock/sharpcompress");
+        }
+
+        private void hazelDevLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://twitter.com/hazeldev");
+        }
+
+        private void saveMXdirButton_Click(object sender, EventArgs e)
+        {
+            StreamWriter sw = new StreamWriter("mxdir.txt");
+            sw.WriteLine(mxDirTbox.Text);
+            sw.Close();
+            vManager.setMxDirectory(mxDirTbox.Text);
+            notifyIconSettings.ShowBalloonTip(2000);
+        }
+
+        private void browseMXdirButton_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select your MX Simulator root directory";
+            fbd.ShowDialog();
+            mxDirTbox.Text = fbd.SelectedPath;
+        }
+
+        private void installerPage_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

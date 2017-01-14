@@ -7,7 +7,7 @@
     <ProjectGuid>{5A55DC55-6CE4-4353-98E8-37A8CF1383CA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Circuit_Mod_Manager</RootNamespace>
-    <AssemblyName>CircuitMM</AssemblyName>
+    <AssemblyName>PinnedMM</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="NUnrar">
       <HintPath>..\..\..\..\..\Desktop\circuit_resources\NUnrar.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress">
+      <HintPath>..\..\..\..\..\Desktop\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

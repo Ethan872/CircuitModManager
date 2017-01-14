@@ -52,53 +52,52 @@ namespace Circuit_Mod_Manager
 
         public void CheckCircuitData()
         {
-            //Check if mx dir settings exist
-            if(!File.Exists("mxdir.txt"))
+            if(!Directory.Exists("PinnedDatabases") || !File.Exists("PinnedDatabases\\trackDB.xml") || !File.Exists("PinnedDatabases\\gearDB.xml"))
             {
-                MessageBox.Show("MX Simulator game folder not found, please select one", "Circuit Mod Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //Check if mxdir.txt contains anything
-                String line = null;
-                try
-                {
-                    using (StreamReader streamReader = new StreamReader("mxdir.txt"))
-                    {
-                        line = streamReader.ReadLine();
-                        streamReader.Close();
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Error reading settings!", "Error 0100", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(e.Message);
-                }
-                if(line == null)
-                {
-                    MessageBox.Show("MX Simulator game folder not found, please select one", "Circuit Mod Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                
-            }
-            if(!Directory.Exists("CircuitDatabases") || !File.Exists("CircuitDatabases\\trackDB.xml") || !File.Exists("CircuitDatabases\\gearDB.xml"))
-            {
-                Directory.CreateDirectory("CircuitDatabases");
-                File.Create("CircuitDatabases\\trackDB.xml").Close();
-                File.Create("CircuitDatabases\\gearDB.xml").Close();
+                Directory.CreateDirectory("PinnedDatabases");
+                File.Create("PinnedDatabases\\trackDB.xml").Close();
+                File.Create("PinnedDatabases\\gearDB.xml").Close();
                 //Create base xml nodes for track database
                 XmlDocument trackDB = vManager.getLoadedDatabase();
                 XmlElement rootElementTrack = trackDB.CreateElement("trackDB");
                 trackDB.AppendChild(rootElementTrack);
-                trackDB.Save("CircuitDatabases\\trackDB.xml");
+                trackDB.Save("PinnedDatabases\\trackDB.xml");
                 //Create base xml nodes for gear database
                 XmlDocument gearDB = vManager.getLoadedDatabase();
                 XmlElement rootElementGear = gearDB.CreateElement("gearDB");
                 gearDB.AppendChild(rootElementGear);
-                gearDB.Save("CircuitDatabases\\gearDB.xml");
+                gearDB.Save("PinnedDatabases\\gearDB.xml");
             }
             else
             {
                 //Do nothing
+            }
+        }
+        public String CheckMXdir()
+        {
+            String line = "";
+            try
+            {
+                using (StreamReader sr = new StreamReader("mxdir.txt"))
+                {
+                    line = sr.ReadLine();
+                    sr.Close();
+                    return line;
+                }
+            }
+            catch (Exception e)
+            {
+                if(!File.Exists("mxdir.txt"))
+                {
+                    File.Create("mxdir.txt").Close();
+                    return "";
+                }
+                else
+                {
+                    MessageBox.Show("Settings couldn't be read!", "Error 0100");
+                    MessageBox.Show("Send this error message to me: " + e.Message);
+                    return "Couldn't Read Settings";
+                }
             }
         }
     }
