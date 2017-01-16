@@ -36,7 +36,6 @@
             this.iTalk_TabControl1 = new iTalk.iTalk_TabControl();
             this.installerPage = new System.Windows.Forms.TabPage();
             this.iTalk_Separator4 = new iTalk.iTalk_Separator();
-            this.progressSpinner = new iTalk.iTalk_ProgressIndicator();
             this.iTalk_HeaderLabel1 = new iTalk.iTalk_HeaderLabel();
             this.modTbox = new iTalk.iTalk_TextBox_Big();
             this.gearRadioButton = new iTalk.iTalk_RadioButton();
@@ -44,6 +43,8 @@
             this.trackRadioButton = new iTalk.iTalk_RadioButton();
             this.installModButton = new iTalk.iTalk_Button_1();
             this.managerPage = new System.Windows.Forms.TabPage();
+            this.statusLabel2 = new iTalk.iTalk_Label();
+            this.iTalk_Label9 = new iTalk.iTalk_Label();
             this.filterModComboBox = new iTalk.iTalk_ComboBox();
             this.iTalk_Label3 = new iTalk.iTalk_Label();
             this.executeActionButton = new iTalk.iTalk_Button_2();
@@ -55,9 +56,9 @@
             this.settingsPage = new System.Windows.Forms.TabPage();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
             this.iTalk_Label4 = new iTalk.iTalk_Label();
-            this.iTalk_RadioButton3 = new iTalk.iTalk_RadioButton();
-            this.iTalk_RadioButton2 = new iTalk.iTalk_RadioButton();
-            this.iTalk_RadioButton1 = new iTalk.iTalk_RadioButton();
+            this.SettingsRadioButton = new iTalk.iTalk_RadioButton();
+            this.ManagerRadioButton = new iTalk.iTalk_RadioButton();
+            this.installerRadioButton = new iTalk.iTalk_RadioButton();
             this.browseMXdirButton = new iTalk.iTalk_Button_1();
             this.saveMXdirButton = new iTalk.iTalk_Button_1();
             this.iTalk_HeaderLabel2 = new iTalk.iTalk_HeaderLabel();
@@ -76,6 +77,11 @@
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
+            this.iTalk_Label10 = new iTalk.iTalk_Label();
+            this.iTalk_Label11 = new iTalk.iTalk_Label();
+            this.gearDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.trackDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.bikeDatabaseStatusLabel = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.installerPage.SuspendLayout();
@@ -109,7 +115,7 @@
             this.iTalk_ThemeContainer1.SmartBounds = false;
             this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.iTalk_ThemeContainer1.TabIndex = 0;
-            this.iTalk_ThemeContainer1.Text = "Pinned Mod Manager";
+            this.iTalk_ThemeContainer1.Text = "MXSIM Mod Manager";
             // 
             // iTalk_ControlBox1
             // 
@@ -143,7 +149,6 @@
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.installerPage.Controls.Add(this.iTalk_Separator4);
-            this.installerPage.Controls.Add(this.progressSpinner);
             this.installerPage.Controls.Add(this.iTalk_HeaderLabel1);
             this.installerPage.Controls.Add(this.modTbox);
             this.installerPage.Controls.Add(this.gearRadioButton);
@@ -165,19 +170,6 @@
             this.iTalk_Separator4.Size = new System.Drawing.Size(672, 10);
             this.iTalk_Separator4.TabIndex = 11;
             this.iTalk_Separator4.Text = "iTalk_Separator4";
-            // 
-            // progressSpinner
-            // 
-            this.progressSpinner.Location = new System.Drawing.Point(22, 371);
-            this.progressSpinner.MinimumSize = new System.Drawing.Size(80, 80);
-            this.progressSpinner.Name = "progressSpinner";
-            this.progressSpinner.P_AnimationColor = System.Drawing.Color.LightGray;
-            this.progressSpinner.P_AnimationSpeed = 150;
-            this.progressSpinner.P_BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.progressSpinner.Size = new System.Drawing.Size(80, 80);
-            this.progressSpinner.TabIndex = 9;
-            this.progressSpinner.Text = "iTalk_ProgressIndicator1";
-            this.progressSpinner.Visible = false;
             // 
             // iTalk_HeaderLabel1
             // 
@@ -260,6 +252,13 @@
             // managerPage
             // 
             this.managerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.managerPage.Controls.Add(this.bikeDatabaseStatusLabel);
+            this.managerPage.Controls.Add(this.trackDatabaseStatusLabel);
+            this.managerPage.Controls.Add(this.gearDatabaseStatusLabel);
+            this.managerPage.Controls.Add(this.iTalk_Label11);
+            this.managerPage.Controls.Add(this.iTalk_Label10);
+            this.managerPage.Controls.Add(this.statusLabel2);
+            this.managerPage.Controls.Add(this.iTalk_Label9);
             this.managerPage.Controls.Add(this.filterModComboBox);
             this.managerPage.Controls.Add(this.iTalk_Label3);
             this.managerPage.Controls.Add(this.executeActionButton);
@@ -274,6 +273,30 @@
             this.managerPage.Size = new System.Drawing.Size(717, 457);
             this.managerPage.TabIndex = 1;
             this.managerPage.Text = "Manager";
+            // 
+            // statusLabel2
+            // 
+            this.statusLabel2.AutoSize = true;
+            this.statusLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.statusLabel2.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.statusLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.statusLabel2.Location = new System.Drawing.Point(23, 396);
+            this.statusLabel2.Name = "statusLabel2";
+            this.statusLabel2.Size = new System.Drawing.Size(34, 13);
+            this.statusLabel2.TabIndex = 9;
+            this.statusLabel2.Text = "Gear:";
+            // 
+            // iTalk_Label9
+            // 
+            this.iTalk_Label9.AutoSize = true;
+            this.iTalk_Label9.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label9.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label9.Location = new System.Drawing.Point(23, 376);
+            this.iTalk_Label9.Name = "iTalk_Label9";
+            this.iTalk_Label9.Size = new System.Drawing.Size(90, 13);
+            this.iTalk_Label9.TabIndex = 8;
+            this.iTalk_Label9.Text = "Database Status";
             // 
             // filterModComboBox
             // 
@@ -295,6 +318,7 @@
             this.filterModComboBox.Size = new System.Drawing.Size(178, 26);
             this.filterModComboBox.StartIndex = 0;
             this.filterModComboBox.TabIndex = 7;
+            this.filterModComboBox.SelectedIndexChanged += new System.EventHandler(this.filterModComboBox_SelectedIndexChanged);
             // 
             // iTalk_Label3
             // 
@@ -321,6 +345,7 @@
             this.executeActionButton.TabIndex = 5;
             this.executeActionButton.Text = "Execute";
             this.executeActionButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.executeActionButton.Click += new System.EventHandler(this.executeActionButton_Click);
             // 
             // actionComboBox
             // 
@@ -336,10 +361,11 @@
             this.actionComboBox.ItemHeight = 20;
             this.actionComboBox.Items.AddRange(new object[] {
             "Delete Mod",
-            "Delete Selected Mods",
+            "Delete Selected Files",
             "Backup Mod",
             "Backup Selected Mods",
-            "Backup Entire MXS Install"});
+            "Backup Entire MXS Install",
+            "Clear Database"});
             this.actionComboBox.Location = new System.Drawing.Point(292, 22);
             this.actionComboBox.Name = "actionComboBox";
             this.actionComboBox.Size = new System.Drawing.Size(178, 26);
@@ -395,15 +421,16 @@
             this.modComboBox.Size = new System.Drawing.Size(178, 26);
             this.modComboBox.StartIndex = 0;
             this.modComboBox.TabIndex = 0;
+            this.modComboBox.SelectedIndexChanged += new System.EventHandler(this.modComboBox_SelectedIndexChanged);
             // 
             // settingsPage
             // 
             this.settingsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.settingsPage.Controls.Add(this.iTalk_Separator3);
             this.settingsPage.Controls.Add(this.iTalk_Label4);
-            this.settingsPage.Controls.Add(this.iTalk_RadioButton3);
-            this.settingsPage.Controls.Add(this.iTalk_RadioButton2);
-            this.settingsPage.Controls.Add(this.iTalk_RadioButton1);
+            this.settingsPage.Controls.Add(this.SettingsRadioButton);
+            this.settingsPage.Controls.Add(this.ManagerRadioButton);
+            this.settingsPage.Controls.Add(this.installerRadioButton);
             this.settingsPage.Controls.Add(this.browseMXdirButton);
             this.settingsPage.Controls.Add(this.saveMXdirButton);
             this.settingsPage.Controls.Add(this.iTalk_HeaderLabel2);
@@ -434,38 +461,38 @@
             this.iTalk_Label4.TabIndex = 7;
             this.iTalk_Label4.Text = "Default Screen";
             // 
-            // iTalk_RadioButton3
+            // SettingsRadioButton
             // 
-            this.iTalk_RadioButton3.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_RadioButton3.Checked = false;
-            this.iTalk_RadioButton3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_RadioButton3.Location = new System.Drawing.Point(94, 308);
-            this.iTalk_RadioButton3.Name = "iTalk_RadioButton3";
-            this.iTalk_RadioButton3.Size = new System.Drawing.Size(74, 15);
-            this.iTalk_RadioButton3.TabIndex = 6;
-            this.iTalk_RadioButton3.Text = "Settings";
+            this.SettingsRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.SettingsRadioButton.Checked = false;
+            this.SettingsRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.SettingsRadioButton.Location = new System.Drawing.Point(94, 308);
+            this.SettingsRadioButton.Name = "SettingsRadioButton";
+            this.SettingsRadioButton.Size = new System.Drawing.Size(74, 15);
+            this.SettingsRadioButton.TabIndex = 6;
+            this.SettingsRadioButton.Text = "Settings";
             // 
-            // iTalk_RadioButton2
+            // ManagerRadioButton
             // 
-            this.iTalk_RadioButton2.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_RadioButton2.Checked = false;
-            this.iTalk_RadioButton2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_RadioButton2.Location = new System.Drawing.Point(94, 278);
-            this.iTalk_RadioButton2.Name = "iTalk_RadioButton2";
-            this.iTalk_RadioButton2.Size = new System.Drawing.Size(74, 15);
-            this.iTalk_RadioButton2.TabIndex = 5;
-            this.iTalk_RadioButton2.Text = "Manager";
+            this.ManagerRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.ManagerRadioButton.Checked = false;
+            this.ManagerRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ManagerRadioButton.Location = new System.Drawing.Point(94, 278);
+            this.ManagerRadioButton.Name = "ManagerRadioButton";
+            this.ManagerRadioButton.Size = new System.Drawing.Size(74, 15);
+            this.ManagerRadioButton.TabIndex = 5;
+            this.ManagerRadioButton.Text = "Manager";
             // 
-            // iTalk_RadioButton1
+            // installerRadioButton
             // 
-            this.iTalk_RadioButton1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_RadioButton1.Checked = false;
-            this.iTalk_RadioButton1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_RadioButton1.Location = new System.Drawing.Point(94, 248);
-            this.iTalk_RadioButton1.Name = "iTalk_RadioButton1";
-            this.iTalk_RadioButton1.Size = new System.Drawing.Size(74, 15);
-            this.iTalk_RadioButton1.TabIndex = 4;
-            this.iTalk_RadioButton1.Text = "Installer";
+            this.installerRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.installerRadioButton.Checked = false;
+            this.installerRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.installerRadioButton.Location = new System.Drawing.Point(94, 248);
+            this.installerRadioButton.Name = "installerRadioButton";
+            this.installerRadioButton.Size = new System.Drawing.Size(74, 15);
+            this.installerRadioButton.TabIndex = 4;
+            this.installerRadioButton.Text = "Installer";
             // 
             // browseMXdirButton
             // 
@@ -652,11 +679,11 @@
             this.iTalk_Label5.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label5.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_Label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label5.Location = new System.Drawing.Point(270, 205);
+            this.iTalk_Label5.Location = new System.Drawing.Point(295, 205);
             this.iTalk_Label5.Name = "iTalk_Label5";
-            this.iTalk_Label5.Size = new System.Drawing.Size(87, 13);
+            this.iTalk_Label5.Size = new System.Drawing.Size(62, 13);
             this.iTalk_Label5.TabIndex = 3;
-            this.iTalk_Label5.Text = "Programmed by";
+            this.iTalk_Label5.Text = "Created by";
             this.iTalk_Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // iTalk_Label6
@@ -678,11 +705,11 @@
             this.iTalk_HeaderLabel3.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_HeaderLabel3.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.iTalk_HeaderLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.iTalk_HeaderLabel3.Location = new System.Drawing.Point(185, 84);
+            this.iTalk_HeaderLabel3.Location = new System.Drawing.Point(182, 84);
             this.iTalk_HeaderLabel3.Name = "iTalk_HeaderLabel3";
-            this.iTalk_HeaderLabel3.Size = new System.Drawing.Size(346, 46);
+            this.iTalk_HeaderLabel3.Size = new System.Drawing.Size(352, 46);
             this.iTalk_HeaderLabel3.TabIndex = 0;
-            this.iTalk_HeaderLabel3.Text = "Pinned Mod Manager";
+            this.iTalk_HeaderLabel3.Text = "MXSIM Mod Manager";
             // 
             // imageList1
             // 
@@ -702,6 +729,66 @@
             this.notifyIconSettings.Text = "notifyIcon1";
             this.notifyIconSettings.Visible = true;
             // 
+            // iTalk_Label10
+            // 
+            this.iTalk_Label10.AutoSize = true;
+            this.iTalk_Label10.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label10.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label10.Location = new System.Drawing.Point(23, 411);
+            this.iTalk_Label10.Name = "iTalk_Label10";
+            this.iTalk_Label10.Size = new System.Drawing.Size(35, 13);
+            this.iTalk_Label10.TabIndex = 10;
+            this.iTalk_Label10.Text = "Track:";
+            // 
+            // iTalk_Label11
+            // 
+            this.iTalk_Label11.AutoSize = true;
+            this.iTalk_Label11.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label11.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label11.Location = new System.Drawing.Point(23, 426);
+            this.iTalk_Label11.Name = "iTalk_Label11";
+            this.iTalk_Label11.Size = new System.Drawing.Size(32, 13);
+            this.iTalk_Label11.TabIndex = 11;
+            this.iTalk_Label11.Text = "Bike:";
+            // 
+            // gearDatabaseStatusLabel
+            // 
+            this.gearDatabaseStatusLabel.AutoSize = true;
+            this.gearDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.gearDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.gearDatabaseStatusLabel.Location = new System.Drawing.Point(59, 396);
+            this.gearDatabaseStatusLabel.Name = "gearDatabaseStatusLabel";
+            this.gearDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.gearDatabaseStatusLabel.TabIndex = 12;
+            this.gearDatabaseStatusLabel.Text = "Idle";
+            // 
+            // trackDatabaseStatusLabel
+            // 
+            this.trackDatabaseStatusLabel.AutoSize = true;
+            this.trackDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.trackDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.trackDatabaseStatusLabel.Location = new System.Drawing.Point(59, 411);
+            this.trackDatabaseStatusLabel.Name = "trackDatabaseStatusLabel";
+            this.trackDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.trackDatabaseStatusLabel.TabIndex = 13;
+            this.trackDatabaseStatusLabel.Text = "Idle";
+            // 
+            // bikeDatabaseStatusLabel
+            // 
+            this.bikeDatabaseStatusLabel.AutoSize = true;
+            this.bikeDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.bikeDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.bikeDatabaseStatusLabel.Location = new System.Drawing.Point(59, 427);
+            this.bikeDatabaseStatusLabel.Name = "bikeDatabaseStatusLabel";
+            this.bikeDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.bikeDatabaseStatusLabel.TabIndex = 14;
+            this.bikeDatabaseStatusLabel.Text = "Idle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,7 +799,7 @@
             this.MinimumSize = new System.Drawing.Size(126, 39);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pinned Mod Manager";
+            this.Text = "MXSIM Mod Manager";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.iTalk_ThemeContainer1.ResumeLayout(false);
             this.iTalk_TabControl1.ResumeLayout(false);
@@ -750,7 +837,6 @@
         private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel1;
         private iTalk.iTalk_TextBox_Big modTbox;
         private System.Windows.Forms.ImageList imageList1;
-        private iTalk.iTalk_ProgressIndicator progressSpinner;
         private System.Windows.Forms.CheckedListBox modListBox;
         private iTalk.iTalk_Button_2 executeActionButton;
         private iTalk.iTalk_ComboBox actionComboBox;
@@ -758,9 +844,9 @@
         private iTalk.iTalk_ComboBox filterModComboBox;
         private iTalk.iTalk_Label iTalk_Label3;
         private iTalk.iTalk_Label iTalk_Label4;
-        private iTalk.iTalk_RadioButton iTalk_RadioButton3;
-        private iTalk.iTalk_RadioButton iTalk_RadioButton2;
-        private iTalk.iTalk_RadioButton iTalk_RadioButton1;
+        private iTalk.iTalk_RadioButton SettingsRadioButton;
+        private iTalk.iTalk_RadioButton ManagerRadioButton;
+        private iTalk.iTalk_RadioButton installerRadioButton;
         private System.Windows.Forms.TabPage tabPage1;
         private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel3;
         private iTalk.iTalk_Label iTalk_Label5;
@@ -776,6 +862,13 @@
         private System.Windows.Forms.NotifyIcon notifyIconSettings;
         private iTalk.iTalk_Label iTalk_Label8;
         private iTalk.iTalk_Label copyrightLabel;
+        private iTalk.iTalk_Label statusLabel2;
+        private iTalk.iTalk_Label iTalk_Label9;
+        private iTalk.iTalk_Label bikeDatabaseStatusLabel;
+        private iTalk.iTalk_Label trackDatabaseStatusLabel;
+        private iTalk.iTalk_Label gearDatabaseStatusLabel;
+        private iTalk.iTalk_Label iTalk_Label11;
+        private iTalk.iTalk_Label iTalk_Label10;
     }
 }
 

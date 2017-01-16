@@ -52,7 +52,6 @@ namespace Circuit_Mod_Manager
         public String installingModWithoutPath = null;
         public String installingModExtension = null;
         public String mxDirectory = null;
-        public XmlDocument loadedDatabase = null;
 
         //Getters and Setters
         public String getInstallingMod()
@@ -83,11 +82,6 @@ namespace Circuit_Mod_Manager
         public void setMxDirectory(String directory)
         {
             mxDirectory = directory;
-        }
-        public XmlDocument getLoadedDatabase()
-        {
-            loadedDatabase = new XmlDocument();
-            return loadedDatabase;
         }
     }
 }

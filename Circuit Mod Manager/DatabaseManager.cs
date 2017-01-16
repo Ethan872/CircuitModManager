@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Xml;
-using SharpCompress.Archive.Rar;
-using SharpCompress.Reader.Rar;
 using System.IO;
+using System.Data.SQLite;
+using NUnrar;
 using SharpCompress.Archive;
 using SharpCompress.Common;
+using SharpCompress.Reader;
+using SharpCompress.Writer;
 #region License
 /*
 Circuit Manager Source Code File
@@ -53,44 +55,11 @@ namespace Circuit_Mod_Manager
     {
 
         VariableManager vManager = new VariableManager();
-
-        private bool CheckDatabases(String whichDatabase, XmlDocument database, String modToInstall)
+        String gearConnection;
+        String trackConnection;
+        private void installMod(String modType, String modExtension, String modToInstallWithPath, String modToInstallWithoutPath, String mxDirectory)
         {
-            if (whichDatabase == "track")
-            {
-                XmlNodeList xnList = database.SelectNodes("/trackDB/mod");
-                foreach (XmlNode xn in xnList)
-                {
-                    if (xn.InnerText != modToInstall)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            return false;
-        }
-        private void AddModToDB(String whichDatabase, XmlDocument database, String modToInstall)
-        {
-            if (whichDatabase == "track")
-            {
-                XmlNode rootNode = database.DocumentElement;
-                XmlElement mod = database.CreateElement("mod");
-                //XmlAttribute modAttribute = database.CreateAttribute("name");
-                //modAttribute.Value = modToInstall;
-                rootNode.AppendChild(mod);
-                //mod.Attributes.Append(modAttribute);
-                mod.InnerText = modToInstall;
-                database.Save("PinnedDatabases\\trackDB.xml");
-            }
-        }
-        private void installMod(String modExtension, String whichDatabase, XmlDocument database, String modToInstallWithPath, String mxDirectory)
-        {
-            if (whichDatabase == "track")
+            if (modType == "gear")
             {
                 if (modExtension == ".zip")
                 {
@@ -98,74 +67,207 @@ namespace Circuit_Mod_Manager
                 }
                 else if (modExtension == ".rar")
                 {
-                    var archive = ArchiveFactory.Open(modToInstallWithPath);
-                    foreach (var entry in archive.Entries)
+                    MessageBox.Show("isRar");
+                    using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                     {
-                        if (!entry.IsDirectory)
+                        try
                         {
-                            try
+                            gearCon.Open();
+                            if (gearCon.State == System.Data.ConnectionState.Open)
                             {
-                                MessageBox.Show("entry: " + entry.FilePath);
-                                entry.WriteToDirectory(mxDirectory, ExtractOptions.ExtractFullPath | ExtractOptions.Overwrite);
+                                MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
+                                using (Stream stream = File.OpenRead(modToInstallWithPath))
+                                {
+                                    var archive = ArchiveFactory.Open(stream);
+                                    foreach (var entry in archive.Entries)
+                                    {
+                                        if (!entry.IsDirectory)
+                                        {
+                                            //MessageBox.Show(entry.FilePath + " is not a dir");
+                                        }
+                                        else
+                                        {
+                                            //MessageBox.Show(entry.FilePath + " is a dir");
+                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + entry.FilePath + "'" + ");", gearCon);
+                                            cmd.ExecuteNonQuery();
+                                            Directory.CreateDirectory(mxDirectory + "\\" + entry.FilePath);
+                                        }
+                                    }
+                                    stream.Close();
+                                }
+                                RarArchive rar = RarArchive.Open(modToInstallWithPath);
+                                foreach (RarArchiveEntry e in rar.Entries)
+                                {
+                                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FilePath + "'" + ");", gearCon);
+                                    cmd.ExecuteNonQuery();
+                                    e.ExtractToFile(mxDirectory + "\\" + e.FilePath);
+                                }
                             }
-                            catch (ArgumentException e)
+                            gearCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+                else if (modExtension == ".saf")
+                {
+                    MessageBox.Show("isSAf");
+                    //Add to database
+                    using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
+                    {
+                        try
+                        {
+                            gearCon.Open();
+                            if (gearCon.State == System.Data.ConnectionState.Open)
                             {
-                                MessageBox.Show("An error occurred, make sure your MX Simulator directory is set!", "Error RAR install", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
+                                SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + modToInstallWithoutPath + "'" + ");", gearCon);
+                                cmd.ExecuteNonQuery();
+                                File.Move(modToInstallWithPath, mxDirectory + "\\" + modToInstallWithoutPath);
                             }
-                            
+                            gearCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
                         }
                     }
                 }
             }
-        }
-        public void StartInstallProcess(String modToInstall, String modToInstallWithPath, String modType, String modExtension, XmlDocument database, String mxDir)
-        {
-            // 1) Check if database has any mods, if not create it
-            // 2) Check if installing mod is in a database
-            // 3) Check installing mod extension
-            if (modType == "track")
+            else if(modType == "track")
             {
-                //Load Track DB
-                if (!File.Exists("PinnedDatabases\\trackDB.xml"))
+                if (modExtension == ".zip")
                 {
-                    MessageBox.Show("Track Database doesn't exist, will create one now", "No track database on disk", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    File.Create("PinnedDatabases\\trackDB.xml").Close();
-                }
-                else
-                {
-                    database.Load("PinnedDatabases\\trackDB.xml");
-                }
-                
-                XmlNode rootNodeTrack = database.DocumentElement;
 
-                // 1) Check if database has any mods, if not create one for the installing mod
-
-                if (rootNodeTrack.HasChildNodes) //No mods in database (Empty)
+                }
+                else if (modExtension == ".rar")
                 {
-                    if (CheckDatabases("track", database, modToInstall)) //Mod doesn't exist
+                    MessageBox.Show("isRar");
+                    using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                     {
-                        AddModToDB("track", database, modToInstall);
-                        MessageBox.Show("Don't exist");
-                        if(modExtension == ".rar")
+                        try
                         {
-                            MessageBox.Show("IsRar");
-                            installMod(".rar", "track", database, modToInstallWithPath, mxDir);
+                            trackCon.Open();
+                            if (trackCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to track database");
+                                using (Stream stream = File.OpenRead(modToInstallWithPath))
+                                {
+                                    var archive = ArchiveFactory.Open(stream);
+                                    foreach (var entry in archive.Entries)
+                                    {
+                                        if (!entry.IsDirectory)
+                                        {
+                                            //MessageBox.Show(entry.FilePath + " is not a dir");
+                                        }
+                                        else
+                                        {
+                                            //MessageBox.Show(entry.FilePath + " is a dir");
+                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + entry.FilePath + "'" + ");", trackCon);
+                                            cmd.ExecuteNonQuery();
+                                            Directory.CreateDirectory(mxDirectory + "\\" + entry.FilePath);
+                                        }
+                                    }
+                                    stream.Close();
+                                }
+                                RarArchive rar = RarArchive.Open(modToInstallWithPath);
+                                foreach (RarArchiveEntry e in rar.Entries)
+                                {
+                                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FilePath + "'" + ");", trackCon);
+                                    cmd.ExecuteNonQuery();
+                                    e.ExtractToFile(mxDirectory + "\\" + e.FilePath);
+                                }
+                            }
+                            trackCon.Close();
                         }
-                        else if(modExtension == ".zip")
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("isZip");
+                            MessageBox.Show(ex.Message);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("That mod already exists within the track database", "Mod Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    database.Save("PinnedDatabases\\trackDB.xml");
-                    
                 }
-                else //Has mods in database
+                else if (modExtension == ".saf")
                 {
-                    AddModToDB("track", database, modToInstall);
+                    MessageBox.Show("isSAf");
+                    //Add to database
+                    using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
+                    {
+                        try
+                        {
+                            trackCon.Open();
+                            if (trackCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to track database");
+                                //Check if mod exists in database
+                                SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'"  + modToInstallWithoutPath + "'" + ");", trackCon);
+                                cmd.ExecuteNonQuery();
+                                File.Move(modToInstallWithPath, mxDirectory + "\\" + modToInstallWithoutPath);
+                            }
+                            trackCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+        }
+        public void StartInstallProcess(String modToInstall, String modToInstallWithPath, String modType, String modExtension, String mxDir)
+        {
+            if (modType == "gear")
+            {
+                gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
+                {
+                    try
+                    {
+                        gearCon.Open();
+                        if (gearCon.State == System.Data.ConnectionState.Open)
+                        {
+                            MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
+                            //Check if mod exists in database
+                            SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE IF NOT EXISTS " + "'" + modToInstall + "'" + "(modName TEXT, modFiles TEXT);", gearCon);
+                            cmd.ExecuteNonQuery();
+                            installMod(modType, modExtension, modToInstallWithPath, modToInstall, mxDir);
+                        }
+                        gearCon.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if(modType == "track")
+            {
+                trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
+                using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
+                {
+                    try
+                    {
+                        trackCon.Open();
+                        if (trackCon.State == System.Data.ConnectionState.Open)
+                        {
+                            MessageBox.Show("Successfully connected to track database");
+                            //Check if mod exists in database
+                            SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE IF NOT EXISTS " + "'" + modToInstall + "'" + "(modName TEXT, modFiles TEXT);", trackCon);
+                            cmd.ExecuteNonQuery();
+                            installMod(modType, modExtension, modToInstallWithPath, modToInstall, mxDir);
+                        }
+                        trackCon.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
             else

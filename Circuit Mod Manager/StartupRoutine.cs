@@ -52,25 +52,15 @@ namespace Circuit_Mod_Manager
 
         public void CheckCircuitData()
         {
-            if(!Directory.Exists("PinnedDatabases") || !File.Exists("PinnedDatabases\\trackDB.xml") || !File.Exists("PinnedDatabases\\gearDB.xml"))
+            if(!File.Exists("gear_mods.db"))
             {
-                Directory.CreateDirectory("PinnedDatabases");
-                File.Create("PinnedDatabases\\trackDB.xml").Close();
-                File.Create("PinnedDatabases\\gearDB.xml").Close();
-                //Create base xml nodes for track database
-                XmlDocument trackDB = vManager.getLoadedDatabase();
-                XmlElement rootElementTrack = trackDB.CreateElement("trackDB");
-                trackDB.AppendChild(rootElementTrack);
-                trackDB.Save("PinnedDatabases\\trackDB.xml");
-                //Create base xml nodes for gear database
-                XmlDocument gearDB = vManager.getLoadedDatabase();
-                XmlElement rootElementGear = gearDB.CreateElement("gearDB");
-                gearDB.AppendChild(rootElementGear);
-                gearDB.Save("PinnedDatabases\\gearDB.xml");
+                MessageBox.Show("Gear Database doesn't exist, will create one now", "No Gear DB", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                File.Create("gear_mods.db").Close();
             }
-            else
+            if(!File.Exists("track_mods.db"))
             {
-                //Do nothing
+                MessageBox.Show("Track Database doesn't exist, will create one now", "No Track DB", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                File.Create("track_mods.db").Close();
             }
         }
         public String CheckMXdir()
