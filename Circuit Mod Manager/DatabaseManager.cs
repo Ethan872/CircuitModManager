@@ -8,6 +8,7 @@ using SharpCompress.Archive;
 using SharpCompress.Common;
 using SharpCompress.Reader;
 using SharpCompress.Writer;
+using Ionic.Zip;
 #region License
 /*
 Circuit Manager Source Code File
@@ -57,17 +58,13 @@ namespace Circuit_Mod_Manager
         VariableManager vManager = new VariableManager();
         String gearConnection;
         String trackConnection;
+        String bikeConnection;
         private void installMod(String modType, String modExtension, String modToInstallWithPath, String modToInstallWithoutPath, String mxDirectory)
         {
             if (modType == "gear")
             {
                 if (modExtension == ".zip")
                 {
-
-                }
-                else if (modExtension == ".rar")
-                {
-                    MessageBox.Show("isRar");
                     using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                     {
                         try
@@ -75,7 +72,37 @@ namespace Circuit_Mod_Manager
                             gearCon.Open();
                             if (gearCon.State == System.Data.ConnectionState.Open)
                             {
-                                MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
+                                MessageBox.Show("Successfully connected to gear database");
+                                using (ZipFile zip1 = ZipFile.Read(modToInstallWithPath))
+                                {
+                                    // here, we extract every entry, but we could extract conditionally
+                                    // based on entry name, size, date, checkbox status, etc.  
+                                    foreach (ZipEntry e in zip1)
+                                    {
+                                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", gearCon);
+                                        cmd.ExecuteNonQuery();
+                                        e.Extract(mxDirectory, ExtractExistingFileAction.OverwriteSilently);
+                                    }
+                                }
+                            }
+                            gearCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+                else if (modExtension == ".rar")
+                {
+                    using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
+                    {
+                        try
+                        {
+                            gearCon.Open();
+                            if (gearCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to gear database");
                                 using (Stream stream = File.OpenRead(modToInstallWithPath))
                                 {
                                     var archive = ArchiveFactory.Open(stream);
@@ -113,8 +140,6 @@ namespace Circuit_Mod_Manager
                 }
                 else if (modExtension == ".saf")
                 {
-                    MessageBox.Show("isSAf");
-                    //Add to database
                     using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                     {
                         try
@@ -122,7 +147,7 @@ namespace Circuit_Mod_Manager
                             gearCon.Open();
                             if (gearCon.State == System.Data.ConnectionState.Open)
                             {
-                                MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
+                                MessageBox.Show("Successfully connected to gear database");
                                 SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + modToInstallWithoutPath + "'" + ");", gearCon);
                                 cmd.ExecuteNonQuery();
                                 File.Move(modToInstallWithPath, mxDirectory + "\\" + modToInstallWithoutPath);
@@ -140,11 +165,36 @@ namespace Circuit_Mod_Manager
             {
                 if (modExtension == ".zip")
                 {
-
+                    using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
+                    {
+                        try
+                        {
+                            trackCon.Open();
+                            if (trackCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to track database");
+                                using (ZipFile zip1 = ZipFile.Read(modToInstallWithPath))
+                                {
+                                    // here, we extract every entry, but we could extract conditionally
+                                    // based on entry name, size, date, checkbox status, etc.  
+                                    foreach (ZipEntry e in zip1)
+                                    {
+                                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", trackCon);
+                                        cmd.ExecuteNonQuery();
+                                        e.Extract(mxDirectory, ExtractExistingFileAction.OverwriteSilently);
+                                    }
+                                }
+                            }
+                            trackCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
                 }
                 else if (modExtension == ".rar")
                 {
-                    MessageBox.Show("isRar");
                     using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                     {
                         try
@@ -190,8 +240,6 @@ namespace Circuit_Mod_Manager
                 }
                 else if (modExtension == ".saf")
                 {
-                    MessageBox.Show("isSAf");
-                    //Add to database
                     using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                     {
                         try
@@ -200,12 +248,111 @@ namespace Circuit_Mod_Manager
                             if (trackCon.State == System.Data.ConnectionState.Open)
                             {
                                 MessageBox.Show("Successfully connected to track database");
-                                //Check if mod exists in database
                                 SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'"  + modToInstallWithoutPath + "'" + ");", trackCon);
                                 cmd.ExecuteNonQuery();
                                 File.Move(modToInstallWithPath, mxDirectory + "\\" + modToInstallWithoutPath);
                             }
                             trackCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+            else if(modType == "bike")
+            {
+                if (modExtension == ".zip")
+                {
+                    using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                    {
+                        try
+                        {
+                            bikeCon.Open();
+                            if (bikeCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to bike database");
+                                using (ZipFile zip1 = ZipFile.Read(modToInstallWithPath))
+                                {
+                                    // here, we extract every entry, but we could extract conditionally
+                                    // based on entry name, size, date, checkbox status, etc.  
+                                    foreach (ZipEntry e in zip1)
+                                    {
+                                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", bikeCon);
+                                        cmd.ExecuteNonQuery();
+                                        e.Extract(mxDirectory, ExtractExistingFileAction.OverwriteSilently);
+                                    }
+                                }
+                            }
+                            bikeCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+                else if (modExtension == ".rar")
+                {
+                    using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                    {
+                        try
+                        {
+                            bikeCon.Open();
+                            if (bikeCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to bike database");
+                                using (Stream stream = File.OpenRead(modToInstallWithPath))
+                                {
+                                    var archive = ArchiveFactory.Open(stream);
+                                    foreach (var entry in archive.Entries)
+                                    {
+                                        if (!entry.IsDirectory)
+                                        {
+                                            //MessageBox.Show(entry.FilePath + " is not a dir");
+                                        }
+                                        else
+                                        {
+                                            //MessageBox.Show(entry.FilePath + " is a dir");
+                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + entry.FilePath + "'" + ");", bikeCon);
+                                            cmd.ExecuteNonQuery();
+                                            Directory.CreateDirectory(mxDirectory + "\\" + entry.FilePath);
+                                        }
+                                    }
+                                    stream.Close();
+                                }
+                                RarArchive rar = RarArchive.Open(modToInstallWithPath);
+                                foreach (RarArchiveEntry e in rar.Entries)
+                                {
+                                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FilePath + "'" + ");", bikeCon);
+                                    cmd.ExecuteNonQuery();
+                                    e.ExtractToFile(mxDirectory + "\\" + e.FilePath);
+                                }
+                            }
+                            bikeCon.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+                else if (modExtension == ".saf")
+                {
+                    using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                    {
+                        try
+                        {
+                            bikeCon.Open();
+                            if (bikeCon.State == System.Data.ConnectionState.Open)
+                            {
+                                MessageBox.Show("Successfully connected to gear database");
+                                SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + modToInstallWithoutPath + "'" + ");", bikeCon);
+                                cmd.ExecuteNonQuery();
+                                File.Move(modToInstallWithPath, mxDirectory + "\\" + modToInstallWithoutPath);
+                            }
+                            bikeCon.Close();
                         }
                         catch (Exception ex)
                         {
@@ -263,6 +410,30 @@ namespace Circuit_Mod_Manager
                             installMod(modType, modExtension, modToInstallWithPath, modToInstall, mxDir);
                         }
                         trackCon.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if(modType == "bike")
+            {
+                bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                {
+                    try
+                    {
+                        bikeCon.Open();
+                        if (bikeCon.State == System.Data.ConnectionState.Open)
+                        {
+                            MessageBox.Show("Successfully connected to bike database");
+                            //Check if mod exists in database
+                            SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE IF NOT EXISTS " + "'" + modToInstall + "'" + "(modName TEXT, modFiles TEXT);", bikeCon);
+                            cmd.ExecuteNonQuery();
+                            installMod(modType, modExtension, modToInstallWithPath, modToInstall, mxDir);
+                        }
+                        bikeCon.Close();
                     }
                     catch (Exception ex)
                     {

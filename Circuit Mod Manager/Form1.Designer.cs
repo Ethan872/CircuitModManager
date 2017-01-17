@@ -82,6 +82,7 @@
             this.gearDatabaseStatusLabel = new iTalk.iTalk_Label();
             this.trackDatabaseStatusLabel = new iTalk.iTalk_Label();
             this.bikeDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.bikeRadioButton = new iTalk.iTalk_RadioButton();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.installerPage.SuspendLayout();
@@ -148,6 +149,7 @@
             // installerPage
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.installerPage.Controls.Add(this.bikeRadioButton);
             this.installerPage.Controls.Add(this.iTalk_Separator4);
             this.installerPage.Controls.Add(this.iTalk_HeaderLabel1);
             this.installerPage.Controls.Add(this.modTbox);
@@ -207,7 +209,7 @@
             this.gearRadioButton.BackColor = System.Drawing.Color.Transparent;
             this.gearRadioButton.Checked = false;
             this.gearRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gearRadioButton.Location = new System.Drawing.Point(395, 228);
+            this.gearRadioButton.Location = new System.Drawing.Point(298, 228);
             this.gearRadioButton.Name = "gearRadioButton";
             this.gearRadioButton.Size = new System.Drawing.Size(60, 15);
             this.gearRadioButton.TabIndex = 4;
@@ -219,7 +221,7 @@
             this.iTalk_Label1.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label1.Location = new System.Drawing.Point(264, 228);
+            this.iTalk_Label1.Location = new System.Drawing.Point(233, 228);
             this.iTalk_Label1.Name = "iTalk_Label1";
             this.iTalk_Label1.Size = new System.Drawing.Size(59, 13);
             this.iTalk_Label1.TabIndex = 5;
@@ -230,7 +232,7 @@
             this.trackRadioButton.BackColor = System.Drawing.Color.Transparent;
             this.trackRadioButton.Checked = false;
             this.trackRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.trackRadioButton.Location = new System.Drawing.Point(329, 228);
+            this.trackRadioButton.Location = new System.Drawing.Point(357, 228);
             this.trackRadioButton.Name = "trackRadioButton";
             this.trackRadioButton.Size = new System.Drawing.Size(60, 15);
             this.trackRadioButton.TabIndex = 3;
@@ -311,8 +313,9 @@
             this.filterModComboBox.IntegralHeight = false;
             this.filterModComboBox.ItemHeight = 20;
             this.filterModComboBox.Items.AddRange(new object[] {
+            "Gear",
             "Track",
-            "Gear"});
+            "Bike"});
             this.filterModComboBox.Location = new System.Drawing.Point(515, 22);
             this.filterModComboBox.Name = "filterModComboBox";
             this.filterModComboBox.Size = new System.Drawing.Size(178, 26);
@@ -789,6 +792,17 @@
             this.bikeDatabaseStatusLabel.TabIndex = 14;
             this.bikeDatabaseStatusLabel.Text = "Idle";
             // 
+            // bikeRadioButton
+            // 
+            this.bikeRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.bikeRadioButton.Checked = false;
+            this.bikeRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.bikeRadioButton.Location = new System.Drawing.Point(423, 228);
+            this.bikeRadioButton.Name = "bikeRadioButton";
+            this.bikeRadioButton.Size = new System.Drawing.Size(60, 15);
+            this.bikeRadioButton.TabIndex = 12;
+            this.bikeRadioButton.Text = "Bike";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -869,6 +883,7 @@
         private iTalk.iTalk_Label gearDatabaseStatusLabel;
         private iTalk.iTalk_Label iTalk_Label11;
         private iTalk.iTalk_Label iTalk_Label10;
+        private iTalk.iTalk_RadioButton bikeRadioButton;
     }
 }
 
