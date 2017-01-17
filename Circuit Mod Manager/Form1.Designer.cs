@@ -35,6 +35,7 @@
             this.iTalk_ControlBox1 = new iTalk.iTalk_ControlBox();
             this.iTalk_TabControl1 = new iTalk.iTalk_TabControl();
             this.installerPage = new System.Windows.Forms.TabPage();
+            this.bikeRadioButton = new iTalk.iTalk_RadioButton();
             this.iTalk_Separator4 = new iTalk.iTalk_Separator();
             this.iTalk_HeaderLabel1 = new iTalk.iTalk_HeaderLabel();
             this.modTbox = new iTalk.iTalk_TextBox_Big();
@@ -43,6 +44,11 @@
             this.trackRadioButton = new iTalk.iTalk_RadioButton();
             this.installModButton = new iTalk.iTalk_Button_1();
             this.managerPage = new System.Windows.Forms.TabPage();
+            this.bikeDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.trackDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.gearDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.iTalk_Label11 = new iTalk.iTalk_Label();
+            this.iTalk_Label10 = new iTalk.iTalk_Label();
             this.statusLabel2 = new iTalk.iTalk_Label();
             this.iTalk_Label9 = new iTalk.iTalk_Label();
             this.filterModComboBox = new iTalk.iTalk_ComboBox();
@@ -77,12 +83,8 @@
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
-            this.iTalk_Label10 = new iTalk.iTalk_Label();
-            this.iTalk_Label11 = new iTalk.iTalk_Label();
-            this.gearDatabaseStatusLabel = new iTalk.iTalk_Label();
-            this.trackDatabaseStatusLabel = new iTalk.iTalk_Label();
-            this.bikeDatabaseStatusLabel = new iTalk.iTalk_Label();
-            this.bikeRadioButton = new iTalk.iTalk_RadioButton();
+            this.backupNameTextbox = new iTalk.iTalk_TextBox_Small();
+            this.backupNameLabel = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.installerPage.SuspendLayout();
@@ -164,6 +166,17 @@
             this.installerPage.TabIndex = 0;
             this.installerPage.Text = "Installer";
             this.installerPage.Click += new System.EventHandler(this.installerPage_Click);
+            // 
+            // bikeRadioButton
+            // 
+            this.bikeRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.bikeRadioButton.Checked = false;
+            this.bikeRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.bikeRadioButton.Location = new System.Drawing.Point(423, 228);
+            this.bikeRadioButton.Name = "bikeRadioButton";
+            this.bikeRadioButton.Size = new System.Drawing.Size(60, 15);
+            this.bikeRadioButton.TabIndex = 12;
+            this.bikeRadioButton.Text = "Bike";
             // 
             // iTalk_Separator4
             // 
@@ -254,6 +267,8 @@
             // managerPage
             // 
             this.managerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.managerPage.Controls.Add(this.backupNameLabel);
+            this.managerPage.Controls.Add(this.backupNameTextbox);
             this.managerPage.Controls.Add(this.bikeDatabaseStatusLabel);
             this.managerPage.Controls.Add(this.trackDatabaseStatusLabel);
             this.managerPage.Controls.Add(this.gearDatabaseStatusLabel);
@@ -275,6 +290,66 @@
             this.managerPage.Size = new System.Drawing.Size(717, 457);
             this.managerPage.TabIndex = 1;
             this.managerPage.Text = "Manager";
+            // 
+            // bikeDatabaseStatusLabel
+            // 
+            this.bikeDatabaseStatusLabel.AutoSize = true;
+            this.bikeDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.bikeDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.bikeDatabaseStatusLabel.Location = new System.Drawing.Point(59, 427);
+            this.bikeDatabaseStatusLabel.Name = "bikeDatabaseStatusLabel";
+            this.bikeDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.bikeDatabaseStatusLabel.TabIndex = 14;
+            this.bikeDatabaseStatusLabel.Text = "Idle";
+            // 
+            // trackDatabaseStatusLabel
+            // 
+            this.trackDatabaseStatusLabel.AutoSize = true;
+            this.trackDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.trackDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.trackDatabaseStatusLabel.Location = new System.Drawing.Point(59, 411);
+            this.trackDatabaseStatusLabel.Name = "trackDatabaseStatusLabel";
+            this.trackDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.trackDatabaseStatusLabel.TabIndex = 13;
+            this.trackDatabaseStatusLabel.Text = "Idle";
+            // 
+            // gearDatabaseStatusLabel
+            // 
+            this.gearDatabaseStatusLabel.AutoSize = true;
+            this.gearDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.gearDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.gearDatabaseStatusLabel.Location = new System.Drawing.Point(59, 396);
+            this.gearDatabaseStatusLabel.Name = "gearDatabaseStatusLabel";
+            this.gearDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.gearDatabaseStatusLabel.TabIndex = 12;
+            this.gearDatabaseStatusLabel.Text = "Idle";
+            // 
+            // iTalk_Label11
+            // 
+            this.iTalk_Label11.AutoSize = true;
+            this.iTalk_Label11.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label11.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label11.Location = new System.Drawing.Point(23, 426);
+            this.iTalk_Label11.Name = "iTalk_Label11";
+            this.iTalk_Label11.Size = new System.Drawing.Size(32, 13);
+            this.iTalk_Label11.TabIndex = 11;
+            this.iTalk_Label11.Text = "Bike:";
+            // 
+            // iTalk_Label10
+            // 
+            this.iTalk_Label10.AutoSize = true;
+            this.iTalk_Label10.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label10.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label10.Location = new System.Drawing.Point(23, 411);
+            this.iTalk_Label10.Name = "iTalk_Label10";
+            this.iTalk_Label10.Size = new System.Drawing.Size(35, 13);
+            this.iTalk_Label10.TabIndex = 10;
+            this.iTalk_Label10.Text = "Track:";
             // 
             // statusLabel2
             // 
@@ -342,7 +417,7 @@
             this.executeActionButton.ForeColor = System.Drawing.Color.White;
             this.executeActionButton.Image = null;
             this.executeActionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.executeActionButton.Location = new System.Drawing.Point(527, 389);
+            this.executeActionButton.Location = new System.Drawing.Point(527, 394);
             this.executeActionButton.Name = "executeActionButton";
             this.executeActionButton.Size = new System.Drawing.Size(166, 40);
             this.executeActionButton.TabIndex = 5;
@@ -366,7 +441,7 @@
             "Delete Mod",
             "Delete Selected Files",
             "Backup Mod",
-            "Backup Selected Mods",
+            "Backup Selected Files",
             "Backup Entire MXS Install",
             "Clear Database"});
             this.actionComboBox.Location = new System.Drawing.Point(292, 22);
@@ -374,6 +449,7 @@
             this.actionComboBox.Size = new System.Drawing.Size(178, 26);
             this.actionComboBox.StartIndex = 0;
             this.actionComboBox.TabIndex = 4;
+            this.actionComboBox.SelectedIndexChanged += new System.EventHandler(this.actionComboBox_SelectedIndexChanged);
             // 
             // iTalk_Label2
             // 
@@ -732,76 +808,34 @@
             this.notifyIconSettings.Text = "notifyIcon1";
             this.notifyIconSettings.Visible = true;
             // 
-            // iTalk_Label10
+            // backupNameTextbox
             // 
-            this.iTalk_Label10.AutoSize = true;
-            this.iTalk_Label10.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label10.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.iTalk_Label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label10.Location = new System.Drawing.Point(23, 411);
-            this.iTalk_Label10.Name = "iTalk_Label10";
-            this.iTalk_Label10.Size = new System.Drawing.Size(35, 13);
-            this.iTalk_Label10.TabIndex = 10;
-            this.iTalk_Label10.Text = "Track:";
+            this.backupNameTextbox.BackColor = System.Drawing.Color.Transparent;
+            this.backupNameTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.backupNameTextbox.ForeColor = System.Drawing.Color.DimGray;
+            this.backupNameTextbox.Location = new System.Drawing.Point(246, 400);
+            this.backupNameTextbox.MaxLength = 32767;
+            this.backupNameTextbox.Multiline = false;
+            this.backupNameTextbox.Name = "backupNameTextbox";
+            this.backupNameTextbox.ReadOnly = false;
+            this.backupNameTextbox.Size = new System.Drawing.Size(263, 28);
+            this.backupNameTextbox.TabIndex = 15;
+            this.backupNameTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.backupNameTextbox.UseSystemPasswordChar = false;
+            this.backupNameTextbox.Visible = false;
             // 
-            // iTalk_Label11
+            // backupNameLabel
             // 
-            this.iTalk_Label11.AutoSize = true;
-            this.iTalk_Label11.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label11.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.iTalk_Label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label11.Location = new System.Drawing.Point(23, 426);
-            this.iTalk_Label11.Name = "iTalk_Label11";
-            this.iTalk_Label11.Size = new System.Drawing.Size(32, 13);
-            this.iTalk_Label11.TabIndex = 11;
-            this.iTalk_Label11.Text = "Bike:";
-            // 
-            // gearDatabaseStatusLabel
-            // 
-            this.gearDatabaseStatusLabel.AutoSize = true;
-            this.gearDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
-            this.gearDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.gearDatabaseStatusLabel.Location = new System.Drawing.Point(59, 396);
-            this.gearDatabaseStatusLabel.Name = "gearDatabaseStatusLabel";
-            this.gearDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
-            this.gearDatabaseStatusLabel.TabIndex = 12;
-            this.gearDatabaseStatusLabel.Text = "Idle";
-            // 
-            // trackDatabaseStatusLabel
-            // 
-            this.trackDatabaseStatusLabel.AutoSize = true;
-            this.trackDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
-            this.trackDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.trackDatabaseStatusLabel.Location = new System.Drawing.Point(59, 411);
-            this.trackDatabaseStatusLabel.Name = "trackDatabaseStatusLabel";
-            this.trackDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
-            this.trackDatabaseStatusLabel.TabIndex = 13;
-            this.trackDatabaseStatusLabel.Text = "Idle";
-            // 
-            // bikeDatabaseStatusLabel
-            // 
-            this.bikeDatabaseStatusLabel.AutoSize = true;
-            this.bikeDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
-            this.bikeDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.bikeDatabaseStatusLabel.Location = new System.Drawing.Point(59, 427);
-            this.bikeDatabaseStatusLabel.Name = "bikeDatabaseStatusLabel";
-            this.bikeDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
-            this.bikeDatabaseStatusLabel.TabIndex = 14;
-            this.bikeDatabaseStatusLabel.Text = "Idle";
-            // 
-            // bikeRadioButton
-            // 
-            this.bikeRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.bikeRadioButton.Checked = false;
-            this.bikeRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.bikeRadioButton.Location = new System.Drawing.Point(423, 228);
-            this.bikeRadioButton.Name = "bikeRadioButton";
-            this.bikeRadioButton.Size = new System.Drawing.Size(60, 15);
-            this.bikeRadioButton.TabIndex = 12;
-            this.bikeRadioButton.Text = "Bike";
+            this.backupNameLabel.AutoSize = true;
+            this.backupNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.backupNameLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.backupNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.backupNameLabel.Location = new System.Drawing.Point(160, 407);
+            this.backupNameLabel.Name = "backupNameLabel";
+            this.backupNameLabel.Size = new System.Drawing.Size(80, 13);
+            this.backupNameLabel.TabIndex = 16;
+            this.backupNameLabel.Text = "Backup Name:";
+            this.backupNameLabel.Visible = false;
             // 
             // Form1
             // 
@@ -884,6 +918,8 @@
         private iTalk.iTalk_Label iTalk_Label11;
         private iTalk.iTalk_Label iTalk_Label10;
         private iTalk.iTalk_RadioButton bikeRadioButton;
+        private iTalk.iTalk_Label backupNameLabel;
+        private iTalk.iTalk_TextBox_Small backupNameTextbox;
     }
 }
 

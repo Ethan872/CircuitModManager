@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Data.SQLite;
 using System.Linq;
+using Ionic.Zip;
 #region License
 /*
 Circuit Manager Source Code File
@@ -54,6 +55,7 @@ namespace Circuit_Mod_Manager
         String gearConnection;
         String trackConnection;
         String bikeConnection;
+        String desktopPath;
 
         public Form1()
         {
@@ -357,7 +359,14 @@ namespace Circuit_Mod_Manager
         {
             if((string)modComboBox.SelectedItem == null)
             {
-                MessageBox.Show("No mod selected", "MXSIM:MM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if((string)actionComboBox.SelectedItem != "Backup Entire MXS Install")
+                {
+                    MessageBox.Show("No mod selected", "MXSIM:MM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    backupMXSInstall();
+                }
             }
             else
             {
@@ -593,6 +602,186 @@ namespace Circuit_Mod_Manager
                         }
                     }
                 }
+                else if((string)actionComboBox.SelectedItem == "Backup Mod")
+                {
+                    if (gearDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                        using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
+                        {
+                            try
+                            {
+                                gearCon.Open();
+                                if (gearCon.State == System.Data.ConnectionState.Open)
+                                {
+                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                                    //Zip mod
+                                    using (ZipFile zip = new ZipFile())
+                                    {
+                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                        {
+                                            File.Copy(mxDirTbox.Text + "\\" + item, item);
+                                            zip.AddFile(item);
+                                        }
+                                        zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
+                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                        {
+                                            File.Delete(item);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            gearCon.Close();
+                        }
+                    }
+                    else if (trackDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        MessageBox.Show("This action is not yet supported for tracks", "Action not supported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (bikeDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                        using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                        {
+                            try
+                            {
+                                bikeCon.Open();
+                                if (bikeCon.State == System.Data.ConnectionState.Open)
+                                {
+                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                                    //Zip mod
+                                    using (ZipFile zip = new ZipFile())
+                                    {
+                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                        {
+                                            File.Copy(mxDirTbox.Text + "\\" + item, item);
+                                            zip.AddFile(item);
+                                        }
+                                        zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
+                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                        {
+                                            File.Delete(item);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            bikeCon.Close();
+                        }
+                    }
+                }
+                else if((string)actionComboBox.SelectedItem == "Backup Selected Files")
+                {
+                    if (gearDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                        using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
+                        {
+                            try
+                            {
+                                gearCon.Open();
+                                if (gearCon.State == System.Data.ConnectionState.Open)
+                                {
+                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                                    //Zip mod
+                                    using (ZipFile zip = new ZipFile())
+                                    {
+                                        foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                                        {
+                                            File.Copy(mxDirTbox.Text + "\\" + item, item);
+                                            zip.AddFile(item);
+                                        }
+                                        zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
+                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                        {
+                                            File.Delete(item);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            gearCon.Close();
+                        }
+                    }
+                    else if (trackDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        MessageBox.Show("This action is not yet supported for tracks", "Action not supported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (bikeDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                        using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                        {
+                            try
+                            {
+                                bikeCon.Open();
+                                if (bikeCon.State == System.Data.ConnectionState.Open)
+                                {
+                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                                    //Zip mod
+                                    using (ZipFile zip = new ZipFile())
+                                    {
+                                        foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                                        {
+                                            File.Copy(mxDirTbox.Text + "\\" + item, item);
+                                            zip.AddFile(item);
+                                        }
+                                        zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
+                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                        {
+                                            File.Delete(item);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            bikeCon.Close();
+                        }
+                    }
+                }
+                else if((string)actionComboBox.SelectedItem == "Backup Entire MXS Install")
+                {
+                    backupMXSInstall();
+                }
+            }
+        }
+
+        private void actionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((string)actionComboBox.SelectedItem == "Backup Mod" || (string)actionComboBox.SelectedItem == "Backup Selected Files" || (string)actionComboBox.SelectedItem == "Backup Entire MXS Install")
+            {
+                backupNameLabel.Visible = true;
+                backupNameTextbox.Visible = true;
+            }
+            else
+            {
+                backupNameLabel.Visible = false;
+                backupNameTextbox.Visible = false;
+            }
+        }
+
+        private void backupMXSInstall()
+        {
+            MessageBox.Show("Note: If your MX Simulator directory is large, MXSIM:MM will seem frozen, it's not, please let it work", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //Zip mod
+            using (ZipFile zip = new ZipFile())
+            {
+                zip.AddDirectory(mxDirTbox.Text);
+                zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
             }
         }
     }

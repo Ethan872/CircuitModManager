@@ -52,6 +52,7 @@ namespace Circuit_Mod_Manager
         public String installingModWithoutPath = null;
         public String installingModExtension = null;
         public String mxDirectory = null;
+        public String backupModName = null;
 
         //Getters and Setters
         public String getInstallingMod()
@@ -82,6 +83,14 @@ namespace Circuit_Mod_Manager
         public void setMxDirectory(String directory)
         {
             mxDirectory = directory;
+        }
+        public String getbackupModName()
+        {
+            return backupModName;
+        }
+        public void setBackupModName(String name)
+        {
+            backupModName = name;
         }
     }
 }
