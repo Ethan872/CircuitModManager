@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>dirtbikeIcon.ico</ApplicationIcon>
+    <ApplicationIcon>mxsim_mod_manager.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -171,6 +171,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dirtbikeIcon.ico" />
+    <Content Include="mxsim_mod_manager.ico" />
+    <None Include="Resources\ic_play_arrow_black_36dp_1x.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\mxsim_mod_manager.ico" />
+    <None Include="Resources\dirtbikeIcon.ico" />
+    <None Include="Resources\execute.png" />
+    <None Include="Resources\run.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\installIcon.png" />

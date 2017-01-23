@@ -1,0 +1,4 @@
+Alpha 0.2
+-Added option to delete file after installation
+-Added default page setting
+-Added database manager page
