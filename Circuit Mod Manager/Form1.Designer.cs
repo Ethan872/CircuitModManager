@@ -35,12 +35,70 @@
             this.iTalk_ControlBox1 = new iTalk.iTalk_ControlBox();
             this.iTalk_TabControl1 = new iTalk.iTalk_TabControl();
             this.launchPage = new System.Windows.Forms.TabPage();
-            this.iTalk_Button_11 = new iTalk.iTalk_Button_1();
+            this.browseMxExeLocationButton = new iTalk.iTalk_Button_1();
+            this.iTalk_Separator11 = new iTalk.iTalk_Separator();
+            this.iTalk_Separator10 = new iTalk.iTalk_Separator();
+            this.iTalk_Separator9 = new iTalk.iTalk_Separator();
+            this.iTalk_Separator8 = new iTalk.iTalk_Separator();
+            this.iTalk_Separator15 = new iTalk.iTalk_Separator();
+            this.iTalk_Separator16 = new iTalk.iTalk_Separator();
+            this.iTalk_Label20 = new iTalk.iTalk_Label();
+            this.iTalk_Label19 = new iTalk.iTalk_Label();
+            this.iTalk_Label18 = new iTalk.iTalk_Label();
+            this.iTalk_Label17 = new iTalk.iTalk_Label();
+            this.iTalk_Separator7 = new iTalk.iTalk_Separator();
+            this.iTalk_Label16 = new iTalk.iTalk_Label();
+            this.noVertexArraysCB = new iTalk.iTalk_CheckBox();
+            this.aiLearnCB = new iTalk.iTalk_CheckBox();
+            this.glFinishCB = new iTalk.iTalk_CheckBox();
+            this.recordVideoCB = new iTalk.iTalk_CheckBox();
+            this.accurateSkipCB = new iTalk.iTalk_CheckBox();
+            this.fuglyCB = new iTalk.iTalk_CheckBox();
+            this.drawRenderStatsCB = new iTalk.iTalk_CheckBox();
+            this.noSoundCB = new iTalk.iTalk_CheckBox();
+            this.drawPingCB = new iTalk.iTalk_CheckBox();
+            this.drawTimeCB = new iTalk.iTalk_CheckBox();
+            this.drawFPSCB = new iTalk.iTalk_CheckBox();
+            this.noAiLearnCB = new iTalk.iTalk_CheckBox();
+            this.hideHudCB = new iTalk.iTalk_CheckBox();
+            this.noMMXCB = new iTalk.iTalk_CheckBox();
+            this.hidePauseCB = new iTalk.iTalk_CheckBox();
+            this.debugCB = new iTalk.iTalk_CheckBox();
+            this.editorCB = new iTalk.iTalk_CheckBox();
+            this.superDebugCB = new iTalk.iTalk_CheckBox();
+            this.practiceCB = new iTalk.iTalk_CheckBox();
+            this.aiWarpCB = new iTalk.iTalk_CheckBox();
+            this.erodeCB = new iTalk.iTalk_CheckBox();
+            this.recordAudioCB = new iTalk.iTalk_CheckBox();
+            this.fakelagCB = new iTalk.iTalk_CheckBox();
+            this.detailValue = new iTalk.iTalk_Label();
+            this.roostFreqValue = new iTalk.iTalk_Label();
+            this.lodBiasValue = new iTalk.iTalk_Label();
+            this.rotateLineupValue = new iTalk.iTalk_Label();
+            this.lockFPSTextbox = new iTalk.iTalk_TextBox_Small();
+            this.rotateLineupTrackbar = new iTalk.iTalk_TrackBar();
+            this.rotateLineupCB = new iTalk.iTalk_CheckBox();
+            this.lockFPSCB = new iTalk.iTalk_CheckBox();
+            this.lodBiasTrackbar = new iTalk.iTalk_TrackBar();
+            this.lodBiasCB = new iTalk.iTalk_CheckBox();
+            this.detailTrackbar = new iTalk.iTalk_TrackBar();
+            this.detailCB = new iTalk.iTalk_CheckBox();
+            this.roostFreqTrackbar = new iTalk.iTalk_TrackBar();
+            this.roostFreqCB = new iTalk.iTalk_CheckBox();
+            this.iTalk_Separator6 = new iTalk.iTalk_Separator();
+            this.iTalk_Label15 = new iTalk.iTalk_Label();
+            this.mxExeLocationTextbox = new iTalk.iTalk_TextBox_Big();
+            this.iTalk_Separator5 = new iTalk.iTalk_Separator();
+            this.launchMXS = new iTalk.iTalk_Button_1();
             this.installerPage = new System.Windows.Forms.TabPage();
+            this.alwaysDeleteFileAfterInstallCB = new iTalk.iTalk_CheckBox();
+            this.iTalk_Label21 = new iTalk.iTalk_Label();
+            this.iTalk_Separator12 = new iTalk.iTalk_Separator();
+            this.customRadioButton = new iTalk.iTalk_RadioButton();
+            this.customDatabaseComboBox = new iTalk.iTalk_ComboBox();
             this.deleteFileAfterCheckbox = new iTalk.iTalk_CheckBox();
             this.bikeRadioButton = new iTalk.iTalk_RadioButton();
             this.iTalk_Separator4 = new iTalk.iTalk_Separator();
-            this.iTalk_HeaderLabel1 = new iTalk.iTalk_HeaderLabel();
             this.modTbox = new iTalk.iTalk_TextBox_Big();
             this.gearRadioButton = new iTalk.iTalk_RadioButton();
             this.iTalk_Label1 = new iTalk.iTalk_Label();
@@ -67,7 +125,23 @@
             this.modLabel = new iTalk.iTalk_Label();
             this.modComboBox = new iTalk.iTalk_ComboBox();
             this.databasesPage = new System.Windows.Forms.TabPage();
+            this.noCustomDatabaseLabel = new iTalk.iTalk_HeaderLabel();
+            this.createNewDatabaseButton = new iTalk.iTalk_Button_1();
+            this.databaseExecuteButton = new iTalk.iTalk_Button_1();
+            this.databaseSelectNoneRadioButton = new iTalk.iTalk_RadioButton();
+            this.databaseSelectAllRadioButton = new iTalk.iTalk_RadioButton();
+            this.databaseBackupNameLabel = new iTalk.iTalk_Label();
+            this.databaseBackupNameTextbox = new iTalk.iTalk_TextBox_Small();
+            this.databaseActionComboBox = new iTalk.iTalk_ComboBox();
+            this.databaseActionLabel = new iTalk.iTalk_Label();
+            this.databaseModListBox = new System.Windows.Forms.CheckedListBox();
+            this.databaseLabel = new iTalk.iTalk_Label();
+            this.databaseComboBox = new iTalk.iTalk_ComboBox();
             this.settingsPage = new System.Windows.Forms.TabPage();
+            this.iTalk_Label23 = new iTalk.iTalk_Label();
+            this.personalFolderCB = new iTalk.iTalk_CheckBox();
+            this.iTalk_Label22 = new iTalk.iTalk_Label();
+            this.iTalk_Separator13 = new iTalk.iTalk_Separator();
             this.DatabasesRadioButton = new iTalk.iTalk_RadioButton();
             this.LaunchRadioButton = new iTalk.iTalk_RadioButton();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
@@ -77,7 +151,6 @@
             this.installerRadioButton = new iTalk.iTalk_RadioButton();
             this.browseMXdirButton = new iTalk.iTalk_Button_1();
             this.saveMXdirButton = new iTalk.iTalk_Button_1();
-            this.iTalk_HeaderLabel2 = new iTalk.iTalk_HeaderLabel();
             this.mxDirTbox = new iTalk.iTalk_TextBox_Big();
             this.aboutPage = new System.Windows.Forms.TabPage();
             this.iTalk_HeaderLabel4 = new iTalk.iTalk_HeaderLabel();
@@ -100,62 +173,6 @@
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
-            this.iTalk_CheckBox1 = new iTalk.iTalk_CheckBox();
-            this.iTalk_Separator5 = new iTalk.iTalk_Separator();
-            this.extraCommandsTextbox = new iTalk.iTalk_TextBox_Big();
-            this.iTalk_Label15 = new iTalk.iTalk_Label();
-            this.iTalk_Separator6 = new iTalk.iTalk_Separator();
-            this.iTalk_CheckBox2 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox3 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox4 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox5 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox6 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox7 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox8 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox9 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox10 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox13 = new iTalk.iTalk_CheckBox();
-            this.roostFreqTrackbar = new iTalk.iTalk_TrackBar();
-            this.iTalk_CheckBox14 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox15 = new iTalk.iTalk_CheckBox();
-            this.detailTrackbar = new iTalk.iTalk_TrackBar();
-            this.iTalk_CheckBox11 = new iTalk.iTalk_CheckBox();
-            this.lodBiasTrackbar = new iTalk.iTalk_TrackBar();
-            this.iTalk_CheckBox12 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox16 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox17 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox18 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox19 = new iTalk.iTalk_CheckBox();
-            this.rotateLineupTrackbar = new iTalk.iTalk_TrackBar();
-            this.iTalk_CheckBox20 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox21 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox22 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox23 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox24 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox25 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox26 = new iTalk.iTalk_CheckBox();
-            this.iTalk_CheckBox27 = new iTalk.iTalk_CheckBox();
-            this.iTalk_Panel1 = new iTalk.iTalk_Panel();
-            this.iTalk_TextBox_Small1 = new iTalk.iTalk_TextBox_Small();
-            this.rotateLineupValue = new iTalk.iTalk_Label();
-            this.lodBiasValue = new iTalk.iTalk_Label();
-            this.roostFreqValue = new iTalk.iTalk_Label();
-            this.detailValue = new iTalk.iTalk_Label();
-            this.iTalk_CheckBox28 = new iTalk.iTalk_CheckBox();
-            this.customDatabaseComboBox = new iTalk.iTalk_ComboBox();
-            this.customRadioButton = new iTalk.iTalk_RadioButton();
-            this.databaseExecuteButton = new iTalk.iTalk_Button_1();
-            this.databaseSelectNoneRadioButton = new iTalk.iTalk_RadioButton();
-            this.databaseSelectAllRadioButton = new iTalk.iTalk_RadioButton();
-            this.databaseBackupNameLabel = new iTalk.iTalk_Label();
-            this.databaseBackupNameTextbox = new iTalk.iTalk_TextBox_Small();
-            this.databaseActionComboBox = new iTalk.iTalk_ComboBox();
-            this.databaseActionLabel = new iTalk.iTalk_Label();
-            this.databaseModListBox = new System.Windows.Forms.CheckedListBox();
-            this.databaseLabel = new iTalk.iTalk_Label();
-            this.databaseComboBox = new iTalk.iTalk_ComboBox();
-            this.createNewDatabaseButton = new iTalk.iTalk_Button_1();
-            this.noCustomDatabaseLabel = new iTalk.iTalk_HeaderLabel();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.launchPage.SuspendLayout();
@@ -165,7 +182,6 @@
             this.settingsPage.SuspendLayout();
             this.aboutPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateButton)).BeginInit();
-            this.iTalk_Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon
@@ -229,26 +245,61 @@
             // launchPage
             // 
             this.launchPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.launchPage.Controls.Add(this.browseMxExeLocationButton);
+            this.launchPage.Controls.Add(this.iTalk_Separator11);
+            this.launchPage.Controls.Add(this.iTalk_Separator10);
+            this.launchPage.Controls.Add(this.iTalk_Separator9);
+            this.launchPage.Controls.Add(this.iTalk_Separator8);
+            this.launchPage.Controls.Add(this.iTalk_Separator15);
+            this.launchPage.Controls.Add(this.iTalk_Separator16);
+            this.launchPage.Controls.Add(this.iTalk_Label20);
+            this.launchPage.Controls.Add(this.iTalk_Label19);
+            this.launchPage.Controls.Add(this.iTalk_Label18);
+            this.launchPage.Controls.Add(this.iTalk_Label17);
+            this.launchPage.Controls.Add(this.iTalk_Separator7);
+            this.launchPage.Controls.Add(this.iTalk_Label16);
+            this.launchPage.Controls.Add(this.noVertexArraysCB);
+            this.launchPage.Controls.Add(this.aiLearnCB);
+            this.launchPage.Controls.Add(this.glFinishCB);
+            this.launchPage.Controls.Add(this.recordVideoCB);
+            this.launchPage.Controls.Add(this.accurateSkipCB);
+            this.launchPage.Controls.Add(this.fuglyCB);
+            this.launchPage.Controls.Add(this.drawRenderStatsCB);
+            this.launchPage.Controls.Add(this.noSoundCB);
+            this.launchPage.Controls.Add(this.drawPingCB);
+            this.launchPage.Controls.Add(this.drawTimeCB);
+            this.launchPage.Controls.Add(this.drawFPSCB);
+            this.launchPage.Controls.Add(this.noAiLearnCB);
+            this.launchPage.Controls.Add(this.hideHudCB);
+            this.launchPage.Controls.Add(this.noMMXCB);
+            this.launchPage.Controls.Add(this.hidePauseCB);
+            this.launchPage.Controls.Add(this.debugCB);
+            this.launchPage.Controls.Add(this.editorCB);
+            this.launchPage.Controls.Add(this.superDebugCB);
+            this.launchPage.Controls.Add(this.practiceCB);
+            this.launchPage.Controls.Add(this.aiWarpCB);
+            this.launchPage.Controls.Add(this.erodeCB);
+            this.launchPage.Controls.Add(this.recordAudioCB);
+            this.launchPage.Controls.Add(this.fakelagCB);
             this.launchPage.Controls.Add(this.detailValue);
             this.launchPage.Controls.Add(this.roostFreqValue);
             this.launchPage.Controls.Add(this.lodBiasValue);
             this.launchPage.Controls.Add(this.rotateLineupValue);
-            this.launchPage.Controls.Add(this.iTalk_TextBox_Small1);
+            this.launchPage.Controls.Add(this.lockFPSTextbox);
             this.launchPage.Controls.Add(this.rotateLineupTrackbar);
-            this.launchPage.Controls.Add(this.iTalk_CheckBox19);
-            this.launchPage.Controls.Add(this.iTalk_CheckBox12);
+            this.launchPage.Controls.Add(this.rotateLineupCB);
+            this.launchPage.Controls.Add(this.lockFPSCB);
             this.launchPage.Controls.Add(this.lodBiasTrackbar);
-            this.launchPage.Controls.Add(this.iTalk_CheckBox11);
+            this.launchPage.Controls.Add(this.lodBiasCB);
             this.launchPage.Controls.Add(this.detailTrackbar);
-            this.launchPage.Controls.Add(this.iTalk_CheckBox15);
+            this.launchPage.Controls.Add(this.detailCB);
             this.launchPage.Controls.Add(this.roostFreqTrackbar);
-            this.launchPage.Controls.Add(this.iTalk_CheckBox13);
-            this.launchPage.Controls.Add(this.iTalk_Panel1);
+            this.launchPage.Controls.Add(this.roostFreqCB);
             this.launchPage.Controls.Add(this.iTalk_Separator6);
             this.launchPage.Controls.Add(this.iTalk_Label15);
-            this.launchPage.Controls.Add(this.extraCommandsTextbox);
+            this.launchPage.Controls.Add(this.mxExeLocationTextbox);
             this.launchPage.Controls.Add(this.iTalk_Separator5);
-            this.launchPage.Controls.Add(this.iTalk_Button_11);
+            this.launchPage.Controls.Add(this.launchMXS);
             this.launchPage.ImageIndex = 7;
             this.launchPage.Location = new System.Drawing.Point(139, 4);
             this.launchPage.Name = "launchPage";
@@ -257,27 +308,658 @@
             this.launchPage.Text = "Launch";
             this.launchPage.ToolTipText = "Play MX Simulator";
             // 
-            // iTalk_Button_11
+            // browseMxExeLocationButton
             // 
-            this.iTalk_Button_11.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Button_11.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.iTalk_Button_11.Image = global::Circuit_Mod_Manager.Properties.Resources.ic_play_arrow_black_36dp_1x;
-            this.iTalk_Button_11.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.iTalk_Button_11.Location = new System.Drawing.Point(528, 420);
-            this.iTalk_Button_11.Name = "iTalk_Button_11";
-            this.iTalk_Button_11.Size = new System.Drawing.Size(166, 40);
-            this.iTalk_Button_11.TabIndex = 0;
-            this.iTalk_Button_11.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.browseMxExeLocationButton.BackColor = System.Drawing.Color.Transparent;
+            this.browseMxExeLocationButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.browseMxExeLocationButton.Image = global::Circuit_Mod_Manager.Properties.Resources.dots_horizontal;
+            this.browseMxExeLocationButton.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.browseMxExeLocationButton.Location = new System.Drawing.Point(469, 421);
+            this.browseMxExeLocationButton.Name = "browseMxExeLocationButton";
+            this.browseMxExeLocationButton.Size = new System.Drawing.Size(53, 40);
+            this.browseMxExeLocationButton.TabIndex = 67;
+            this.browseMxExeLocationButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.browseMxExeLocationButton.Click += new System.EventHandler(this.browseMxExeLocationButton_Click);
+            // 
+            // iTalk_Separator11
+            // 
+            this.iTalk_Separator11.Location = new System.Drawing.Point(634, 78);
+            this.iTalk_Separator11.Name = "iTalk_Separator11";
+            this.iTalk_Separator11.Size = new System.Drawing.Size(60, 10);
+            this.iTalk_Separator11.TabIndex = 66;
+            this.iTalk_Separator11.Text = "iTalk_Separator11";
+            // 
+            // iTalk_Separator10
+            // 
+            this.iTalk_Separator10.Location = new System.Drawing.Point(437, 78);
+            this.iTalk_Separator10.Name = "iTalk_Separator10";
+            this.iTalk_Separator10.Size = new System.Drawing.Size(132, 10);
+            this.iTalk_Separator10.TabIndex = 65;
+            this.iTalk_Separator10.Text = "iTalk_Separator10";
+            // 
+            // iTalk_Separator9
+            // 
+            this.iTalk_Separator9.Location = new System.Drawing.Point(282, 78);
+            this.iTalk_Separator9.Name = "iTalk_Separator9";
+            this.iTalk_Separator9.Size = new System.Drawing.Size(123, 10);
+            this.iTalk_Separator9.TabIndex = 64;
+            this.iTalk_Separator9.Text = "iTalk_Separator9";
+            // 
+            // iTalk_Separator8
+            // 
+            this.iTalk_Separator8.Location = new System.Drawing.Point(132, 78);
+            this.iTalk_Separator8.Name = "iTalk_Separator8";
+            this.iTalk_Separator8.Size = new System.Drawing.Size(100, 10);
+            this.iTalk_Separator8.TabIndex = 63;
+            this.iTalk_Separator8.Text = "iTalk_Separator8";
+            // 
+            // iTalk_Separator15
+            // 
+            this.iTalk_Separator15.Location = new System.Drawing.Point(634, 183);
+            this.iTalk_Separator15.Name = "iTalk_Separator15";
+            this.iTalk_Separator15.Size = new System.Drawing.Size(41, 10);
+            this.iTalk_Separator15.TabIndex = 62;
+            this.iTalk_Separator15.Text = "iTalk_Separator15";
+            // 
+            // iTalk_Separator16
+            // 
+            this.iTalk_Separator16.Location = new System.Drawing.Point(535, 183);
+            this.iTalk_Separator16.Name = "iTalk_Separator16";
+            this.iTalk_Separator16.Size = new System.Drawing.Size(41, 10);
+            this.iTalk_Separator16.TabIndex = 61;
+            this.iTalk_Separator16.Text = "iTalk_Separator16";
+            // 
+            // iTalk_Label20
+            // 
+            this.iTalk_Label20.AutoSize = true;
+            this.iTalk_Label20.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label20.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label20.Location = new System.Drawing.Point(582, 180);
+            this.iTalk_Label20.Name = "iTalk_Label20";
+            this.iTalk_Label20.Size = new System.Drawing.Size(46, 13);
+            this.iTalk_Label20.TabIndex = 60;
+            this.iTalk_Label20.Text = "Custom";
+            // 
+            // iTalk_Label19
+            // 
+            this.iTalk_Label19.AutoSize = true;
+            this.iTalk_Label19.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label19.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label19.Location = new System.Drawing.Point(575, 75);
+            this.iTalk_Label19.Name = "iTalk_Label19";
+            this.iTalk_Label19.Size = new System.Drawing.Size(53, 13);
+            this.iTalk_Label19.TabIndex = 57;
+            this.iTalk_Label19.Text = "Common";
+            // 
+            // iTalk_Label18
+            // 
+            this.iTalk_Label18.AutoSize = true;
+            this.iTalk_Label18.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label18.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label18.Location = new System.Drawing.Point(411, 78);
+            this.iTalk_Label18.Name = "iTalk_Label18";
+            this.iTalk_Label18.Size = new System.Drawing.Size(20, 13);
+            this.iTalk_Label18.TabIndex = 54;
+            this.iTalk_Label18.Text = "AV";
+            // 
+            // iTalk_Label17
+            // 
+            this.iTalk_Label17.AutoSize = true;
+            this.iTalk_Label17.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label17.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label17.Location = new System.Drawing.Point(238, 75);
+            this.iTalk_Label17.Name = "iTalk_Label17";
+            this.iTalk_Label17.Size = new System.Drawing.Size(38, 13);
+            this.iTalk_Label17.TabIndex = 51;
+            this.iTalk_Label17.Text = "Visual";
+            // 
+            // iTalk_Separator7
+            // 
+            this.iTalk_Separator7.Location = new System.Drawing.Point(22, 78);
+            this.iTalk_Separator7.Name = "iTalk_Separator7";
+            this.iTalk_Separator7.Size = new System.Drawing.Size(41, 10);
+            this.iTalk_Separator7.TabIndex = 49;
+            this.iTalk_Separator7.Text = "iTalk_Separator7";
+            // 
+            // iTalk_Label16
+            // 
+            this.iTalk_Label16.AutoSize = true;
+            this.iTalk_Label16.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label16.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label16.Location = new System.Drawing.Point(69, 75);
+            this.iTalk_Label16.Name = "iTalk_Label16";
+            this.iTalk_Label16.Size = new System.Drawing.Size(57, 13);
+            this.iTalk_Label16.TabIndex = 48;
+            this.iTalk_Label16.Text = "Advanced";
+            // 
+            // noVertexArraysCB
+            // 
+            this.noVertexArraysCB.BackColor = System.Drawing.Color.Transparent;
+            this.noVertexArraysCB.Checked = false;
+            this.noVertexArraysCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.noVertexArraysCB.Location = new System.Drawing.Point(41, 98);
+            this.noVertexArraysCB.Name = "noVertexArraysCB";
+            this.noVertexArraysCB.Size = new System.Drawing.Size(133, 15);
+            this.noVertexArraysCB.TabIndex = 6;
+            this.noVertexArraysCB.Text = "No Vertex Arrays";
+            // 
+            // aiLearnCB
+            // 
+            this.aiLearnCB.BackColor = System.Drawing.Color.Transparent;
+            this.aiLearnCB.Checked = false;
+            this.aiLearnCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.aiLearnCB.Location = new System.Drawing.Point(41, 222);
+            this.aiLearnCB.Name = "aiLearnCB";
+            this.aiLearnCB.Size = new System.Drawing.Size(133, 15);
+            this.aiLearnCB.TabIndex = 7;
+            this.aiLearnCB.Text = "AI Learn";
+            // 
+            // glFinishCB
+            // 
+            this.glFinishCB.BackColor = System.Drawing.Color.Transparent;
+            this.glFinishCB.Checked = false;
+            this.glFinishCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.glFinishCB.Location = new System.Drawing.Point(41, 201);
+            this.glFinishCB.Name = "glFinishCB";
+            this.glFinishCB.Size = new System.Drawing.Size(132, 15);
+            this.glFinishCB.TabIndex = 42;
+            this.glFinishCB.Text = "GL Finish";
+            // 
+            // recordVideoCB
+            // 
+            this.recordVideoCB.BackColor = System.Drawing.Color.Transparent;
+            this.recordVideoCB.Checked = false;
+            this.recordVideoCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.recordVideoCB.Location = new System.Drawing.Point(369, 98);
+            this.recordVideoCB.Name = "recordVideoCB";
+            this.recordVideoCB.Size = new System.Drawing.Size(132, 15);
+            this.recordVideoCB.TabIndex = 31;
+            this.recordVideoCB.Text = "Record Video";
+            // 
+            // accurateSkipCB
+            // 
+            this.accurateSkipCB.BackColor = System.Drawing.Color.Transparent;
+            this.accurateSkipCB.Checked = false;
+            this.accurateSkipCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.accurateSkipCB.Location = new System.Drawing.Point(41, 159);
+            this.accurateSkipCB.Name = "accurateSkipCB";
+            this.accurateSkipCB.Size = new System.Drawing.Size(132, 15);
+            this.accurateSkipCB.TabIndex = 41;
+            this.accurateSkipCB.Text = "Accurate Skip";
+            // 
+            // fuglyCB
+            // 
+            this.fuglyCB.BackColor = System.Drawing.Color.Transparent;
+            this.fuglyCB.Checked = false;
+            this.fuglyCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.fuglyCB.Location = new System.Drawing.Point(211, 140);
+            this.fuglyCB.Name = "fuglyCB";
+            this.fuglyCB.Size = new System.Drawing.Size(133, 15);
+            this.fuglyCB.TabIndex = 0;
+            this.fuglyCB.Text = "Fugly";
+            // 
+            // drawRenderStatsCB
+            // 
+            this.drawRenderStatsCB.BackColor = System.Drawing.Color.Transparent;
+            this.drawRenderStatsCB.Checked = false;
+            this.drawRenderStatsCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.drawRenderStatsCB.Location = new System.Drawing.Point(211, 224);
+            this.drawRenderStatsCB.Name = "drawRenderStatsCB";
+            this.drawRenderStatsCB.Size = new System.Drawing.Size(132, 15);
+            this.drawRenderStatsCB.TabIndex = 40;
+            this.drawRenderStatsCB.Text = "Draw Render Stats";
+            // 
+            // noSoundCB
+            // 
+            this.noSoundCB.BackColor = System.Drawing.Color.Transparent;
+            this.noSoundCB.Checked = false;
+            this.noSoundCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.noSoundCB.Location = new System.Drawing.Point(369, 140);
+            this.noSoundCB.Name = "noSoundCB";
+            this.noSoundCB.Size = new System.Drawing.Size(133, 15);
+            this.noSoundCB.TabIndex = 5;
+            this.noSoundCB.Text = "No Sound";
+            // 
+            // drawPingCB
+            // 
+            this.drawPingCB.BackColor = System.Drawing.Color.Transparent;
+            this.drawPingCB.Checked = false;
+            this.drawPingCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.drawPingCB.Location = new System.Drawing.Point(211, 203);
+            this.drawPingCB.Name = "drawPingCB";
+            this.drawPingCB.Size = new System.Drawing.Size(132, 15);
+            this.drawPingCB.TabIndex = 39;
+            this.drawPingCB.Text = "Draw Ping";
+            // 
+            // drawTimeCB
+            // 
+            this.drawTimeCB.BackColor = System.Drawing.Color.Transparent;
+            this.drawTimeCB.Checked = false;
+            this.drawTimeCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.drawTimeCB.Location = new System.Drawing.Point(211, 182);
+            this.drawTimeCB.Name = "drawTimeCB";
+            this.drawTimeCB.Size = new System.Drawing.Size(132, 15);
+            this.drawTimeCB.TabIndex = 38;
+            this.drawTimeCB.Text = "Draw Time";
+            // 
+            // drawFPSCB
+            // 
+            this.drawFPSCB.BackColor = System.Drawing.Color.Transparent;
+            this.drawFPSCB.Checked = false;
+            this.drawFPSCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.drawFPSCB.Location = new System.Drawing.Point(211, 161);
+            this.drawFPSCB.Name = "drawFPSCB";
+            this.drawFPSCB.Size = new System.Drawing.Size(132, 15);
+            this.drawFPSCB.TabIndex = 37;
+            this.drawFPSCB.Text = "Draw FPS";
+            // 
+            // noAiLearnCB
+            // 
+            this.noAiLearnCB.BackColor = System.Drawing.Color.Transparent;
+            this.noAiLearnCB.Checked = false;
+            this.noAiLearnCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.noAiLearnCB.Location = new System.Drawing.Point(41, 243);
+            this.noAiLearnCB.Name = "noAiLearnCB";
+            this.noAiLearnCB.Size = new System.Drawing.Size(132, 15);
+            this.noAiLearnCB.TabIndex = 8;
+            this.noAiLearnCB.Text = "No AI Learn";
+            // 
+            // hideHudCB
+            // 
+            this.hideHudCB.BackColor = System.Drawing.Color.Transparent;
+            this.hideHudCB.Checked = false;
+            this.hideHudCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.hideHudCB.Location = new System.Drawing.Point(211, 119);
+            this.hideHudCB.Name = "hideHudCB";
+            this.hideHudCB.Size = new System.Drawing.Size(132, 15);
+            this.hideHudCB.TabIndex = 36;
+            this.hideHudCB.Text = "Hide Hud";
+            // 
+            // noMMXCB
+            // 
+            this.noMMXCB.BackColor = System.Drawing.Color.Transparent;
+            this.noMMXCB.Checked = false;
+            this.noMMXCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.noMMXCB.Location = new System.Drawing.Point(41, 285);
+            this.noMMXCB.Name = "noMMXCB";
+            this.noMMXCB.Size = new System.Drawing.Size(132, 15);
+            this.noMMXCB.TabIndex = 9;
+            this.noMMXCB.Text = "No MMX";
+            // 
+            // hidePauseCB
+            // 
+            this.hidePauseCB.BackColor = System.Drawing.Color.Transparent;
+            this.hidePauseCB.Checked = false;
+            this.hidePauseCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.hidePauseCB.Location = new System.Drawing.Point(211, 98);
+            this.hidePauseCB.Name = "hidePauseCB";
+            this.hidePauseCB.Size = new System.Drawing.Size(132, 15);
+            this.hidePauseCB.TabIndex = 35;
+            this.hidePauseCB.Text = "Hide Pause";
+            // 
+            // debugCB
+            // 
+            this.debugCB.BackColor = System.Drawing.Color.Transparent;
+            this.debugCB.Checked = false;
+            this.debugCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.debugCB.Location = new System.Drawing.Point(41, 119);
+            this.debugCB.Name = "debugCB";
+            this.debugCB.Size = new System.Drawing.Size(132, 15);
+            this.debugCB.TabIndex = 10;
+            this.debugCB.Text = "Debug";
+            // 
+            // editorCB
+            // 
+            this.editorCB.BackColor = System.Drawing.Color.Transparent;
+            this.editorCB.Checked = false;
+            this.editorCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.editorCB.Location = new System.Drawing.Point(562, 98);
+            this.editorCB.Name = "editorCB";
+            this.editorCB.Size = new System.Drawing.Size(132, 15);
+            this.editorCB.TabIndex = 34;
+            this.editorCB.Text = "Editor";
+            // 
+            // superDebugCB
+            // 
+            this.superDebugCB.BackColor = System.Drawing.Color.Transparent;
+            this.superDebugCB.Checked = false;
+            this.superDebugCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.superDebugCB.Location = new System.Drawing.Point(41, 140);
+            this.superDebugCB.Name = "superDebugCB";
+            this.superDebugCB.Size = new System.Drawing.Size(132, 15);
+            this.superDebugCB.TabIndex = 11;
+            this.superDebugCB.Text = "Super Debug";
+            // 
+            // practiceCB
+            // 
+            this.practiceCB.BackColor = System.Drawing.Color.Transparent;
+            this.practiceCB.Checked = false;
+            this.practiceCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.practiceCB.Location = new System.Drawing.Point(562, 119);
+            this.practiceCB.Name = "practiceCB";
+            this.practiceCB.Size = new System.Drawing.Size(132, 15);
+            this.practiceCB.TabIndex = 12;
+            this.practiceCB.Text = "Practice";
+            // 
+            // aiWarpCB
+            // 
+            this.aiWarpCB.BackColor = System.Drawing.Color.Transparent;
+            this.aiWarpCB.Checked = false;
+            this.aiWarpCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.aiWarpCB.Location = new System.Drawing.Point(41, 264);
+            this.aiWarpCB.Name = "aiWarpCB";
+            this.aiWarpCB.Size = new System.Drawing.Size(132, 15);
+            this.aiWarpCB.TabIndex = 13;
+            this.aiWarpCB.Text = "AI Warp";
+            // 
+            // erodeCB
+            // 
+            this.erodeCB.BackColor = System.Drawing.Color.Transparent;
+            this.erodeCB.Checked = false;
+            this.erodeCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.erodeCB.Location = new System.Drawing.Point(41, 180);
+            this.erodeCB.Name = "erodeCB";
+            this.erodeCB.Size = new System.Drawing.Size(132, 15);
+            this.erodeCB.TabIndex = 20;
+            this.erodeCB.Text = "Erode";
+            // 
+            // recordAudioCB
+            // 
+            this.recordAudioCB.BackColor = System.Drawing.Color.Transparent;
+            this.recordAudioCB.Checked = false;
+            this.recordAudioCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.recordAudioCB.Location = new System.Drawing.Point(369, 119);
+            this.recordAudioCB.Name = "recordAudioCB";
+            this.recordAudioCB.Size = new System.Drawing.Size(132, 15);
+            this.recordAudioCB.TabIndex = 30;
+            this.recordAudioCB.Text = "Record Audio";
+            // 
+            // fakelagCB
+            // 
+            this.fakelagCB.BackColor = System.Drawing.Color.Transparent;
+            this.fakelagCB.Checked = false;
+            this.fakelagCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.fakelagCB.Location = new System.Drawing.Point(42, 306);
+            this.fakelagCB.Name = "fakelagCB";
+            this.fakelagCB.Size = new System.Drawing.Size(132, 15);
+            this.fakelagCB.TabIndex = 28;
+            this.fakelagCB.Text = "Fake Lag";
+            // 
+            // detailValue
+            // 
+            this.detailValue.AutoSize = true;
+            this.detailValue.BackColor = System.Drawing.Color.Transparent;
+            this.detailValue.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.detailValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.detailValue.Location = new System.Drawing.Point(586, 301);
+            this.detailValue.Name = "detailValue";
+            this.detailValue.Size = new System.Drawing.Size(13, 13);
+            this.detailValue.TabIndex = 47;
+            this.detailValue.Text = "0";
+            // 
+            // roostFreqValue
+            // 
+            this.roostFreqValue.AutoSize = true;
+            this.roostFreqValue.BackColor = System.Drawing.Color.Transparent;
+            this.roostFreqValue.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.roostFreqValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.roostFreqValue.Location = new System.Drawing.Point(586, 267);
+            this.roostFreqValue.Name = "roostFreqValue";
+            this.roostFreqValue.Size = new System.Drawing.Size(13, 13);
+            this.roostFreqValue.TabIndex = 46;
+            this.roostFreqValue.Text = "0";
+            // 
+            // lodBiasValue
+            // 
+            this.lodBiasValue.AutoSize = true;
+            this.lodBiasValue.BackColor = System.Drawing.Color.Transparent;
+            this.lodBiasValue.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lodBiasValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.lodBiasValue.Location = new System.Drawing.Point(586, 235);
+            this.lodBiasValue.Name = "lodBiasValue";
+            this.lodBiasValue.Size = new System.Drawing.Size(13, 13);
+            this.lodBiasValue.TabIndex = 45;
+            this.lodBiasValue.Text = "0";
+            // 
+            // rotateLineupValue
+            // 
+            this.rotateLineupValue.AutoSize = true;
+            this.rotateLineupValue.BackColor = System.Drawing.Color.Transparent;
+            this.rotateLineupValue.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.rotateLineupValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.rotateLineupValue.Location = new System.Drawing.Point(586, 203);
+            this.rotateLineupValue.Name = "rotateLineupValue";
+            this.rotateLineupValue.Size = new System.Drawing.Size(13, 13);
+            this.rotateLineupValue.TabIndex = 44;
+            this.rotateLineupValue.Text = "0";
+            // 
+            // lockFPSTextbox
+            // 
+            this.lockFPSTextbox.BackColor = System.Drawing.Color.Transparent;
+            this.lockFPSTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.lockFPSTextbox.ForeColor = System.Drawing.Color.DimGray;
+            this.lockFPSTextbox.Location = new System.Drawing.Point(605, 326);
+            this.lockFPSTextbox.MaxLength = 32767;
+            this.lockFPSTextbox.Multiline = false;
+            this.lockFPSTextbox.Name = "lockFPSTextbox";
+            this.lockFPSTextbox.ReadOnly = false;
+            this.lockFPSTextbox.Size = new System.Drawing.Size(104, 28);
+            this.lockFPSTextbox.TabIndex = 43;
+            this.lockFPSTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lockFPSTextbox.UseSystemPasswordChar = false;
+            // 
+            // rotateLineupTrackbar
+            // 
+            this.rotateLineupTrackbar.DrawHatch = true;
+            this.rotateLineupTrackbar.DrawValueString = false;
+            this.rotateLineupTrackbar.Enabled = false;
+            this.rotateLineupTrackbar.JumpToMouse = true;
+            this.rotateLineupTrackbar.Location = new System.Drawing.Point(605, 200);
+            this.rotateLineupTrackbar.Maximum = 100;
+            this.rotateLineupTrackbar.Minimum = 0;
+            this.rotateLineupTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
+            this.rotateLineupTrackbar.Name = "rotateLineupTrackbar";
+            this.rotateLineupTrackbar.Size = new System.Drawing.Size(104, 22);
+            this.rotateLineupTrackbar.TabIndex = 33;
+            this.rotateLineupTrackbar.Text = "iTalk_TrackBar7";
+            this.rotateLineupTrackbar.Value = 0;
+            this.rotateLineupTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rotateLineupTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
+            this.rotateLineupTrackbar.ValueToSet = 0F;
+            this.rotateLineupTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.rotateLineupTrackbar_ValueChanged);
+            // 
+            // rotateLineupCB
+            // 
+            this.rotateLineupCB.BackColor = System.Drawing.Color.Transparent;
+            this.rotateLineupCB.Checked = false;
+            this.rotateLineupCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.rotateLineupCB.Location = new System.Drawing.Point(469, 203);
+            this.rotateLineupCB.Name = "rotateLineupCB";
+            this.rotateLineupCB.Size = new System.Drawing.Size(104, 15);
+            this.rotateLineupCB.TabIndex = 32;
+            this.rotateLineupCB.Text = "Rotate Lineup";
+            this.rotateLineupCB.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.rotateLineupCB_CheckedChanged);
+            // 
+            // lockFPSCB
+            // 
+            this.lockFPSCB.BackColor = System.Drawing.Color.Transparent;
+            this.lockFPSCB.Checked = false;
+            this.lockFPSCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lockFPSCB.Location = new System.Drawing.Point(469, 333);
+            this.lockFPSCB.Name = "lockFPSCB";
+            this.lockFPSCB.Size = new System.Drawing.Size(89, 15);
+            this.lockFPSCB.TabIndex = 26;
+            this.lockFPSCB.Text = "Lock FPS";
+            // 
+            // lodBiasTrackbar
+            // 
+            this.lodBiasTrackbar.DrawHatch = true;
+            this.lodBiasTrackbar.DrawValueString = false;
+            this.lodBiasTrackbar.Enabled = false;
+            this.lodBiasTrackbar.JumpToMouse = true;
+            this.lodBiasTrackbar.Location = new System.Drawing.Point(605, 232);
+            this.lodBiasTrackbar.Maximum = 10;
+            this.lodBiasTrackbar.Minimum = 0;
+            this.lodBiasTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
+            this.lodBiasTrackbar.Name = "lodBiasTrackbar";
+            this.lodBiasTrackbar.Size = new System.Drawing.Size(104, 22);
+            this.lodBiasTrackbar.TabIndex = 25;
+            this.lodBiasTrackbar.Text = "iTalk_TrackBar1";
+            this.lodBiasTrackbar.Value = 0;
+            this.lodBiasTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lodBiasTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
+            this.lodBiasTrackbar.ValueToSet = 0F;
+            this.lodBiasTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.lodBiasTrackbar_ValueChanged);
+            // 
+            // lodBiasCB
+            // 
+            this.lodBiasCB.BackColor = System.Drawing.Color.Transparent;
+            this.lodBiasCB.Checked = false;
+            this.lodBiasCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lodBiasCB.Location = new System.Drawing.Point(469, 235);
+            this.lodBiasCB.Name = "lodBiasCB";
+            this.lodBiasCB.Size = new System.Drawing.Size(78, 15);
+            this.lodBiasCB.TabIndex = 24;
+            this.lodBiasCB.Text = "LOD Bias";
+            this.lodBiasCB.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.lodBiasCB_CheckedChanged);
+            // 
+            // detailTrackbar
+            // 
+            this.detailTrackbar.DrawHatch = true;
+            this.detailTrackbar.DrawValueString = false;
+            this.detailTrackbar.Enabled = false;
+            this.detailTrackbar.JumpToMouse = true;
+            this.detailTrackbar.Location = new System.Drawing.Point(605, 296);
+            this.detailTrackbar.Maximum = 1;
+            this.detailTrackbar.Minimum = 0;
+            this.detailTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
+            this.detailTrackbar.Name = "detailTrackbar";
+            this.detailTrackbar.Size = new System.Drawing.Size(104, 22);
+            this.detailTrackbar.TabIndex = 23;
+            this.detailTrackbar.Text = "iTalk_TrackBar5";
+            this.detailTrackbar.Value = 0;
+            this.detailTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.detailTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
+            this.detailTrackbar.ValueToSet = 0F;
+            this.detailTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.detailTrackbar_ValueChanged);
+            // 
+            // detailCB
+            // 
+            this.detailCB.BackColor = System.Drawing.Color.Transparent;
+            this.detailCB.Checked = false;
+            this.detailCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.detailCB.Location = new System.Drawing.Point(469, 299);
+            this.detailCB.Name = "detailCB";
+            this.detailCB.Size = new System.Drawing.Size(66, 15);
+            this.detailCB.TabIndex = 22;
+            this.detailCB.Text = "Detail";
+            this.detailCB.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.detailCB_CheckedChanged);
+            // 
+            // roostFreqTrackbar
+            // 
+            this.roostFreqTrackbar.DrawHatch = true;
+            this.roostFreqTrackbar.DrawValueString = false;
+            this.roostFreqTrackbar.Enabled = false;
+            this.roostFreqTrackbar.JumpToMouse = true;
+            this.roostFreqTrackbar.Location = new System.Drawing.Point(605, 264);
+            this.roostFreqTrackbar.Maximum = 1000;
+            this.roostFreqTrackbar.Minimum = 0;
+            this.roostFreqTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
+            this.roostFreqTrackbar.Name = "roostFreqTrackbar";
+            this.roostFreqTrackbar.Size = new System.Drawing.Size(104, 22);
+            this.roostFreqTrackbar.TabIndex = 19;
+            this.roostFreqTrackbar.Text = "iTalk_TrackBar3";
+            this.roostFreqTrackbar.Value = 0;
+            this.roostFreqTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.roostFreqTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
+            this.roostFreqTrackbar.ValueToSet = 0F;
+            this.roostFreqTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.roostFreqTrackbar_ValueChanged);
+            // 
+            // roostFreqCB
+            // 
+            this.roostFreqCB.BackColor = System.Drawing.Color.Transparent;
+            this.roostFreqCB.Checked = false;
+            this.roostFreqCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.roostFreqCB.Location = new System.Drawing.Point(469, 267);
+            this.roostFreqCB.Name = "roostFreqCB";
+            this.roostFreqCB.Size = new System.Drawing.Size(122, 15);
+            this.roostFreqCB.TabIndex = 18;
+            this.roostFreqCB.Text = "Roost Frequency";
+            this.roostFreqCB.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.roostFreqCB_CheckedChanged);
+            // 
+            // iTalk_Separator6
+            // 
+            this.iTalk_Separator6.Location = new System.Drawing.Point(22, 62);
+            this.iTalk_Separator6.Name = "iTalk_Separator6";
+            this.iTalk_Separator6.Size = new System.Drawing.Size(672, 10);
+            this.iTalk_Separator6.TabIndex = 4;
+            this.iTalk_Separator6.Text = "iTalk_Separator6";
+            // 
+            // iTalk_Label15
+            // 
+            this.iTalk_Label15.AutoSize = true;
+            this.iTalk_Label15.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label15.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label15.Location = new System.Drawing.Point(19, 36);
+            this.iTalk_Label15.Name = "iTalk_Label15";
+            this.iTalk_Label15.Size = new System.Drawing.Size(276, 13);
+            this.iTalk_Label15.TabIndex = 3;
+            this.iTalk_Label15.Text = "Launch MX Simulator with command line parameters";
+            // 
+            // mxExeLocationTextbox
+            // 
+            this.mxExeLocationTextbox.BackColor = System.Drawing.Color.Transparent;
+            this.mxExeLocationTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.mxExeLocationTextbox.ForeColor = System.Drawing.Color.DimGray;
+            this.mxExeLocationTextbox.Image = null;
+            this.mxExeLocationTextbox.Location = new System.Drawing.Point(22, 420);
+            this.mxExeLocationTextbox.MaxLength = 32767;
+            this.mxExeLocationTextbox.Multiline = false;
+            this.mxExeLocationTextbox.Name = "mxExeLocationTextbox";
+            this.mxExeLocationTextbox.ReadOnly = false;
+            this.mxExeLocationTextbox.Size = new System.Drawing.Size(441, 41);
+            this.mxExeLocationTextbox.TabIndex = 2;
+            this.mxExeLocationTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mxExeLocationTextbox.UseSystemPasswordChar = false;
+            // 
+            // iTalk_Separator5
+            // 
+            this.iTalk_Separator5.Location = new System.Drawing.Point(22, 392);
+            this.iTalk_Separator5.Name = "iTalk_Separator5";
+            this.iTalk_Separator5.Size = new System.Drawing.Size(672, 10);
+            this.iTalk_Separator5.TabIndex = 1;
+            this.iTalk_Separator5.Text = "iTalk_Separator5";
+            // 
+            // launchMXS
+            // 
+            this.launchMXS.BackColor = System.Drawing.Color.Transparent;
+            this.launchMXS.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.launchMXS.Image = global::Circuit_Mod_Manager.Properties.Resources.ic_play_arrow_black_36dp_1x;
+            this.launchMXS.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.launchMXS.Location = new System.Drawing.Point(528, 420);
+            this.launchMXS.Name = "launchMXS";
+            this.launchMXS.Size = new System.Drawing.Size(166, 40);
+            this.launchMXS.TabIndex = 0;
+            this.launchMXS.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.launchMXS.Click += new System.EventHandler(this.launchMXS_Click);
             // 
             // installerPage
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.installerPage.Controls.Add(this.alwaysDeleteFileAfterInstallCB);
+            this.installerPage.Controls.Add(this.iTalk_Label21);
+            this.installerPage.Controls.Add(this.iTalk_Separator12);
             this.installerPage.Controls.Add(this.customRadioButton);
             this.installerPage.Controls.Add(this.customDatabaseComboBox);
             this.installerPage.Controls.Add(this.deleteFileAfterCheckbox);
             this.installerPage.Controls.Add(this.bikeRadioButton);
             this.installerPage.Controls.Add(this.iTalk_Separator4);
-            this.installerPage.Controls.Add(this.iTalk_HeaderLabel1);
             this.installerPage.Controls.Add(this.modTbox);
             this.installerPage.Controls.Add(this.gearRadioButton);
             this.installerPage.Controls.Add(this.iTalk_Label1);
@@ -291,14 +973,76 @@
             this.installerPage.TabIndex = 0;
             this.installerPage.Text = "Installer";
             this.installerPage.ToolTipText = "Install your mods";
-            this.installerPage.Click += new System.EventHandler(this.installerPage_Click);
+            // 
+            // alwaysDeleteFileAfterInstallCB
+            // 
+            this.alwaysDeleteFileAfterInstallCB.BackColor = System.Drawing.Color.Transparent;
+            this.alwaysDeleteFileAfterInstallCB.Checked = false;
+            this.alwaysDeleteFileAfterInstallCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.alwaysDeleteFileAfterInstallCB.Location = new System.Drawing.Point(500, 371);
+            this.alwaysDeleteFileAfterInstallCB.Name = "alwaysDeleteFileAfterInstallCB";
+            this.alwaysDeleteFileAfterInstallCB.Size = new System.Drawing.Size(194, 15);
+            this.alwaysDeleteFileAfterInstallCB.TabIndex = 23;
+            this.alwaysDeleteFileAfterInstallCB.Text = "Always delete file after install";
+            this.alwaysDeleteFileAfterInstallCB.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.alwaysDeleteFileAfterInstallCB_CheckedChanged);
+            // 
+            // iTalk_Label21
+            // 
+            this.iTalk_Label21.AutoSize = true;
+            this.iTalk_Label21.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label21.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label21.Location = new System.Drawing.Point(19, 36);
+            this.iTalk_Label21.Name = "iTalk_Label21";
+            this.iTalk_Label21.Size = new System.Drawing.Size(107, 13);
+            this.iTalk_Label21.TabIndex = 18;
+            this.iTalk_Label21.Text = "Install your content";
+            // 
+            // iTalk_Separator12
+            // 
+            this.iTalk_Separator12.Location = new System.Drawing.Point(22, 62);
+            this.iTalk_Separator12.Name = "iTalk_Separator12";
+            this.iTalk_Separator12.Size = new System.Drawing.Size(672, 10);
+            this.iTalk_Separator12.TabIndex = 17;
+            this.iTalk_Separator12.Text = "iTalk_Separator12";
+            // 
+            // customRadioButton
+            // 
+            this.customRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.customRadioButton.Checked = false;
+            this.customRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.customRadioButton.Location = new System.Drawing.Point(447, 242);
+            this.customRadioButton.Name = "customRadioButton";
+            this.customRadioButton.Size = new System.Drawing.Size(72, 15);
+            this.customRadioButton.TabIndex = 16;
+            this.customRadioButton.Text = "Custom";
+            this.customRadioButton.CheckedChanged += new iTalk.iTalk_RadioButton.CheckedChangedEventHandler(this.customRadioButton_CheckedChanged);
+            // 
+            // customDatabaseComboBox
+            // 
+            this.customDatabaseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.customDatabaseComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.customDatabaseComboBox.DropDownHeight = 100;
+            this.customDatabaseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.customDatabaseComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.customDatabaseComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.customDatabaseComboBox.FormattingEnabled = true;
+            this.customDatabaseComboBox.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.customDatabaseComboBox.IntegralHeight = false;
+            this.customDatabaseComboBox.ItemHeight = 20;
+            this.customDatabaseComboBox.Location = new System.Drawing.Point(201, 273);
+            this.customDatabaseComboBox.Name = "customDatabaseComboBox";
+            this.customDatabaseComboBox.Size = new System.Drawing.Size(318, 26);
+            this.customDatabaseComboBox.StartIndex = 0;
+            this.customDatabaseComboBox.TabIndex = 15;
+            this.customDatabaseComboBox.Visible = false;
             // 
             // deleteFileAfterCheckbox
             // 
             this.deleteFileAfterCheckbox.BackColor = System.Drawing.Color.Transparent;
             this.deleteFileAfterCheckbox.Checked = false;
             this.deleteFileAfterCheckbox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.deleteFileAfterCheckbox.Location = new System.Drawing.Point(543, 371);
+            this.deleteFileAfterCheckbox.Location = new System.Drawing.Point(543, 350);
             this.deleteFileAfterCheckbox.Name = "deleteFileAfterCheckbox";
             this.deleteFileAfterCheckbox.Size = new System.Drawing.Size(151, 15);
             this.deleteFileAfterCheckbox.TabIndex = 13;
@@ -309,7 +1053,7 @@
             this.bikeRadioButton.BackColor = System.Drawing.Color.Transparent;
             this.bikeRadioButton.Checked = false;
             this.bikeRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.bikeRadioButton.Location = new System.Drawing.Point(391, 263);
+            this.bikeRadioButton.Location = new System.Drawing.Point(391, 242);
             this.bikeRadioButton.Name = "bikeRadioButton";
             this.bikeRadioButton.Size = new System.Drawing.Size(60, 15);
             this.bikeRadioButton.TabIndex = 12;
@@ -323,18 +1067,6 @@
             this.iTalk_Separator4.TabIndex = 11;
             this.iTalk_Separator4.Text = "iTalk_Separator4";
             // 
-            // iTalk_HeaderLabel1
-            // 
-            this.iTalk_HeaderLabel1.AutoSize = true;
-            this.iTalk_HeaderLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_HeaderLabel1.Font = new System.Drawing.Font("Segoe UI", 25F);
-            this.iTalk_HeaderLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.iTalk_HeaderLabel1.Location = new System.Drawing.Point(250, 19);
-            this.iTalk_HeaderLabel1.Name = "iTalk_HeaderLabel1";
-            this.iTalk_HeaderLabel1.Size = new System.Drawing.Size(217, 46);
-            this.iTalk_HeaderLabel1.TabIndex = 8;
-            this.iTalk_HeaderLabel1.Text = "Mod Installer";
-            // 
             // modTbox
             // 
             this.modTbox.AllowDrop = true;
@@ -342,7 +1074,7 @@
             this.modTbox.Font = new System.Drawing.Font("Tahoma", 11F);
             this.modTbox.ForeColor = System.Drawing.Color.DimGray;
             this.modTbox.Image = null;
-            this.modTbox.Location = new System.Drawing.Point(94, 197);
+            this.modTbox.Location = new System.Drawing.Point(94, 176);
             this.modTbox.MaxLength = 32767;
             this.modTbox.Multiline = false;
             this.modTbox.Name = "modTbox";
@@ -359,7 +1091,7 @@
             this.gearRadioButton.BackColor = System.Drawing.Color.Transparent;
             this.gearRadioButton.Checked = false;
             this.gearRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gearRadioButton.Location = new System.Drawing.Point(263, 263);
+            this.gearRadioButton.Location = new System.Drawing.Point(263, 242);
             this.gearRadioButton.Name = "gearRadioButton";
             this.gearRadioButton.Size = new System.Drawing.Size(60, 15);
             this.gearRadioButton.TabIndex = 4;
@@ -371,7 +1103,7 @@
             this.iTalk_Label1.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label1.Location = new System.Drawing.Point(198, 263);
+            this.iTalk_Label1.Location = new System.Drawing.Point(198, 242);
             this.iTalk_Label1.Name = "iTalk_Label1";
             this.iTalk_Label1.Size = new System.Drawing.Size(59, 13);
             this.iTalk_Label1.TabIndex = 5;
@@ -382,7 +1114,7 @@
             this.trackRadioButton.BackColor = System.Drawing.Color.Transparent;
             this.trackRadioButton.Checked = false;
             this.trackRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.trackRadioButton.Location = new System.Drawing.Point(325, 263);
+            this.trackRadioButton.Location = new System.Drawing.Point(325, 242);
             this.trackRadioButton.Name = "trackRadioButton";
             this.trackRadioButton.Size = new System.Drawing.Size(60, 15);
             this.trackRadioButton.TabIndex = 3;
@@ -716,9 +1448,181 @@
             this.databasesPage.TabIndex = 4;
             this.databasesPage.Text = "Databases";
             // 
+            // noCustomDatabaseLabel
+            // 
+            this.noCustomDatabaseLabel.AutoSize = true;
+            this.noCustomDatabaseLabel.BackColor = System.Drawing.Color.Transparent;
+            this.noCustomDatabaseLabel.Font = new System.Drawing.Font("Segoe UI", 25F);
+            this.noCustomDatabaseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.noCustomDatabaseLabel.Location = new System.Drawing.Point(136, 142);
+            this.noCustomDatabaseLabel.Name = "noCustomDatabaseLabel";
+            this.noCustomDatabaseLabel.Size = new System.Drawing.Size(444, 46);
+            this.noCustomDatabaseLabel.TabIndex = 40;
+            this.noCustomDatabaseLabel.Text = "No custom Databases found";
+            // 
+            // createNewDatabaseButton
+            // 
+            this.createNewDatabaseButton.BackColor = System.Drawing.Color.Transparent;
+            this.createNewDatabaseButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.createNewDatabaseButton.Image = null;
+            this.createNewDatabaseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.createNewDatabaseButton.Location = new System.Drawing.Point(275, 217);
+            this.createNewDatabaseButton.Name = "createNewDatabaseButton";
+            this.createNewDatabaseButton.Size = new System.Drawing.Size(166, 40);
+            this.createNewDatabaseButton.TabIndex = 39;
+            this.createNewDatabaseButton.Text = "Create new Database";
+            this.createNewDatabaseButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.createNewDatabaseButton.Click += new System.EventHandler(this.createNewDatabaseButton_Click);
+            // 
+            // databaseExecuteButton
+            // 
+            this.databaseExecuteButton.BackColor = System.Drawing.Color.Transparent;
+            this.databaseExecuteButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.databaseExecuteButton.Image = ((System.Drawing.Image)(resources.GetObject("databaseExecuteButton.Image")));
+            this.databaseExecuteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.databaseExecuteButton.Location = new System.Drawing.Point(528, 420);
+            this.databaseExecuteButton.Name = "databaseExecuteButton";
+            this.databaseExecuteButton.Size = new System.Drawing.Size(166, 40);
+            this.databaseExecuteButton.TabIndex = 38;
+            this.databaseExecuteButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.databaseExecuteButton.Visible = false;
+            // 
+            // databaseSelectNoneRadioButton
+            // 
+            this.databaseSelectNoneRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.databaseSelectNoneRadioButton.Checked = false;
+            this.databaseSelectNoneRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.databaseSelectNoneRadioButton.Location = new System.Drawing.Point(353, 392);
+            this.databaseSelectNoneRadioButton.Name = "databaseSelectNoneRadioButton";
+            this.databaseSelectNoneRadioButton.Size = new System.Drawing.Size(94, 15);
+            this.databaseSelectNoneRadioButton.TabIndex = 37;
+            this.databaseSelectNoneRadioButton.Text = "Select None";
+            this.databaseSelectNoneRadioButton.Visible = false;
+            // 
+            // databaseSelectAllRadioButton
+            // 
+            this.databaseSelectAllRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.databaseSelectAllRadioButton.Checked = false;
+            this.databaseSelectAllRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.databaseSelectAllRadioButton.Location = new System.Drawing.Point(270, 392);
+            this.databaseSelectAllRadioButton.Name = "databaseSelectAllRadioButton";
+            this.databaseSelectAllRadioButton.Size = new System.Drawing.Size(77, 15);
+            this.databaseSelectAllRadioButton.TabIndex = 36;
+            this.databaseSelectAllRadioButton.Text = "Select All";
+            this.databaseSelectAllRadioButton.Visible = false;
+            // 
+            // databaseBackupNameLabel
+            // 
+            this.databaseBackupNameLabel.AutoSize = true;
+            this.databaseBackupNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.databaseBackupNameLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.databaseBackupNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.databaseBackupNameLabel.Location = new System.Drawing.Point(137, 433);
+            this.databaseBackupNameLabel.Name = "databaseBackupNameLabel";
+            this.databaseBackupNameLabel.Size = new System.Drawing.Size(80, 13);
+            this.databaseBackupNameLabel.TabIndex = 35;
+            this.databaseBackupNameLabel.Text = "Backup Name:";
+            this.databaseBackupNameLabel.Visible = false;
+            // 
+            // databaseBackupNameTextbox
+            // 
+            this.databaseBackupNameTextbox.BackColor = System.Drawing.Color.Transparent;
+            this.databaseBackupNameTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.databaseBackupNameTextbox.ForeColor = System.Drawing.Color.DimGray;
+            this.databaseBackupNameTextbox.Location = new System.Drawing.Point(223, 426);
+            this.databaseBackupNameTextbox.MaxLength = 32767;
+            this.databaseBackupNameTextbox.Multiline = false;
+            this.databaseBackupNameTextbox.Name = "databaseBackupNameTextbox";
+            this.databaseBackupNameTextbox.ReadOnly = false;
+            this.databaseBackupNameTextbox.Size = new System.Drawing.Size(263, 28);
+            this.databaseBackupNameTextbox.TabIndex = 34;
+            this.databaseBackupNameTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.databaseBackupNameTextbox.UseSystemPasswordChar = false;
+            this.databaseBackupNameTextbox.Visible = false;
+            // 
+            // databaseActionComboBox
+            // 
+            this.databaseActionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.databaseActionComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.databaseActionComboBox.DropDownHeight = 100;
+            this.databaseActionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.databaseActionComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.databaseActionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.databaseActionComboBox.FormattingEnabled = true;
+            this.databaseActionComboBox.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.databaseActionComboBox.IntegralHeight = false;
+            this.databaseActionComboBox.ItemHeight = 20;
+            this.databaseActionComboBox.Items.AddRange(new object[] {
+            "Delete Database",
+            "Backup Database"});
+            this.databaseActionComboBox.Location = new System.Drawing.Point(515, 22);
+            this.databaseActionComboBox.Name = "databaseActionComboBox";
+            this.databaseActionComboBox.Size = new System.Drawing.Size(178, 26);
+            this.databaseActionComboBox.StartIndex = 0;
+            this.databaseActionComboBox.TabIndex = 24;
+            this.databaseActionComboBox.Visible = false;
+            // 
+            // databaseActionLabel
+            // 
+            this.databaseActionLabel.AutoSize = true;
+            this.databaseActionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.databaseActionLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.databaseActionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.databaseActionLabel.Location = new System.Drawing.Point(469, 28);
+            this.databaseActionLabel.Name = "databaseActionLabel";
+            this.databaseActionLabel.Size = new System.Drawing.Size(40, 13);
+            this.databaseActionLabel.TabIndex = 23;
+            this.databaseActionLabel.Text = "Action";
+            this.databaseActionLabel.Visible = false;
+            // 
+            // databaseModListBox
+            // 
+            this.databaseModListBox.FormattingEnabled = true;
+            this.databaseModListBox.Location = new System.Drawing.Point(26, 63);
+            this.databaseModListBox.Name = "databaseModListBox";
+            this.databaseModListBox.Size = new System.Drawing.Size(667, 310);
+            this.databaseModListBox.TabIndex = 22;
+            this.databaseModListBox.Visible = false;
+            // 
+            // databaseLabel
+            // 
+            this.databaseLabel.AutoSize = true;
+            this.databaseLabel.BackColor = System.Drawing.Color.Transparent;
+            this.databaseLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.databaseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.databaseLabel.Location = new System.Drawing.Point(25, 28);
+            this.databaseLabel.Name = "databaseLabel";
+            this.databaseLabel.Size = new System.Drawing.Size(55, 13);
+            this.databaseLabel.TabIndex = 21;
+            this.databaseLabel.Text = "Database";
+            this.databaseLabel.Visible = false;
+            // 
+            // databaseComboBox
+            // 
+            this.databaseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.databaseComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.databaseComboBox.DropDownHeight = 100;
+            this.databaseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.databaseComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.databaseComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.databaseComboBox.FormattingEnabled = true;
+            this.databaseComboBox.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.databaseComboBox.IntegralHeight = false;
+            this.databaseComboBox.ItemHeight = 20;
+            this.databaseComboBox.Location = new System.Drawing.Point(86, 22);
+            this.databaseComboBox.Name = "databaseComboBox";
+            this.databaseComboBox.Size = new System.Drawing.Size(377, 26);
+            this.databaseComboBox.StartIndex = 0;
+            this.databaseComboBox.TabIndex = 20;
+            this.databaseComboBox.Visible = false;
+            // 
             // settingsPage
             // 
             this.settingsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.settingsPage.Controls.Add(this.iTalk_Label23);
+            this.settingsPage.Controls.Add(this.personalFolderCB);
+            this.settingsPage.Controls.Add(this.iTalk_Label22);
+            this.settingsPage.Controls.Add(this.iTalk_Separator13);
             this.settingsPage.Controls.Add(this.DatabasesRadioButton);
             this.settingsPage.Controls.Add(this.LaunchRadioButton);
             this.settingsPage.Controls.Add(this.iTalk_Separator3);
@@ -728,7 +1632,6 @@
             this.settingsPage.Controls.Add(this.installerRadioButton);
             this.settingsPage.Controls.Add(this.browseMXdirButton);
             this.settingsPage.Controls.Add(this.saveMXdirButton);
-            this.settingsPage.Controls.Add(this.iTalk_HeaderLabel2);
             this.settingsPage.Controls.Add(this.mxDirTbox);
             this.settingsPage.ImageIndex = 2;
             this.settingsPage.Location = new System.Drawing.Point(139, 4);
@@ -736,6 +1639,49 @@
             this.settingsPage.Size = new System.Drawing.Size(717, 474);
             this.settingsPage.TabIndex = 2;
             this.settingsPage.Text = "Settings";
+            // 
+            // iTalk_Label23
+            // 
+            this.iTalk_Label23.AutoSize = true;
+            this.iTalk_Label23.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label23.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label23.Location = new System.Drawing.Point(90, 118);
+            this.iTalk_Label23.Name = "iTalk_Label23";
+            this.iTalk_Label23.Size = new System.Drawing.Size(124, 13);
+            this.iTalk_Label23.TabIndex = 21;
+            this.iTalk_Label23.Text = "MX Simulator Directory";
+            // 
+            // personalFolderCB
+            // 
+            this.personalFolderCB.BackColor = System.Drawing.Color.Transparent;
+            this.personalFolderCB.Checked = false;
+            this.personalFolderCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.personalFolderCB.Location = new System.Drawing.Point(574, 371);
+            this.personalFolderCB.Name = "personalFolderCB";
+            this.personalFolderCB.Size = new System.Drawing.Size(120, 15);
+            this.personalFolderCB.TabIndex = 20;
+            this.personalFolderCB.Text = "Personal Folder";
+            // 
+            // iTalk_Label22
+            // 
+            this.iTalk_Label22.AutoSize = true;
+            this.iTalk_Label22.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label22.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label22.Location = new System.Drawing.Point(19, 36);
+            this.iTalk_Label22.Name = "iTalk_Label22";
+            this.iTalk_Label22.Size = new System.Drawing.Size(119, 13);
+            this.iTalk_Label22.TabIndex = 19;
+            this.iTalk_Label22.Text = "Manage your settings";
+            // 
+            // iTalk_Separator13
+            // 
+            this.iTalk_Separator13.Location = new System.Drawing.Point(22, 62);
+            this.iTalk_Separator13.Name = "iTalk_Separator13";
+            this.iTalk_Separator13.Size = new System.Drawing.Size(672, 10);
+            this.iTalk_Separator13.TabIndex = 15;
+            this.iTalk_Separator13.Text = "iTalk_Separator13";
             // 
             // DatabasesRadioButton
             // 
@@ -838,18 +1784,6 @@
             this.saveMXdirButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.saveMXdirButton.Click += new System.EventHandler(this.saveMXdirButton_Click);
             // 
-            // iTalk_HeaderLabel2
-            // 
-            this.iTalk_HeaderLabel2.AutoSize = true;
-            this.iTalk_HeaderLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_HeaderLabel2.Font = new System.Drawing.Font("Segoe UI", 25F);
-            this.iTalk_HeaderLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.iTalk_HeaderLabel2.Location = new System.Drawing.Point(288, 19);
-            this.iTalk_HeaderLabel2.Name = "iTalk_HeaderLabel2";
-            this.iTalk_HeaderLabel2.Size = new System.Drawing.Size(141, 46);
-            this.iTalk_HeaderLabel2.TabIndex = 1;
-            this.iTalk_HeaderLabel2.Text = "Settings";
-            // 
             // mxDirTbox
             // 
             this.mxDirTbox.BackColor = System.Drawing.Color.Transparent;
@@ -900,11 +1834,11 @@
             this.iTalk_HeaderLabel4.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_HeaderLabel4.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.iTalk_HeaderLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.iTalk_HeaderLabel4.Location = new System.Drawing.Point(216, 97);
+            this.iTalk_HeaderLabel4.Location = new System.Drawing.Point(204, 97);
             this.iTalk_HeaderLabel4.Name = "iTalk_HeaderLabel4";
-            this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(284, 46);
+            this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(309, 46);
             this.iTalk_HeaderLabel4.TabIndex = 18;
-            this.iTalk_HeaderLabel4.Text = "Version: Alpha 0.1";
+            this.iTalk_HeaderLabel4.Text = "Version: Alpha 0.1.6";
             // 
             // dotNetZipLink
             // 
@@ -1154,730 +2088,6 @@
             this.notifyIconSettings.Text = "MXSIM:MM";
             this.notifyIconSettings.Visible = true;
             // 
-            // iTalk_CheckBox1
-            // 
-            this.iTalk_CheckBox1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox1.Checked = false;
-            this.iTalk_CheckBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox1.Location = new System.Drawing.Point(8, 197);
-            this.iTalk_CheckBox1.Name = "iTalk_CheckBox1";
-            this.iTalk_CheckBox1.Size = new System.Drawing.Size(133, 15);
-            this.iTalk_CheckBox1.TabIndex = 0;
-            this.iTalk_CheckBox1.Text = "Fugly";
-            // 
-            // iTalk_Separator5
-            // 
-            this.iTalk_Separator5.Location = new System.Drawing.Point(22, 392);
-            this.iTalk_Separator5.Name = "iTalk_Separator5";
-            this.iTalk_Separator5.Size = new System.Drawing.Size(672, 10);
-            this.iTalk_Separator5.TabIndex = 1;
-            this.iTalk_Separator5.Text = "iTalk_Separator5";
-            // 
-            // extraCommandsTextbox
-            // 
-            this.extraCommandsTextbox.BackColor = System.Drawing.Color.Transparent;
-            this.extraCommandsTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.extraCommandsTextbox.ForeColor = System.Drawing.Color.DimGray;
-            this.extraCommandsTextbox.Image = null;
-            this.extraCommandsTextbox.Location = new System.Drawing.Point(22, 420);
-            this.extraCommandsTextbox.MaxLength = 32767;
-            this.extraCommandsTextbox.Multiline = false;
-            this.extraCommandsTextbox.Name = "extraCommandsTextbox";
-            this.extraCommandsTextbox.ReadOnly = false;
-            this.extraCommandsTextbox.Size = new System.Drawing.Size(500, 41);
-            this.extraCommandsTextbox.TabIndex = 2;
-            this.extraCommandsTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.extraCommandsTextbox.UseSystemPasswordChar = false;
-            // 
-            // iTalk_Label15
-            // 
-            this.iTalk_Label15.AutoSize = true;
-            this.iTalk_Label15.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label15.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.iTalk_Label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label15.Location = new System.Drawing.Point(19, 36);
-            this.iTalk_Label15.Name = "iTalk_Label15";
-            this.iTalk_Label15.Size = new System.Drawing.Size(276, 13);
-            this.iTalk_Label15.TabIndex = 3;
-            this.iTalk_Label15.Text = "Launch MX Simulator with command line parameters";
-            // 
-            // iTalk_Separator6
-            // 
-            this.iTalk_Separator6.Location = new System.Drawing.Point(22, 62);
-            this.iTalk_Separator6.Name = "iTalk_Separator6";
-            this.iTalk_Separator6.Size = new System.Drawing.Size(672, 10);
-            this.iTalk_Separator6.TabIndex = 4;
-            this.iTalk_Separator6.Text = "iTalk_Separator6";
-            // 
-            // iTalk_CheckBox2
-            // 
-            this.iTalk_CheckBox2.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox2.Checked = false;
-            this.iTalk_CheckBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox2.Location = new System.Drawing.Point(8, 218);
-            this.iTalk_CheckBox2.Name = "iTalk_CheckBox2";
-            this.iTalk_CheckBox2.Size = new System.Drawing.Size(133, 15);
-            this.iTalk_CheckBox2.TabIndex = 5;
-            this.iTalk_CheckBox2.Text = "No Sound";
-            // 
-            // iTalk_CheckBox3
-            // 
-            this.iTalk_CheckBox3.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox3.Checked = false;
-            this.iTalk_CheckBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox3.Location = new System.Drawing.Point(8, 239);
-            this.iTalk_CheckBox3.Name = "iTalk_CheckBox3";
-            this.iTalk_CheckBox3.Size = new System.Drawing.Size(133, 15);
-            this.iTalk_CheckBox3.TabIndex = 6;
-            this.iTalk_CheckBox3.Text = "No Vertex Arrays";
-            // 
-            // iTalk_CheckBox4
-            // 
-            this.iTalk_CheckBox4.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox4.Checked = false;
-            this.iTalk_CheckBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox4.Location = new System.Drawing.Point(8, 260);
-            this.iTalk_CheckBox4.Name = "iTalk_CheckBox4";
-            this.iTalk_CheckBox4.Size = new System.Drawing.Size(133, 15);
-            this.iTalk_CheckBox4.TabIndex = 7;
-            this.iTalk_CheckBox4.Text = "AI Learn";
-            // 
-            // iTalk_CheckBox5
-            // 
-            this.iTalk_CheckBox5.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox5.Checked = false;
-            this.iTalk_CheckBox5.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox5.Location = new System.Drawing.Point(8, 8);
-            this.iTalk_CheckBox5.Name = "iTalk_CheckBox5";
-            this.iTalk_CheckBox5.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox5.TabIndex = 8;
-            this.iTalk_CheckBox5.Text = "No AI Learn";
-            // 
-            // iTalk_CheckBox6
-            // 
-            this.iTalk_CheckBox6.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox6.Checked = false;
-            this.iTalk_CheckBox6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox6.Location = new System.Drawing.Point(8, 29);
-            this.iTalk_CheckBox6.Name = "iTalk_CheckBox6";
-            this.iTalk_CheckBox6.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox6.TabIndex = 9;
-            this.iTalk_CheckBox6.Text = "No MMX";
-            // 
-            // iTalk_CheckBox7
-            // 
-            this.iTalk_CheckBox7.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox7.Checked = false;
-            this.iTalk_CheckBox7.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox7.Location = new System.Drawing.Point(8, 50);
-            this.iTalk_CheckBox7.Name = "iTalk_CheckBox7";
-            this.iTalk_CheckBox7.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox7.TabIndex = 10;
-            this.iTalk_CheckBox7.Text = "Debug";
-            // 
-            // iTalk_CheckBox8
-            // 
-            this.iTalk_CheckBox8.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox8.Checked = false;
-            this.iTalk_CheckBox8.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox8.Location = new System.Drawing.Point(8, 71);
-            this.iTalk_CheckBox8.Name = "iTalk_CheckBox8";
-            this.iTalk_CheckBox8.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox8.TabIndex = 11;
-            this.iTalk_CheckBox8.Text = "Super Debug";
-            // 
-            // iTalk_CheckBox9
-            // 
-            this.iTalk_CheckBox9.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox9.Checked = false;
-            this.iTalk_CheckBox9.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox9.Location = new System.Drawing.Point(8, 92);
-            this.iTalk_CheckBox9.Name = "iTalk_CheckBox9";
-            this.iTalk_CheckBox9.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox9.TabIndex = 12;
-            this.iTalk_CheckBox9.Text = "Practice";
-            // 
-            // iTalk_CheckBox10
-            // 
-            this.iTalk_CheckBox10.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox10.Checked = false;
-            this.iTalk_CheckBox10.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox10.Location = new System.Drawing.Point(8, 113);
-            this.iTalk_CheckBox10.Name = "iTalk_CheckBox10";
-            this.iTalk_CheckBox10.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox10.TabIndex = 13;
-            this.iTalk_CheckBox10.Text = "AI Warp";
-            // 
-            // iTalk_CheckBox13
-            // 
-            this.iTalk_CheckBox13.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox13.Checked = false;
-            this.iTalk_CheckBox13.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox13.Location = new System.Drawing.Point(394, 150);
-            this.iTalk_CheckBox13.Name = "iTalk_CheckBox13";
-            this.iTalk_CheckBox13.Size = new System.Drawing.Size(122, 15);
-            this.iTalk_CheckBox13.TabIndex = 18;
-            this.iTalk_CheckBox13.Text = "Roost Frequency";
-            // 
-            // roostFreqTrackbar
-            // 
-            this.roostFreqTrackbar.DrawHatch = true;
-            this.roostFreqTrackbar.DrawValueString = false;
-            this.roostFreqTrackbar.JumpToMouse = true;
-            this.roostFreqTrackbar.Location = new System.Drawing.Point(530, 147);
-            this.roostFreqTrackbar.Maximum = 1000;
-            this.roostFreqTrackbar.Minimum = 0;
-            this.roostFreqTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
-            this.roostFreqTrackbar.Name = "roostFreqTrackbar";
-            this.roostFreqTrackbar.Size = new System.Drawing.Size(104, 22);
-            this.roostFreqTrackbar.TabIndex = 19;
-            this.roostFreqTrackbar.Text = "iTalk_TrackBar3";
-            this.roostFreqTrackbar.Value = 0;
-            this.roostFreqTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.roostFreqTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
-            this.roostFreqTrackbar.ValueToSet = 0F;
-            this.roostFreqTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.roostFreqTrackbar_ValueChanged);
-            // 
-            // iTalk_CheckBox14
-            // 
-            this.iTalk_CheckBox14.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox14.Checked = false;
-            this.iTalk_CheckBox14.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox14.Location = new System.Drawing.Point(8, 134);
-            this.iTalk_CheckBox14.Name = "iTalk_CheckBox14";
-            this.iTalk_CheckBox14.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox14.TabIndex = 20;
-            this.iTalk_CheckBox14.Text = "Erode";
-            // 
-            // iTalk_CheckBox15
-            // 
-            this.iTalk_CheckBox15.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox15.Checked = false;
-            this.iTalk_CheckBox15.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox15.Location = new System.Drawing.Point(394, 182);
-            this.iTalk_CheckBox15.Name = "iTalk_CheckBox15";
-            this.iTalk_CheckBox15.Size = new System.Drawing.Size(66, 15);
-            this.iTalk_CheckBox15.TabIndex = 22;
-            this.iTalk_CheckBox15.Text = "Detail";
-            // 
-            // detailTrackbar
-            // 
-            this.detailTrackbar.DrawHatch = true;
-            this.detailTrackbar.DrawValueString = false;
-            this.detailTrackbar.JumpToMouse = true;
-            this.detailTrackbar.Location = new System.Drawing.Point(530, 179);
-            this.detailTrackbar.Maximum = 1;
-            this.detailTrackbar.Minimum = 0;
-            this.detailTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
-            this.detailTrackbar.Name = "detailTrackbar";
-            this.detailTrackbar.Size = new System.Drawing.Size(104, 22);
-            this.detailTrackbar.TabIndex = 23;
-            this.detailTrackbar.Text = "iTalk_TrackBar5";
-            this.detailTrackbar.Value = 0;
-            this.detailTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.detailTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
-            this.detailTrackbar.ValueToSet = 0F;
-            this.detailTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.detailTrackbar_ValueChanged);
-            // 
-            // iTalk_CheckBox11
-            // 
-            this.iTalk_CheckBox11.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox11.Checked = false;
-            this.iTalk_CheckBox11.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox11.Location = new System.Drawing.Point(394, 118);
-            this.iTalk_CheckBox11.Name = "iTalk_CheckBox11";
-            this.iTalk_CheckBox11.Size = new System.Drawing.Size(78, 15);
-            this.iTalk_CheckBox11.TabIndex = 24;
-            this.iTalk_CheckBox11.Text = "LOD Bias";
-            // 
-            // lodBiasTrackbar
-            // 
-            this.lodBiasTrackbar.DrawHatch = true;
-            this.lodBiasTrackbar.DrawValueString = false;
-            this.lodBiasTrackbar.JumpToMouse = true;
-            this.lodBiasTrackbar.Location = new System.Drawing.Point(530, 115);
-            this.lodBiasTrackbar.Maximum = 10;
-            this.lodBiasTrackbar.Minimum = 0;
-            this.lodBiasTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
-            this.lodBiasTrackbar.Name = "lodBiasTrackbar";
-            this.lodBiasTrackbar.Size = new System.Drawing.Size(104, 22);
-            this.lodBiasTrackbar.TabIndex = 25;
-            this.lodBiasTrackbar.Text = "iTalk_TrackBar1";
-            this.lodBiasTrackbar.Value = 0;
-            this.lodBiasTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lodBiasTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
-            this.lodBiasTrackbar.ValueToSet = 0F;
-            this.lodBiasTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.lodBiasTrackbar_ValueChanged);
-            // 
-            // iTalk_CheckBox12
-            // 
-            this.iTalk_CheckBox12.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox12.Checked = false;
-            this.iTalk_CheckBox12.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox12.Location = new System.Drawing.Point(394, 216);
-            this.iTalk_CheckBox12.Name = "iTalk_CheckBox12";
-            this.iTalk_CheckBox12.Size = new System.Drawing.Size(89, 15);
-            this.iTalk_CheckBox12.TabIndex = 26;
-            this.iTalk_CheckBox12.Text = "Lock FPS";
-            // 
-            // iTalk_CheckBox16
-            // 
-            this.iTalk_CheckBox16.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox16.Checked = false;
-            this.iTalk_CheckBox16.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox16.Location = new System.Drawing.Point(8, 155);
-            this.iTalk_CheckBox16.Name = "iTalk_CheckBox16";
-            this.iTalk_CheckBox16.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox16.TabIndex = 28;
-            this.iTalk_CheckBox16.Text = "Fake Lag";
-            // 
-            // iTalk_CheckBox17
-            // 
-            this.iTalk_CheckBox17.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox17.Checked = false;
-            this.iTalk_CheckBox17.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox17.Location = new System.Drawing.Point(8, 176);
-            this.iTalk_CheckBox17.Name = "iTalk_CheckBox17";
-            this.iTalk_CheckBox17.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox17.TabIndex = 30;
-            this.iTalk_CheckBox17.Text = "Record Audio";
-            // 
-            // iTalk_CheckBox18
-            // 
-            this.iTalk_CheckBox18.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox18.Checked = false;
-            this.iTalk_CheckBox18.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox18.Location = new System.Drawing.Point(8, 281);
-            this.iTalk_CheckBox18.Name = "iTalk_CheckBox18";
-            this.iTalk_CheckBox18.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox18.TabIndex = 31;
-            this.iTalk_CheckBox18.Text = "Record Video";
-            // 
-            // iTalk_CheckBox19
-            // 
-            this.iTalk_CheckBox19.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox19.Checked = false;
-            this.iTalk_CheckBox19.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox19.Location = new System.Drawing.Point(394, 86);
-            this.iTalk_CheckBox19.Name = "iTalk_CheckBox19";
-            this.iTalk_CheckBox19.Size = new System.Drawing.Size(104, 15);
-            this.iTalk_CheckBox19.TabIndex = 32;
-            this.iTalk_CheckBox19.Text = "Rotate Lineup";
-            // 
-            // rotateLineupTrackbar
-            // 
-            this.rotateLineupTrackbar.DrawHatch = true;
-            this.rotateLineupTrackbar.DrawValueString = false;
-            this.rotateLineupTrackbar.JumpToMouse = true;
-            this.rotateLineupTrackbar.Location = new System.Drawing.Point(530, 83);
-            this.rotateLineupTrackbar.Maximum = 100;
-            this.rotateLineupTrackbar.Minimum = 0;
-            this.rotateLineupTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
-            this.rotateLineupTrackbar.Name = "rotateLineupTrackbar";
-            this.rotateLineupTrackbar.Size = new System.Drawing.Size(104, 22);
-            this.rotateLineupTrackbar.TabIndex = 33;
-            this.rotateLineupTrackbar.Text = "iTalk_TrackBar7";
-            this.rotateLineupTrackbar.Value = 0;
-            this.rotateLineupTrackbar.ValueColour = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rotateLineupTrackbar.ValueDivison = iTalk.iTalk_TrackBar.ValueDivisor.By1;
-            this.rotateLineupTrackbar.ValueToSet = 0F;
-            this.rotateLineupTrackbar.ValueChanged += new iTalk.iTalk_TrackBar.ValueChangedEventHandler(this.rotateLineupTrackbar_ValueChanged);
-            // 
-            // iTalk_CheckBox20
-            // 
-            this.iTalk_CheckBox20.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox20.Checked = false;
-            this.iTalk_CheckBox20.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox20.Location = new System.Drawing.Point(147, 8);
-            this.iTalk_CheckBox20.Name = "iTalk_CheckBox20";
-            this.iTalk_CheckBox20.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox20.TabIndex = 34;
-            this.iTalk_CheckBox20.Text = "Editor";
-            // 
-            // iTalk_CheckBox21
-            // 
-            this.iTalk_CheckBox21.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox21.Checked = false;
-            this.iTalk_CheckBox21.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox21.Location = new System.Drawing.Point(147, 29);
-            this.iTalk_CheckBox21.Name = "iTalk_CheckBox21";
-            this.iTalk_CheckBox21.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox21.TabIndex = 35;
-            this.iTalk_CheckBox21.Text = "Hide Pause";
-            // 
-            // iTalk_CheckBox22
-            // 
-            this.iTalk_CheckBox22.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox22.Checked = false;
-            this.iTalk_CheckBox22.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox22.Location = new System.Drawing.Point(147, 50);
-            this.iTalk_CheckBox22.Name = "iTalk_CheckBox22";
-            this.iTalk_CheckBox22.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox22.TabIndex = 36;
-            this.iTalk_CheckBox22.Text = "Hide Hud";
-            // 
-            // iTalk_CheckBox23
-            // 
-            this.iTalk_CheckBox23.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox23.Checked = false;
-            this.iTalk_CheckBox23.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox23.Location = new System.Drawing.Point(147, 71);
-            this.iTalk_CheckBox23.Name = "iTalk_CheckBox23";
-            this.iTalk_CheckBox23.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox23.TabIndex = 37;
-            this.iTalk_CheckBox23.Text = "Draw FPS";
-            // 
-            // iTalk_CheckBox24
-            // 
-            this.iTalk_CheckBox24.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox24.Checked = false;
-            this.iTalk_CheckBox24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox24.Location = new System.Drawing.Point(147, 92);
-            this.iTalk_CheckBox24.Name = "iTalk_CheckBox24";
-            this.iTalk_CheckBox24.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox24.TabIndex = 38;
-            this.iTalk_CheckBox24.Text = "Draw Time";
-            // 
-            // iTalk_CheckBox25
-            // 
-            this.iTalk_CheckBox25.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox25.Checked = false;
-            this.iTalk_CheckBox25.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox25.Location = new System.Drawing.Point(147, 113);
-            this.iTalk_CheckBox25.Name = "iTalk_CheckBox25";
-            this.iTalk_CheckBox25.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox25.TabIndex = 39;
-            this.iTalk_CheckBox25.Text = "Draw Ping";
-            // 
-            // iTalk_CheckBox26
-            // 
-            this.iTalk_CheckBox26.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox26.Checked = false;
-            this.iTalk_CheckBox26.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox26.Location = new System.Drawing.Point(147, 134);
-            this.iTalk_CheckBox26.Name = "iTalk_CheckBox26";
-            this.iTalk_CheckBox26.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox26.TabIndex = 40;
-            this.iTalk_CheckBox26.Text = "Draw Render Stats";
-            // 
-            // iTalk_CheckBox27
-            // 
-            this.iTalk_CheckBox27.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox27.Checked = false;
-            this.iTalk_CheckBox27.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox27.Location = new System.Drawing.Point(147, 155);
-            this.iTalk_CheckBox27.Name = "iTalk_CheckBox27";
-            this.iTalk_CheckBox27.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox27.TabIndex = 41;
-            this.iTalk_CheckBox27.Text = "Accurate Skip";
-            // 
-            // iTalk_Panel1
-            // 
-            this.iTalk_Panel1.AutoScroll = true;
-            this.iTalk_Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox28);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox27);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox1);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox26);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox2);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox25);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox3);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox24);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox4);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox23);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox5);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox22);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox6);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox21);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox7);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox20);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox8);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox9);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox10);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox18);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox14);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox17);
-            this.iTalk_Panel1.Controls.Add(this.iTalk_CheckBox16);
-            this.iTalk_Panel1.Location = new System.Drawing.Point(22, 78);
-            this.iTalk_Panel1.Name = "iTalk_Panel1";
-            this.iTalk_Panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.iTalk_Panel1.Size = new System.Drawing.Size(305, 308);
-            this.iTalk_Panel1.TabIndex = 42;
-            this.iTalk_Panel1.Text = "iTalk_Panel1";
-            // 
-            // iTalk_TextBox_Small1
-            // 
-            this.iTalk_TextBox_Small1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_TextBox_Small1.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.iTalk_TextBox_Small1.ForeColor = System.Drawing.Color.DimGray;
-            this.iTalk_TextBox_Small1.Location = new System.Drawing.Point(530, 209);
-            this.iTalk_TextBox_Small1.MaxLength = 32767;
-            this.iTalk_TextBox_Small1.Multiline = false;
-            this.iTalk_TextBox_Small1.Name = "iTalk_TextBox_Small1";
-            this.iTalk_TextBox_Small1.ReadOnly = false;
-            this.iTalk_TextBox_Small1.Size = new System.Drawing.Size(104, 28);
-            this.iTalk_TextBox_Small1.TabIndex = 43;
-            this.iTalk_TextBox_Small1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.iTalk_TextBox_Small1.UseSystemPasswordChar = false;
-            // 
-            // rotateLineupValue
-            // 
-            this.rotateLineupValue.AutoSize = true;
-            this.rotateLineupValue.BackColor = System.Drawing.Color.Transparent;
-            this.rotateLineupValue.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.rotateLineupValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.rotateLineupValue.Location = new System.Drawing.Point(640, 86);
-            this.rotateLineupValue.Name = "rotateLineupValue";
-            this.rotateLineupValue.Size = new System.Drawing.Size(13, 13);
-            this.rotateLineupValue.TabIndex = 44;
-            this.rotateLineupValue.Text = "0";
-            // 
-            // lodBiasValue
-            // 
-            this.lodBiasValue.AutoSize = true;
-            this.lodBiasValue.BackColor = System.Drawing.Color.Transparent;
-            this.lodBiasValue.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lodBiasValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.lodBiasValue.Location = new System.Drawing.Point(640, 118);
-            this.lodBiasValue.Name = "lodBiasValue";
-            this.lodBiasValue.Size = new System.Drawing.Size(13, 13);
-            this.lodBiasValue.TabIndex = 45;
-            this.lodBiasValue.Text = "0";
-            // 
-            // roostFreqValue
-            // 
-            this.roostFreqValue.AutoSize = true;
-            this.roostFreqValue.BackColor = System.Drawing.Color.Transparent;
-            this.roostFreqValue.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.roostFreqValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.roostFreqValue.Location = new System.Drawing.Point(640, 150);
-            this.roostFreqValue.Name = "roostFreqValue";
-            this.roostFreqValue.Size = new System.Drawing.Size(13, 13);
-            this.roostFreqValue.TabIndex = 46;
-            this.roostFreqValue.Text = "0";
-            // 
-            // detailValue
-            // 
-            this.detailValue.AutoSize = true;
-            this.detailValue.BackColor = System.Drawing.Color.Transparent;
-            this.detailValue.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.detailValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.detailValue.Location = new System.Drawing.Point(640, 182);
-            this.detailValue.Name = "detailValue";
-            this.detailValue.Size = new System.Drawing.Size(13, 13);
-            this.detailValue.TabIndex = 47;
-            this.detailValue.Text = "0";
-            // 
-            // iTalk_CheckBox28
-            // 
-            this.iTalk_CheckBox28.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_CheckBox28.Checked = false;
-            this.iTalk_CheckBox28.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_CheckBox28.Location = new System.Drawing.Point(147, 176);
-            this.iTalk_CheckBox28.Name = "iTalk_CheckBox28";
-            this.iTalk_CheckBox28.Size = new System.Drawing.Size(132, 15);
-            this.iTalk_CheckBox28.TabIndex = 42;
-            this.iTalk_CheckBox28.Text = "GL Finish";
-            // 
-            // customDatabaseComboBox
-            // 
-            this.customDatabaseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.customDatabaseComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.customDatabaseComboBox.DropDownHeight = 100;
-            this.customDatabaseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.customDatabaseComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.customDatabaseComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.customDatabaseComboBox.FormattingEnabled = true;
-            this.customDatabaseComboBox.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.customDatabaseComboBox.IntegralHeight = false;
-            this.customDatabaseComboBox.ItemHeight = 20;
-            this.customDatabaseComboBox.Location = new System.Drawing.Point(201, 294);
-            this.customDatabaseComboBox.Name = "customDatabaseComboBox";
-            this.customDatabaseComboBox.Size = new System.Drawing.Size(318, 26);
-            this.customDatabaseComboBox.StartIndex = 0;
-            this.customDatabaseComboBox.TabIndex = 15;
-            this.customDatabaseComboBox.Visible = false;
-            // 
-            // customRadioButton
-            // 
-            this.customRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.customRadioButton.Checked = false;
-            this.customRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.customRadioButton.Location = new System.Drawing.Point(447, 263);
-            this.customRadioButton.Name = "customRadioButton";
-            this.customRadioButton.Size = new System.Drawing.Size(72, 15);
-            this.customRadioButton.TabIndex = 16;
-            this.customRadioButton.Text = "Custom";
-            this.customRadioButton.CheckedChanged += new iTalk.iTalk_RadioButton.CheckedChangedEventHandler(this.customRadioButton_CheckedChanged);
-            // 
-            // databaseExecuteButton
-            // 
-            this.databaseExecuteButton.BackColor = System.Drawing.Color.Transparent;
-            this.databaseExecuteButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.databaseExecuteButton.Image = ((System.Drawing.Image)(resources.GetObject("databaseExecuteButton.Image")));
-            this.databaseExecuteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.databaseExecuteButton.Location = new System.Drawing.Point(528, 420);
-            this.databaseExecuteButton.Name = "databaseExecuteButton";
-            this.databaseExecuteButton.Size = new System.Drawing.Size(166, 40);
-            this.databaseExecuteButton.TabIndex = 38;
-            this.databaseExecuteButton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.databaseExecuteButton.Visible = false;
-            // 
-            // databaseSelectNoneRadioButton
-            // 
-            this.databaseSelectNoneRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.databaseSelectNoneRadioButton.Checked = false;
-            this.databaseSelectNoneRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.databaseSelectNoneRadioButton.Location = new System.Drawing.Point(353, 392);
-            this.databaseSelectNoneRadioButton.Name = "databaseSelectNoneRadioButton";
-            this.databaseSelectNoneRadioButton.Size = new System.Drawing.Size(94, 15);
-            this.databaseSelectNoneRadioButton.TabIndex = 37;
-            this.databaseSelectNoneRadioButton.Text = "Select None";
-            this.databaseSelectNoneRadioButton.Visible = false;
-            // 
-            // databaseSelectAllRadioButton
-            // 
-            this.databaseSelectAllRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.databaseSelectAllRadioButton.Checked = false;
-            this.databaseSelectAllRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.databaseSelectAllRadioButton.Location = new System.Drawing.Point(270, 392);
-            this.databaseSelectAllRadioButton.Name = "databaseSelectAllRadioButton";
-            this.databaseSelectAllRadioButton.Size = new System.Drawing.Size(77, 15);
-            this.databaseSelectAllRadioButton.TabIndex = 36;
-            this.databaseSelectAllRadioButton.Text = "Select All";
-            this.databaseSelectAllRadioButton.Visible = false;
-            // 
-            // databaseBackupNameLabel
-            // 
-            this.databaseBackupNameLabel.AutoSize = true;
-            this.databaseBackupNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.databaseBackupNameLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.databaseBackupNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseBackupNameLabel.Location = new System.Drawing.Point(137, 433);
-            this.databaseBackupNameLabel.Name = "databaseBackupNameLabel";
-            this.databaseBackupNameLabel.Size = new System.Drawing.Size(80, 13);
-            this.databaseBackupNameLabel.TabIndex = 35;
-            this.databaseBackupNameLabel.Text = "Backup Name:";
-            this.databaseBackupNameLabel.Visible = false;
-            // 
-            // databaseBackupNameTextbox
-            // 
-            this.databaseBackupNameTextbox.BackColor = System.Drawing.Color.Transparent;
-            this.databaseBackupNameTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.databaseBackupNameTextbox.ForeColor = System.Drawing.Color.DimGray;
-            this.databaseBackupNameTextbox.Location = new System.Drawing.Point(223, 426);
-            this.databaseBackupNameTextbox.MaxLength = 32767;
-            this.databaseBackupNameTextbox.Multiline = false;
-            this.databaseBackupNameTextbox.Name = "databaseBackupNameTextbox";
-            this.databaseBackupNameTextbox.ReadOnly = false;
-            this.databaseBackupNameTextbox.Size = new System.Drawing.Size(263, 28);
-            this.databaseBackupNameTextbox.TabIndex = 34;
-            this.databaseBackupNameTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.databaseBackupNameTextbox.UseSystemPasswordChar = false;
-            this.databaseBackupNameTextbox.Visible = false;
-            // 
-            // databaseActionComboBox
-            // 
-            this.databaseActionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.databaseActionComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.databaseActionComboBox.DropDownHeight = 100;
-            this.databaseActionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.databaseActionComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.databaseActionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseActionComboBox.FormattingEnabled = true;
-            this.databaseActionComboBox.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.databaseActionComboBox.IntegralHeight = false;
-            this.databaseActionComboBox.ItemHeight = 20;
-            this.databaseActionComboBox.Items.AddRange(new object[] {
-            "Delete Database",
-            "Backup Database"});
-            this.databaseActionComboBox.Location = new System.Drawing.Point(515, 22);
-            this.databaseActionComboBox.Name = "databaseActionComboBox";
-            this.databaseActionComboBox.Size = new System.Drawing.Size(178, 26);
-            this.databaseActionComboBox.StartIndex = 0;
-            this.databaseActionComboBox.TabIndex = 24;
-            this.databaseActionComboBox.Visible = false;
-            // 
-            // databaseActionLabel
-            // 
-            this.databaseActionLabel.AutoSize = true;
-            this.databaseActionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.databaseActionLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.databaseActionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseActionLabel.Location = new System.Drawing.Point(469, 28);
-            this.databaseActionLabel.Name = "databaseActionLabel";
-            this.databaseActionLabel.Size = new System.Drawing.Size(40, 13);
-            this.databaseActionLabel.TabIndex = 23;
-            this.databaseActionLabel.Text = "Action";
-            this.databaseActionLabel.Visible = false;
-            // 
-            // databaseModListBox
-            // 
-            this.databaseModListBox.FormattingEnabled = true;
-            this.databaseModListBox.Location = new System.Drawing.Point(26, 63);
-            this.databaseModListBox.Name = "databaseModListBox";
-            this.databaseModListBox.Size = new System.Drawing.Size(667, 310);
-            this.databaseModListBox.TabIndex = 22;
-            this.databaseModListBox.Visible = false;
-            // 
-            // databaseLabel
-            // 
-            this.databaseLabel.AutoSize = true;
-            this.databaseLabel.BackColor = System.Drawing.Color.Transparent;
-            this.databaseLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.databaseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseLabel.Location = new System.Drawing.Point(25, 28);
-            this.databaseLabel.Name = "databaseLabel";
-            this.databaseLabel.Size = new System.Drawing.Size(55, 13);
-            this.databaseLabel.TabIndex = 21;
-            this.databaseLabel.Text = "Database";
-            this.databaseLabel.Visible = false;
-            // 
-            // databaseComboBox
-            // 
-            this.databaseComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.databaseComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.databaseComboBox.DropDownHeight = 100;
-            this.databaseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.databaseComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.databaseComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseComboBox.FormattingEnabled = true;
-            this.databaseComboBox.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.databaseComboBox.IntegralHeight = false;
-            this.databaseComboBox.ItemHeight = 20;
-            this.databaseComboBox.Location = new System.Drawing.Point(86, 22);
-            this.databaseComboBox.Name = "databaseComboBox";
-            this.databaseComboBox.Size = new System.Drawing.Size(377, 26);
-            this.databaseComboBox.StartIndex = 0;
-            this.databaseComboBox.TabIndex = 20;
-            this.databaseComboBox.Visible = false;
-            // 
-            // createNewDatabaseButton
-            // 
-            this.createNewDatabaseButton.BackColor = System.Drawing.Color.Transparent;
-            this.createNewDatabaseButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.createNewDatabaseButton.Image = null;
-            this.createNewDatabaseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createNewDatabaseButton.Location = new System.Drawing.Point(275, 217);
-            this.createNewDatabaseButton.Name = "createNewDatabaseButton";
-            this.createNewDatabaseButton.Size = new System.Drawing.Size(166, 40);
-            this.createNewDatabaseButton.TabIndex = 39;
-            this.createNewDatabaseButton.Text = "Create new Database";
-            this.createNewDatabaseButton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.createNewDatabaseButton.Click += new System.EventHandler(this.createNewDatabaseButton_Click);
-            // 
-            // noCustomDatabaseLabel
-            // 
-            this.noCustomDatabaseLabel.AutoSize = true;
-            this.noCustomDatabaseLabel.BackColor = System.Drawing.Color.Transparent;
-            this.noCustomDatabaseLabel.Font = new System.Drawing.Font("Segoe UI", 25F);
-            this.noCustomDatabaseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.noCustomDatabaseLabel.Location = new System.Drawing.Point(136, 142);
-            this.noCustomDatabaseLabel.Name = "noCustomDatabaseLabel";
-            this.noCustomDatabaseLabel.Size = new System.Drawing.Size(444, 46);
-            this.noCustomDatabaseLabel.TabIndex = 40;
-            this.noCustomDatabaseLabel.Text = "No custom Databases found";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1905,7 +2115,6 @@
             this.aboutPage.ResumeLayout(false);
             this.aboutPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateButton)).EndInit();
-            this.iTalk_Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1923,13 +2132,11 @@
         private iTalk.iTalk_RadioButton trackRadioButton;
         private iTalk.iTalk_RadioButton gearRadioButton;
         private iTalk.iTalk_Button_1 saveMXdirButton;
-        private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel2;
         private iTalk.iTalk_TextBox_Big mxDirTbox;
         private iTalk.iTalk_Button_1 browseMXdirButton;
         private iTalk.iTalk_Label modLabel;
         private iTalk.iTalk_ComboBox modComboBox;
         private System.Windows.Forms.NotifyIcon notifyIcon;
-        private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel1;
         private iTalk.iTalk_TextBox_Big modTbox;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.CheckedListBox modListBox;
@@ -1978,52 +2185,8 @@
         private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel4;
         private iTalk.iTalk_CheckBox deleteFileAfterCheckbox;
         private System.Windows.Forms.TabPage databasesPage;
-        private System.Windows.Forms.TabPage launchPage;
         private iTalk.iTalk_RadioButton LaunchRadioButton;
         private iTalk.iTalk_RadioButton DatabasesRadioButton;
-        private iTalk.iTalk_Button_1 iTalk_Button_11;
-        private iTalk.iTalk_TextBox_Big extraCommandsTextbox;
-        private iTalk.iTalk_Separator iTalk_Separator5;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox1;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox10;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox9;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox8;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox7;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox6;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox5;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox4;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox3;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox2;
-        private iTalk.iTalk_Separator iTalk_Separator6;
-        private iTalk.iTalk_Label iTalk_Label15;
-        private iTalk.iTalk_TrackBar roostFreqTrackbar;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox13;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox14;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox27;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox26;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox25;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox24;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox23;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox22;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox21;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox20;
-        private iTalk.iTalk_TrackBar rotateLineupTrackbar;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox19;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox18;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox17;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox16;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox12;
-        private iTalk.iTalk_TrackBar lodBiasTrackbar;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox11;
-        private iTalk.iTalk_TrackBar detailTrackbar;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox15;
-        private iTalk.iTalk_Panel iTalk_Panel1;
-        private iTalk.iTalk_TextBox_Small iTalk_TextBox_Small1;
-        private iTalk.iTalk_Label rotateLineupValue;
-        private iTalk.iTalk_Label detailValue;
-        private iTalk.iTalk_Label roostFreqValue;
-        private iTalk.iTalk_Label lodBiasValue;
-        private iTalk.iTalk_CheckBox iTalk_CheckBox28;
         private iTalk.iTalk_RadioButton customRadioButton;
         private iTalk.iTalk_ComboBox customDatabaseComboBox;
         private iTalk.iTalk_Button_1 databaseExecuteButton;
@@ -2038,6 +2201,69 @@
         private iTalk.iTalk_ComboBox databaseComboBox;
         private iTalk.iTalk_HeaderLabel noCustomDatabaseLabel;
         private iTalk.iTalk_Button_1 createNewDatabaseButton;
+        private System.Windows.Forms.TabPage launchPage;
+        private iTalk.iTalk_Separator iTalk_Separator15;
+        private iTalk.iTalk_Separator iTalk_Separator16;
+        private iTalk.iTalk_Label iTalk_Label20;
+        private iTalk.iTalk_Label iTalk_Label19;
+        private iTalk.iTalk_Label iTalk_Label18;
+        private iTalk.iTalk_Label iTalk_Label17;
+        private iTalk.iTalk_Separator iTalk_Separator7;
+        private iTalk.iTalk_Label iTalk_Label16;
+        private iTalk.iTalk_CheckBox noVertexArraysCB;
+        private iTalk.iTalk_CheckBox aiLearnCB;
+        private iTalk.iTalk_CheckBox glFinishCB;
+        private iTalk.iTalk_CheckBox recordVideoCB;
+        private iTalk.iTalk_CheckBox accurateSkipCB;
+        private iTalk.iTalk_CheckBox fuglyCB;
+        private iTalk.iTalk_CheckBox drawRenderStatsCB;
+        private iTalk.iTalk_CheckBox noSoundCB;
+        private iTalk.iTalk_CheckBox drawPingCB;
+        private iTalk.iTalk_CheckBox drawTimeCB;
+        private iTalk.iTalk_CheckBox drawFPSCB;
+        private iTalk.iTalk_CheckBox noAiLearnCB;
+        private iTalk.iTalk_CheckBox hideHudCB;
+        private iTalk.iTalk_CheckBox noMMXCB;
+        private iTalk.iTalk_CheckBox hidePauseCB;
+        private iTalk.iTalk_CheckBox debugCB;
+        private iTalk.iTalk_CheckBox editorCB;
+        private iTalk.iTalk_CheckBox superDebugCB;
+        private iTalk.iTalk_CheckBox practiceCB;
+        private iTalk.iTalk_CheckBox aiWarpCB;
+        private iTalk.iTalk_CheckBox erodeCB;
+        private iTalk.iTalk_CheckBox recordAudioCB;
+        private iTalk.iTalk_CheckBox fakelagCB;
+        private iTalk.iTalk_Label detailValue;
+        private iTalk.iTalk_Label roostFreqValue;
+        private iTalk.iTalk_Label lodBiasValue;
+        private iTalk.iTalk_Label rotateLineupValue;
+        private iTalk.iTalk_TextBox_Small lockFPSTextbox;
+        private iTalk.iTalk_TrackBar rotateLineupTrackbar;
+        private iTalk.iTalk_CheckBox rotateLineupCB;
+        private iTalk.iTalk_CheckBox lockFPSCB;
+        private iTalk.iTalk_TrackBar lodBiasTrackbar;
+        private iTalk.iTalk_CheckBox lodBiasCB;
+        private iTalk.iTalk_TrackBar detailTrackbar;
+        private iTalk.iTalk_CheckBox detailCB;
+        private iTalk.iTalk_TrackBar roostFreqTrackbar;
+        private iTalk.iTalk_CheckBox roostFreqCB;
+        private iTalk.iTalk_Separator iTalk_Separator6;
+        private iTalk.iTalk_Label iTalk_Label15;
+        private iTalk.iTalk_TextBox_Big mxExeLocationTextbox;
+        private iTalk.iTalk_Separator iTalk_Separator5;
+        private iTalk.iTalk_Button_1 launchMXS;
+        private iTalk.iTalk_Separator iTalk_Separator11;
+        private iTalk.iTalk_Separator iTalk_Separator10;
+        private iTalk.iTalk_Separator iTalk_Separator9;
+        private iTalk.iTalk_Separator iTalk_Separator8;
+        private iTalk.iTalk_Label iTalk_Label21;
+        private iTalk.iTalk_Separator iTalk_Separator12;
+        private iTalk.iTalk_Label iTalk_Label22;
+        private iTalk.iTalk_Separator iTalk_Separator13;
+        private iTalk.iTalk_Label iTalk_Label23;
+        private iTalk.iTalk_CheckBox personalFolderCB;
+        private iTalk.iTalk_CheckBox alwaysDeleteFileAfterInstallCB;
+        private iTalk.iTalk_Button_1 browseMxExeLocationButton;
     }
 }
 

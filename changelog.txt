@@ -1,4 +1,10 @@
-Alpha 0.2
+Alpha 0.1.5
 -Added option to delete file after installation
 -Added default page setting
--Added database manager page
+-Added database manager page (no functionality)
+-Added Launch MX Simulator page
+Alpha 0.1.6
+-Added Working command line options
+-Added "Personal Folder" option in settings
+-Added "Always delete file after install" option to installer page
+-Lock FPS value is now persistent

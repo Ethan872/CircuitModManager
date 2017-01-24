@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Data.SQLite;
 using System.Linq;
 using Ionic.Zip;
+using System.Collections;
+using System.Text;
 #region License
 /*
 Circuit Manager Source Code File
@@ -56,6 +58,7 @@ namespace Circuit_Mod_Manager
         String trackConnection;
         String bikeConnection;
         String desktopPath;
+        ArrayList paramList = new ArrayList();
 
         public Form1()
         {
@@ -66,6 +69,22 @@ namespace Circuit_Mod_Manager
             iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages[Properties.Settings.Default.defaultPage];
             sr.CheckCircuitData();
             mxDirTbox.Text = sr.CheckMXdir();
+            if (Properties.Settings.Default.usingPersonalFolder == true)
+            {
+                mxExeLocationTextbox.Text = Properties.Settings.Default.mxExeLocation;
+            }
+            else
+            {
+                mxExeLocationTextbox.Text = mxDirTbox.Text + "\\" + "mx.exe";
+            }
+            if (Properties.Settings.Default.lockFps == "")
+            {
+                lockFPSTextbox.Text = "";
+            }
+            else
+            {
+                lockFPSTextbox.Text = Properties.Settings.Default.lockFps;
+            }
         }
 
         private void modTbox_DragEnter(object sender, DragEventArgs e)
@@ -184,6 +203,16 @@ namespace Circuit_Mod_Manager
                 Properties.Settings.Default.Save();
             }
             sw.Close();
+            if(personalFolderCB.Checked == true)
+            {
+                Properties.Settings.Default.usingPersonalFolder = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.usingPersonalFolder = false;
+                Properties.Settings.Default.Save();
+            }
             vManager.setMxDirectory(mxDirTbox.Text);
             notifyIconSettings.ShowBalloonTip(2000);
         }
@@ -194,11 +223,6 @@ namespace Circuit_Mod_Manager
             fbd.Description = "Select your MX Simulator root directory";
             fbd.ShowDialog();
             mxDirTbox.Text = fbd.SelectedPath;
-        }
-
-        private void installerPage_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void filterModComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1093,11 +1117,380 @@ namespace Circuit_Mod_Manager
                 }
 
             }
+            else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["launchPage"])
+            {
+                if(Properties.Settings.Default.usingPersonalFolder == true)
+                {
+                    mxExeLocationTextbox.Text = Properties.Settings.Default.mxExeLocation;
+                }
+                else
+                {
+                    mxExeLocationTextbox.Text = mxDirTbox.Text + "\\" + "mx.exe";
+                }
+            }
+            else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["settingsPage"])
+            {
+                if(Properties.Settings.Default.usingPersonalFolder == true)
+                {
+                    personalFolderCB.Checked = true;
+                }
+                else
+                {
+                    personalFolderCB.Checked = false;
+                }
+            }
+            else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["installerPage"])
+            {
+                if(Properties.Settings.Default.alwaysDeleteFileAfterInstall == true)
+                {
+                    alwaysDeleteFileAfterInstallCB.Checked = true;
+                    deleteFileAfterCheckbox.Checked = true;
+                }
+                else
+                {
+                    alwaysDeleteFileAfterInstallCB.Checked = false;
+                    deleteFileAfterCheckbox.Checked = false;
+                }
+            }
         }
 
         private void createNewDatabaseButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.customDatabasesExist = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void launchMXS_Click(object sender, EventArgs e)
+        {
+            if (mxExeLocationTextbox.Text == "")
+            {
+                MessageBox.Show("MX.exe location was not specified", "MX.exe not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                String rotateLineupValue = 0.ToString();
+                if(rotateLineupCB.Checked == true)
+                {
+                    updateParamlist(true, "--rotate-lineup " + rotateLineupTrackbar.Value + " ");
+                }
+                else
+                {
+                    updateParamlist(false, "--rotate-lineup " + rotateLineupTrackbar.Value + " ");
+                }
+                if(lodBiasCB.Checked == true)
+                {
+                    updateParamlist(true, "--lod-bias " + lodBiasTrackbar.Value + " ");
+                }
+                else
+                {
+                    updateParamlist(false, "--lod-bias " + lodBiasTrackbar.Value + " ");
+                }
+                if(roostFreqCB.Checked == true)
+                {
+                    updateParamlist(true, "--roostfrequency " + roostFreqTrackbar.Value + " ");
+                }
+                else
+                {
+                    updateParamlist(false, "--roostfrequency " + roostFreqTrackbar.Value + " ");
+                }
+                if(detailCB.Checked == true)
+                {
+                    updateParamlist(true, "--detail " + detailTrackbar.Value + " ");
+                }
+                else
+                {
+                    updateParamlist(false, "--detail " + detailTrackbar.Value + " ");
+                }
+                if(lockFPSCB.Checked == true)
+                {
+                    updateParamlist(true, "--lock-fps " + lockFPSTextbox.Text + " ");
+                    Properties.Settings.Default.lockFps = lockFPSTextbox.Text;
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    updateParamlist(false, "--lock-fps " + lockFPSTextbox.Text + " ");
+                }
+                if (fakelagCB.Checked == true)
+                {
+                    updateParamlist(true, "--fake-lag ");
+                }
+                else
+                {
+                    updateParamlist(false, "--fake-lag ");
+                }
+                if (noVertexArraysCB.Checked == true)
+                {
+                    updateParamlist(true, "--novertexarrays ");
+                }
+                else
+                {
+                    updateParamlist(false, "--novertexarrays ");
+                }
+                if (debugCB.Checked == true)
+                {
+                    updateParamlist(true, "--debug ");
+                }
+                else
+                {
+                    updateParamlist(false, "--debug ");
+                }
+                if (superDebugCB.Checked == true)
+                {
+                    updateParamlist(true, "--super-debug ");
+                }
+                else
+                {
+                    updateParamlist(false, "--super-debug ");
+                }
+                if (accurateSkipCB.Checked == true)
+                {
+                    updateParamlist(true, "--accurate-skip 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--accurate-skip 1 ");
+                }
+                if (erodeCB.Checked == true)
+                {
+                    updateParamlist(true, "--erode 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--erode 1 ");
+                }
+                if (glFinishCB.Checked == true)
+                {
+                    updateParamlist(true, "--glfinish 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--glfinish 1 ");
+                }
+                if (aiLearnCB.Checked == true)
+                {
+                    updateParamlist(true, "--learn ");
+                }
+                else
+                {
+                    updateParamlist(false, "--learn ");
+                }
+                if (noAiLearnCB.Checked == true)
+                {
+                    updateParamlist(true, "--nolearn ");
+                }
+                else
+                {
+                    updateParamlist(false, "--nolearn ");
+                }
+                if (aiWarpCB.Checked == true)
+                {
+                    updateParamlist(true, "--warp ");
+                }
+                else
+                {
+                    updateParamlist(false, "--warp ");
+                }
+                if (noMMXCB.Checked == true)
+                {
+                    updateParamlist(true, "--nommx ");
+                }
+                else
+                {
+                    updateParamlist(false, "--nommx ");
+                }
+                if (hidePauseCB.Checked == true)
+                {
+                    updateParamlist(true, "--hidden-pause 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--hidden-pause 1 ");
+                }
+                if (hideHudCB.Checked == true)
+                {
+                    updateParamlist(true, "--hidden-hud 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--hidden-hud 1 ");
+                }
+                if (fuglyCB.Checked == true)
+                {
+                    updateParamlist(true, "--fugly 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--fugly 1 ");
+                }
+                if (drawFPSCB.Checked == true)
+                {
+                    updateParamlist(true, "--draw-fps 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--draw-fps 1 ");
+                }
+                if (drawTimeCB.Checked == true)
+                {
+                    updateParamlist(true, "--draw-time 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--draw-time 1 ");
+                }
+                if (drawPingCB.Checked == true)
+                {
+                    updateParamlist(true, "--draw-ping 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--draw-ping 1 ");
+                }
+                if (drawRenderStatsCB.Checked == true)
+                {
+                    updateParamlist(true, "--draw-render-stats 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--draw-render-stats 1 ");
+                }
+                if (recordVideoCB.Checked == true)
+                {
+                    updateParamlist(true, "--record-video ");
+                }
+                else
+                {
+                    updateParamlist(false, "--record-video ");
+                }
+                if (noSoundCB.Checked == true)
+                {
+                    updateParamlist(true, "--nosound ");
+                }
+                else
+                {
+                    updateParamlist(false, "--nosound ");
+                }
+                if (editorCB.Checked == true)
+                {
+                    updateParamlist(true, "--editor 1 ");
+                }
+                else
+                {
+                    updateParamlist(false, "--editor 1 ");
+                }
+                if (practiceCB.Checked == true)
+                {
+                    updateParamlist(true, "--practice ");
+                }
+                else
+                {
+                    updateParamlist(false, "--practice ");
+                }
+                StringBuilder sb = new StringBuilder();
+                foreach (String parameter in paramList)
+                {
+                    sb.Append(parameter);   
+                }
+                Process.Start(mxExeLocationTextbox.Text, sb.ToString());
+                paramList.Clear();
+            }
+            
+        }
+
+        private void rotateLineupCB_CheckedChanged(object sender)
+        {
+            if(rotateLineupCB.Checked == true)
+            {
+                rotateLineupTrackbar.Enabled = true;
+            }
+            else
+            {
+                rotateLineupTrackbar.Enabled = false;
+                rotateLineupTrackbar.Value = 0;
+                rotateLineupValue.Text = 0.ToString();
+            }
+        }
+
+        private void lodBiasCB_CheckedChanged(object sender)
+        {
+            if(lodBiasCB.Checked == true)
+            {
+                lodBiasTrackbar.Enabled = true;
+            }
+            else
+            {
+                lodBiasTrackbar.Enabled = false;
+                lodBiasTrackbar.Value = 0;
+                lodBiasValue.Text = 0.ToString();
+            }
+        }
+
+        private void roostFreqCB_CheckedChanged(object sender)
+        {
+            if(roostFreqCB.Checked == true)
+            {
+                roostFreqTrackbar.Enabled = true;
+            }
+            else
+            {
+                roostFreqTrackbar.Enabled = false;
+                roostFreqTrackbar.Value = 0;
+                roostFreqValue.Text = 0.ToString();
+            }
+        }
+
+        private void detailCB_CheckedChanged(object sender)
+        {
+            if(detailCB.Checked == true)
+            {
+                detailTrackbar.Enabled = true;
+            }
+            else
+            {
+                detailTrackbar.Enabled = false;
+                detailTrackbar.Value = 0;
+                detailValue.Text = 0.ToString();
+            }
+        }
+
+        private void updateParamlist(Boolean add, String parameter)
+        {
+            if(add == true)
+            {
+                //add to paramlist
+                paramList.Add(parameter);
+            }
+            else
+            {
+                paramList.Remove(parameter);
+                //remove from paramlist
+            }
+        }
+
+        private void alwaysDeleteFileAfterInstallCB_CheckedChanged(object sender)
+        {
+            if(alwaysDeleteFileAfterInstallCB.Checked == true)
+            {
+                Properties.Settings.Default.alwaysDeleteFileAfterInstall = true;
+                Properties.Settings.Default.Save();
+                deleteFileAfterCheckbox.Checked = true;
+            }
+            else
+            {
+                Properties.Settings.Default.alwaysDeleteFileAfterInstall = false;
+                Properties.Settings.Default.Save();
+                deleteFileAfterCheckbox.Checked = false;
+            }
+        }
+
+        private void browseMxExeLocationButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select your MX Simulator executable location";
+            ofd.ShowDialog();
+            mxExeLocationTextbox.Text = ofd.FileName;
+            Properties.Settings.Default.mxExeLocation = ofd.FileName;
             Properties.Settings.Default.Save();
         }
     }
