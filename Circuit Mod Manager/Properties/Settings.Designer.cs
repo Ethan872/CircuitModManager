@@ -46,5 +46,53 @@ namespace Circuit_Mod_Manager.Properties {
                 this["customDatabasesExist"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool usingPersonalFolder {
+            get {
+                return ((bool)(this["usingPersonalFolder"]));
+            }
+            set {
+                this["usingPersonalFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool alwaysDeleteFileAfterInstall {
+            get {
+                return ((bool)(this["alwaysDeleteFileAfterInstall"]));
+            }
+            set {
+                this["alwaysDeleteFileAfterInstall"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string mxExeLocation {
+            get {
+                return ((string)(this["mxExeLocation"]));
+            }
+            set {
+                this["mxExeLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lockFps {
+            get {
+                return ((string)(this["lockFps"]));
+            }
+            set {
+                this["lockFps"] = value;
+            }
+        }
     }
 }

@@ -63,6 +63,16 @@ namespace Circuit_Mod_Manager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dots_horizontal {
+            get {
+                object obj = ResourceManager.GetObject("dots-horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap execute {
             get {
                 object obj = ResourceManager.GetObject("execute", resourceCulture);

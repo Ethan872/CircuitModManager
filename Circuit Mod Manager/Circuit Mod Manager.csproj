@@ -172,6 +172,7 @@
   <ItemGroup>
     <Content Include="dirtbikeIcon.ico" />
     <Content Include="mxsim_mod_manager.ico" />
+    <None Include="Resources\dots-horizontal.png" />
     <None Include="Resources\ic_play_arrow_black_36dp_1x.png" />
     <None Include="Resources\play.png" />
     <None Include="Resources\mxsim_mod_manager.ico" />
