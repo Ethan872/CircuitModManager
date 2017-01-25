@@ -99,7 +99,10 @@ namespace Circuit_Mod_Manager
             foreach (String fileName in Directory.GetFiles("custom_databases"))
             {
                 databaseName = Path.GetFileNameWithoutExtension(fileName);
-                vManager.getCustomDatabaseListNoExt().Add(databaseName);
+                if(!vManager.getCustomDatabaseListNoExt().Contains(databaseName))
+                {
+                    vManager.getCustomDatabaseListNoExt().Add(databaseName);
+                }
             }
         }
 
@@ -385,7 +388,6 @@ namespace Circuit_Mod_Manager
                     {
                         if(databaseView == false)
                         {
-                            MessageBox.Show("Successfully connected to custom database");
                             modComboBox.Items.Clear();
                             modListBox.Items.Clear();
                             SQLiteCommand cmd = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type = 'table'", customCon);
@@ -976,8 +978,6 @@ namespace Circuit_Mod_Manager
                                 SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + modInDatabase + "'", sqliteCon);
                                 cmd.ExecuteNonQuery();
                             }
-                            databaseComboBox.Items.Remove(databaseComboBox.SelectedItem);
-                            databaseModListBox.Items.Clear();
                         }
                     }
                 }
@@ -1278,11 +1278,7 @@ namespace Circuit_Mod_Manager
                     refreshCustomDatabaseList();
                     foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
                     {
-                        if (databaseComboBox.Items.Contains(databaseEntry))
-                        {
-
-                        }
-                        else
+                        if (!databaseComboBox.Items.Contains(databaseEntry))
                         {
                             databaseComboBox.Items.Add(databaseEntry);
                         }
@@ -1344,11 +1340,7 @@ namespace Circuit_Mod_Manager
                     refreshCustomDatabaseList();
                     foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
                     {
-                        if (customDatabaseComboBox.Items.Contains(databaseEntry))
-                        {
-
-                        }
-                        else
+                        if (!customDatabaseComboBox.Items.Contains(databaseEntry))
                         {
                             customDatabaseComboBox.Items.Add(databaseEntry);
                         }
@@ -1366,11 +1358,7 @@ namespace Circuit_Mod_Manager
                     filterModComboBox.Items.Add("Bike");
                     foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
                     {
-                        if(filterModComboBox.Items.Contains(databaseEntry))
-                        {
-
-                        }
-                        else
+                        if(!filterModComboBox.Items.Contains(databaseEntry))
                         {
                             filterModComboBox.Items.Add(databaseEntry);
                         }
@@ -1743,11 +1731,7 @@ namespace Circuit_Mod_Manager
             refreshCustomDatabaseList();
             foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
             {
-                if (databaseComboBox.Items.Contains(databaseEntry))
-                {
-
-                }
-                else
+                if (!databaseComboBox.Items.Contains(databaseEntry))
                 {
                     databaseComboBox.Items.Add(databaseEntry);
                 }
@@ -1803,6 +1787,12 @@ namespace Circuit_Mod_Manager
                     {
                         SQLiteConnection customCon = null;
                         deleteMod(true, true, (string)databaseComboBox.SelectedItem, customCon, "customConnection");
+                        vManager.getCustomDatabaseListNoExt().Remove((string)databaseComboBox.SelectedItem);
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                        File.Delete(Directory.GetCurrentDirectory() + "\\custom_databases\\" + (string)databaseComboBox.SelectedItem + ".db");
+                        databaseComboBox.Items.Remove(databaseComboBox.SelectedItem);
+                        databaseModListBox.Items.Clear();
                     }
                     else
                     {

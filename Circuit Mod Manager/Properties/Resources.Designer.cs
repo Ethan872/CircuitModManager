@@ -111,26 +111,6 @@ namespace Circuit_Mod_Manager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap loadingImage {
-            get {
-                object obj = ResourceManager.GetObject("loadingImage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap loadingImage1 {
-            get {
-                object obj = ResourceManager.GetObject("loadingImage1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon mxsim_mod_manager {
@@ -196,16 +176,6 @@ namespace Circuit_Mod_Manager.Properties {
         internal static System.Drawing.Bitmap saveIcon {
             get {
                 object obj = ResourceManager.GetObject("saveIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap waitScreen {
-            get {
-                object obj = ResourceManager.GetObject("waitScreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

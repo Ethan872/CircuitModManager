@@ -84,7 +84,6 @@
             this.iTalk_Separator5 = new iTalk.iTalk_Separator();
             this.launchMXS = new iTalk.iTalk_Button_1();
             this.installerPage = new System.Windows.Forms.TabPage();
-            this.openMxDir = new iTalk.iTalk_Button_1();
             this.alwaysDeleteFileAfterInstallCB = new iTalk.iTalk_CheckBox();
             this.iTalk_Label21 = new iTalk.iTalk_Label();
             this.iTalk_Separator12 = new iTalk.iTalk_Separator();
@@ -170,6 +169,7 @@
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
+            this.openMxDir = new iTalk.iTalk_Button_1();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.launchPage.SuspendLayout();
@@ -887,7 +887,6 @@
             // installerPage
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.installerPage.Controls.Add(this.openMxDir);
             this.installerPage.Controls.Add(this.alwaysDeleteFileAfterInstallCB);
             this.installerPage.Controls.Add(this.iTalk_Label21);
             this.installerPage.Controls.Add(this.iTalk_Separator12);
@@ -909,19 +908,6 @@
             this.installerPage.TabIndex = 0;
             this.installerPage.Text = "Installer";
             this.installerPage.ToolTipText = "Install your mods";
-            // 
-            // openMxDir
-            // 
-            this.openMxDir.BackColor = System.Drawing.Color.Transparent;
-            this.openMxDir.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.openMxDir.Image = global::Circuit_Mod_Manager.Properties.Resources.folder_open;
-            this.openMxDir.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.openMxDir.Location = new System.Drawing.Point(22, 420);
-            this.openMxDir.Name = "openMxDir";
-            this.openMxDir.Size = new System.Drawing.Size(166, 40);
-            this.openMxDir.TabIndex = 24;
-            this.openMxDir.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.openMxDir.Click += new System.EventHandler(this.openMxDir_Click);
             // 
             // alwaysDeleteFileAfterInstallCB
             // 
@@ -1616,6 +1602,7 @@
             // settingsPage
             // 
             this.settingsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.settingsPage.Controls.Add(this.openMxDir);
             this.settingsPage.Controls.Add(this.iTalk_Label23);
             this.settingsPage.Controls.Add(this.personalFolderCB);
             this.settingsPage.Controls.Add(this.iTalk_Label22);
@@ -2084,6 +2071,19 @@
             this.notifyIconSettings.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconSettings.Icon")));
             this.notifyIconSettings.Text = "MXSIM:MM";
             this.notifyIconSettings.Visible = true;
+            // 
+            // openMxDir
+            // 
+            this.openMxDir.BackColor = System.Drawing.Color.Transparent;
+            this.openMxDir.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.openMxDir.Image = global::Circuit_Mod_Manager.Properties.Resources.folder_open;
+            this.openMxDir.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.openMxDir.Location = new System.Drawing.Point(22, 420);
+            this.openMxDir.Name = "openMxDir";
+            this.openMxDir.Size = new System.Drawing.Size(166, 40);
+            this.openMxDir.TabIndex = 25;
+            this.openMxDir.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.openMxDir.Click += new System.EventHandler(this.openMxDir_Click);
             // 
             // Form1
             // 
