@@ -120,6 +120,7 @@
             this.modLabel = new iTalk.iTalk_Label();
             this.modComboBox = new iTalk.iTalk_ComboBox();
             this.databasesPage = new System.Windows.Forms.TabPage();
+            this.refreshButton1 = new System.Windows.Forms.PictureBox();
             this.databaseActionStatusLabel = new iTalk.iTalk_Label();
             this.refreshButton = new System.Windows.Forms.PictureBox();
             this.createNewDatabase2Button = new iTalk.iTalk_Button_1();
@@ -134,6 +135,7 @@
             this.databaseComboBox = new iTalk.iTalk_ComboBox();
             this.databaseModListBox = new System.Windows.Forms.ListBox();
             this.settingsPage = new System.Windows.Forms.TabPage();
+            this.openMxDir = new iTalk.iTalk_Button_1();
             this.iTalk_Label23 = new iTalk.iTalk_Label();
             this.personalFolderCB = new iTalk.iTalk_CheckBox();
             this.iTalk_Label22 = new iTalk.iTalk_Label();
@@ -169,13 +171,14 @@
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
-            this.openMxDir = new iTalk.iTalk_Button_1();
+            this.iTalk_Label25 = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.launchPage.SuspendLayout();
             this.installerPage.SuspendLayout();
             this.modPage.SuspendLayout();
             this.databasesPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.settingsPage.SuspendLayout();
             this.aboutPage.SuspendLayout();
@@ -1390,6 +1393,7 @@
             // databasesPage
             // 
             this.databasesPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.databasesPage.Controls.Add(this.refreshButton1);
             this.databasesPage.Controls.Add(this.databaseActionStatusLabel);
             this.databasesPage.Controls.Add(this.refreshButton);
             this.databasesPage.Controls.Add(this.createNewDatabase2Button);
@@ -1409,6 +1413,22 @@
             this.databasesPage.Size = new System.Drawing.Size(717, 474);
             this.databasesPage.TabIndex = 4;
             this.databasesPage.Text = "Databases";
+            // 
+            // refreshButton1
+            // 
+            this.refreshButton1.Image = global::Circuit_Mod_Manager.Properties.Resources.refresh;
+            this.refreshButton1.Location = new System.Drawing.Point(346, 288);
+            this.refreshButton1.Name = "refreshButton1";
+            this.refreshButton1.Size = new System.Drawing.Size(25, 26);
+            this.refreshButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.refreshButton1.TabIndex = 45;
+            this.refreshButton1.TabStop = false;
+            this.refreshButton1.Visible = false;
+            this.refreshButton1.Click += new System.EventHandler(this.refreshButton1_Click);
+            this.refreshButton1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.refreshButton1_MouseDown);
+            this.refreshButton1.MouseEnter += new System.EventHandler(this.refreshButton1_MouseEnter);
+            this.refreshButton1.MouseLeave += new System.EventHandler(this.refreshButton1_MouseLeave);
+            this.refreshButton1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.refreshButton1_MouseUp);
             // 
             // databaseActionStatusLabel
             // 
@@ -1432,6 +1452,7 @@
             this.refreshButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.refreshButton.TabIndex = 42;
             this.refreshButton.TabStop = false;
+            this.refreshButton.Visible = false;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             this.refreshButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.refreshButton_MouseDown);
             this.refreshButton.MouseEnter += new System.EventHandler(this.refreshButton_MouseEnter);
@@ -1543,6 +1564,7 @@
             this.databaseActionComboBox.StartIndex = 0;
             this.databaseActionComboBox.TabIndex = 24;
             this.databaseActionComboBox.Visible = false;
+            this.databaseActionComboBox.SelectedIndexChanged += new System.EventHandler(this.databaseActionComboBox_SelectedIndexChanged);
             // 
             // databaseActionLabel
             // 
@@ -1598,6 +1620,7 @@
             this.databaseModListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.databaseModListBox.Size = new System.Drawing.Size(668, 303);
             this.databaseModListBox.TabIndex = 43;
+            this.databaseModListBox.Visible = false;
             // 
             // settingsPage
             // 
@@ -1623,6 +1646,19 @@
             this.settingsPage.Size = new System.Drawing.Size(717, 474);
             this.settingsPage.TabIndex = 2;
             this.settingsPage.Text = "Settings";
+            // 
+            // openMxDir
+            // 
+            this.openMxDir.BackColor = System.Drawing.Color.Transparent;
+            this.openMxDir.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.openMxDir.Image = global::Circuit_Mod_Manager.Properties.Resources.folder_open;
+            this.openMxDir.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.openMxDir.Location = new System.Drawing.Point(22, 420);
+            this.openMxDir.Name = "openMxDir";
+            this.openMxDir.Size = new System.Drawing.Size(166, 40);
+            this.openMxDir.TabIndex = 25;
+            this.openMxDir.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.openMxDir.Click += new System.EventHandler(this.openMxDir_Click);
             // 
             // iTalk_Label23
             // 
@@ -1787,6 +1823,7 @@
             // aboutPage
             // 
             this.aboutPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.aboutPage.Controls.Add(this.iTalk_Label25);
             this.aboutPage.Controls.Add(this.iTalk_HeaderLabel4);
             this.aboutPage.Controls.Add(this.dotNetZipLink);
             this.aboutPage.Controls.Add(this.iTalk_Label14);
@@ -1818,11 +1855,11 @@
             this.iTalk_HeaderLabel4.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_HeaderLabel4.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.iTalk_HeaderLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.iTalk_HeaderLabel4.Location = new System.Drawing.Point(204, 97);
+            this.iTalk_HeaderLabel4.Location = new System.Drawing.Point(167, 97);
             this.iTalk_HeaderLabel4.Name = "iTalk_HeaderLabel4";
-            this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(309, 46);
+            this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(383, 46);
             this.iTalk_HeaderLabel4.TabIndex = 18;
-            this.iTalk_HeaderLabel4.Text = "Version: Alpha 0.1.7";
+            this.iTalk_HeaderLabel4.Text = "Version: Public Alpha 0.2";
             // 
             // dotNetZipLink
             // 
@@ -2072,18 +2109,18 @@
             this.notifyIconSettings.Text = "MXSIM:MM";
             this.notifyIconSettings.Visible = true;
             // 
-            // openMxDir
+            // iTalk_Label25
             // 
-            this.openMxDir.BackColor = System.Drawing.Color.Transparent;
-            this.openMxDir.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.openMxDir.Image = global::Circuit_Mod_Manager.Properties.Resources.folder_open;
-            this.openMxDir.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.openMxDir.Location = new System.Drawing.Point(22, 420);
-            this.openMxDir.Name = "openMxDir";
-            this.openMxDir.Size = new System.Drawing.Size(166, 40);
-            this.openMxDir.TabIndex = 25;
-            this.openMxDir.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.openMxDir.Click += new System.EventHandler(this.openMxDir_Click);
+            this.iTalk_Label25.AutoSize = true;
+            this.iTalk_Label25.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label25.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label25.Location = new System.Drawing.Point(260, 152);
+            this.iTalk_Label25.Name = "iTalk_Label25";
+            this.iTalk_Label25.Size = new System.Drawing.Size(196, 13);
+            this.iTalk_Label25.TabIndex = 19;
+            this.iTalk_Label25.Text = "May contain bugs! Report any to me!";
+            this.iTalk_Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -2107,6 +2144,7 @@
             this.modPage.PerformLayout();
             this.databasesPage.ResumeLayout(false);
             this.databasesPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).EndInit();
             this.settingsPage.ResumeLayout(false);
             this.settingsPage.PerformLayout();
@@ -2259,6 +2297,8 @@
         private System.Windows.Forms.ListBox databaseModListBox;
         private iTalk.iTalk_Label databaseActionStatusLabel;
         private iTalk.iTalk_Button_1 openMxDir;
+        private System.Windows.Forms.PictureBox refreshButton1;
+        private iTalk.iTalk_Label iTalk_Label25;
     }
 }
 

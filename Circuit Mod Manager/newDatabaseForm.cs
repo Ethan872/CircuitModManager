@@ -13,7 +13,7 @@ namespace Circuit_Mod_Manager
     public partial class newDatabaseForm : Form
     {
 
-        VariableManager vManager = new VariableManager();
+        CustomDatabaseHandler cdbHandler = new CustomDatabaseHandler();
         public newDatabaseForm()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Circuit_Mod_Manager
                     
                 }
                 System.IO.File.Create("custom_databases\\" + databaseNameTextbox.Text + ".db").Close();
-                vManager.getCustomDatabaseListNoExt().Add(databaseNameTextbox.Text);
+                cdbHandler.reloadDatabaseArray();
                 MessageBox.Show("Successfully created your custom database!", databaseNameTextbox.Text + " Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Hide();
             }

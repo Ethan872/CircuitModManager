@@ -54,7 +54,6 @@ namespace Circuit_Mod_Manager
         public String installingModExtension = null;
         public String mxDirectory = null;
         public String backupModName = null;
-        public ArrayList customDatabaseListNoExt = new ArrayList();
 
         //Getters and Setters
         public String getInstallingMod()
@@ -93,10 +92,6 @@ namespace Circuit_Mod_Manager
         public void setBackupModName(String name)
         {
             backupModName = name;
-        }
-        public ArrayList getCustomDatabaseListNoExt()
-        {
-            return customDatabaseListNoExt;
         }
     }
 }

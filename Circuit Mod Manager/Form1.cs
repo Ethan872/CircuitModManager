@@ -50,9 +50,10 @@ namespace Circuit_Mod_Manager
 {
     public partial class Form1 : Form
     {
-        String mxsimmmVersion = "0.1.7";
+        String mxsimmmVersion = "0.2";
 
         DatabaseManager dbManager = new DatabaseManager();
+        CustomDatabaseHandler cdbHandler = new CustomDatabaseHandler();
         StartupRoutine sr = new StartupRoutine();
         VariableManager vManager = new VariableManager();
         String gearConnection;
@@ -61,8 +62,6 @@ namespace Circuit_Mod_Manager
         String customConnection;
         String desktopPath;
         ArrayList paramList = new ArrayList();
-        ArrayList customDatabaseList = new ArrayList();
-        ArrayList customDatabaseListNoExt = new ArrayList();
 
         public Form1()
         {
@@ -70,11 +69,16 @@ namespace Circuit_Mod_Manager
             this.Icon = Circuit_Mod_Manager.Properties.Resources.mxsim_mod_manager;
             this.ShowIcon = true;
             this.ShowInTaskbar = true;
+            if(cdbHandler.doCustomDatabasesExist() == true)
+            {
+                cdbHandler.reloadDatabaseArray();
+            }
+            else
+            {
+            }
             iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages[Properties.Settings.Default.defaultPage];
             sr.CheckCircuitData();
             mxDirTbox.Text = sr.CheckMXdir();
-            //Properties.Settings.Default.customDatabasesExist = false;
-            //Properties.Settings.Default.Save();
             if (Properties.Settings.Default.usingPersonalFolder == true)
             {
                 mxExeLocationTextbox.Text = Properties.Settings.Default.mxExeLocation;
@@ -90,19 +94,6 @@ namespace Circuit_Mod_Manager
             else
             {
                 lockFPSTextbox.Text = Properties.Settings.Default.lockFps;
-            }
-            refreshCustomDatabaseList();
-        }
-        private void refreshCustomDatabaseList()
-        {
-            String databaseName;
-            foreach (String fileName in Directory.GetFiles("custom_databases"))
-            {
-                databaseName = Path.GetFileNameWithoutExtension(fileName);
-                if(!vManager.getCustomDatabaseListNoExt().Contains(databaseName))
-                {
-                    vManager.getCustomDatabaseListNoExt().Add(databaseName);
-                }
             }
         }
 
@@ -123,7 +114,7 @@ namespace Circuit_Mod_Manager
         private void installModButton_Click(object sender, EventArgs e)
         {
             //Check if a mod is loaded to install
-            if(vManager.getInstallingMod() == null)
+            if (vManager.getInstallingMod() == null)
             {
                 MessageBox.Show("Drag and Drop a mod into the text box above", "No mod loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -142,7 +133,7 @@ namespace Circuit_Mod_Manager
                 }
                 else if (gearRadioButton.Checked == true)
                 {
-                    if(deleteFileAfterCheckbox.Checked == true)
+                    if (deleteFileAfterCheckbox.Checked == true)
                     {
                         dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
                     }
@@ -150,11 +141,11 @@ namespace Circuit_Mod_Manager
                     {
                         dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
                     }
-                    
+
                 }
                 else if (bikeRadioButton.Checked == true)
                 {
-                    if(deleteFileAfterCheckbox.Checked == true)
+                    if (deleteFileAfterCheckbox.Checked == true)
                     {
                         dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "bike", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
                     }
@@ -165,15 +156,23 @@ namespace Circuit_Mod_Manager
                 }
                 else if (customRadioButton.Checked == true)
                 {
-                    if (deleteFileAfterCheckbox.Checked == true)
+                    if ((string)customDatabaseComboBox.SelectedItem == null)
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
+                        MessageBox.Show("No database selected", "No DB Selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
+                        if (deleteFileAfterCheckbox.Checked == true)
+                        {
+                            dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
+                        }
+                        else
+                        {
+                            dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
+                        }
                     }
                 }
+
             }
         }
 
@@ -246,6 +245,11 @@ namespace Circuit_Mod_Manager
 
         private void filterModComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            loadModsFromDatabases();
+        }
+
+        private void loadModsFromDatabases()
+        {
             if ((string)filterModComboBox.SelectedItem == "Track")
             {
                 trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
@@ -254,6 +258,8 @@ namespace Circuit_Mod_Manager
                 gearDatabaseStatusLabel.Text = "Idle";
                 bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
                 bikeDatabaseStatusLabel.Text = "Idle";
+                customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                customDatabaseStatusLabel.Text = "Idle";
                 trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
                 using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                 {
@@ -290,6 +296,8 @@ namespace Circuit_Mod_Manager
                 gearDatabaseStatusLabel.Text = "Loaded";
                 bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
                 bikeDatabaseStatusLabel.Text = "Idle";
+                customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                customDatabaseStatusLabel.Text = "Idle";
                 String gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
                 using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                 {
@@ -304,7 +312,7 @@ namespace Circuit_Mod_Manager
                             SQLiteCommand cmd = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type = 'table'", gearCon);
                             using (SQLiteDataReader reader = cmd.ExecuteReader())
                             {
-                                while(reader.Read())
+                                while (reader.Read())
                                 {
                                     modComboBox.Items.Add(reader["name"]);
                                 }
@@ -326,6 +334,8 @@ namespace Circuit_Mod_Manager
                 gearDatabaseStatusLabel.Text = "Idle";
                 bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
                 bikeDatabaseStatusLabel.Text = "Loaded";
+                customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                customDatabaseStatusLabel.Text = "Idle";
                 String bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
                 using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
                 {
@@ -356,24 +366,27 @@ namespace Circuit_Mod_Manager
             }
             else
             {
-                foreach (String databaseName in vManager.getCustomDatabaseListNoExt())
+                trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                trackDatabaseStatusLabel.Text = "Idle";
+                gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                gearDatabaseStatusLabel.Text = "Idle";
+                bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                bikeDatabaseStatusLabel.Text = "Idle";
+                customDatabaseStatusLabel.Text = "Loaded";
+                customDatabaseStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
+                foreach (String database in cdbHandler.getCustomDatabases())
                 {
-                    if ((string)filterModComboBox.SelectedItem == databaseName)
+                    if ((string)filterModComboBox.SelectedItem == database)
                     {
-                        trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
-                        trackDatabaseStatusLabel.Text = "Idle";
-                        gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
-                        gearDatabaseStatusLabel.Text = "Idle";
-                        bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
-                        bikeDatabaseStatusLabel.Text = "Idle";
-                        customDatabaseStatusLabel.Text = "Loaded";
-                        customDatabaseStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
-                        loadModsFromCustomDatabase(false, databaseName);
+                        loadModsFromCustomDatabase(false, database);
                         break;
+                    }
+                    else
+                    {
+                        //Do nothing
                     }
                 }
             }
-            
         }
 
         private void loadModsFromCustomDatabase(Boolean databaseView, String databaseName)
@@ -425,7 +438,6 @@ namespace Circuit_Mod_Manager
         {
             if ((string)filterModComboBox.SelectedItem == "Track")
             {
-                //MessageBox.Show("Showing Track Mods");
                 modListBox.Items.Clear();
                 trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
                 using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
@@ -435,7 +447,6 @@ namespace Circuit_Mod_Manager
                         trackCon.Open();
                         if (trackCon.State == System.Data.ConnectionState.Open)
                         {
-                            //MessageBox.Show("Successfully connected");
                             SQLiteCommand cmd = new SQLiteCommand("SELECT modFiles FROM " + "'" + (string)modComboBox.SelectedItem + "';", trackCon);
                             using (SQLiteDataReader reader = cmd.ExecuteReader())
                             {
@@ -455,7 +466,6 @@ namespace Circuit_Mod_Manager
             }
             else if ((string)filterModComboBox.SelectedItem == "Gear")
             {
-                //MessageBox.Show("Showing Gear Mods files for: " + modComboBox.SelectedItem.ToString());
                 modListBox.Items.Clear();
                 gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
                 using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
@@ -465,7 +475,6 @@ namespace Circuit_Mod_Manager
                         gearCon.Open();
                         if (gearCon.State == System.Data.ConnectionState.Open)
                         {
-                            //MessageBox.Show("Successfully connected");
                             SQLiteCommand cmd = new SQLiteCommand("SELECT modFiles FROM " + "'" + (string)modComboBox.SelectedItem + "';", gearCon);
                             using (SQLiteDataReader reader = cmd.ExecuteReader())
                             {
@@ -485,7 +494,6 @@ namespace Circuit_Mod_Manager
             }
             else if ((string)filterModComboBox.SelectedItem == "Bike")
             {
-                //MessageBox.Show("Showing Bike Mods files for: " + modComboBox.SelectedItem.ToString());
                 modListBox.Items.Clear();
                 bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
                 using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
@@ -495,7 +503,6 @@ namespace Circuit_Mod_Manager
                         bikeCon.Open();
                         if (bikeCon.State == System.Data.ConnectionState.Open)
                         {
-                            //MessageBox.Show("Successfully connected");
                             SQLiteCommand cmd = new SQLiteCommand("SELECT modFiles FROM " + "'" + (string)modComboBox.SelectedItem + "';", bikeCon);
                             using (SQLiteDataReader reader = cmd.ExecuteReader())
                             {
@@ -515,12 +522,12 @@ namespace Circuit_Mod_Manager
             }
             else
             {
-                foreach(String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                foreach (String database in cdbHandler.getCustomDatabases())
                 {
-                    if((string)filterModComboBox.SelectedItem == databaseEntry)
+                    if ((string)filterModComboBox.SelectedItem == database)
                     {
                         modListBox.Items.Clear();
-                        customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + databaseEntry + ".db;version=3;";
+                        customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + database + ".db;version=3;";
                         using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
                         {
                             try
@@ -528,7 +535,6 @@ namespace Circuit_Mod_Manager
                                 customCon.Open();
                                 if (customCon.State == System.Data.ConnectionState.Open)
                                 {
-                                    //MessageBox.Show("Successfully connected");
                                     SQLiteCommand cmd = new SQLiteCommand("SELECT modFiles FROM " + "'" + (string)modComboBox.SelectedItem + "';", customCon);
                                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                                     {
@@ -1128,7 +1134,6 @@ namespace Circuit_Mod_Manager
                                 }
                             }
                         }
-                        
                     }
                 }
                 catch (Exception ex)
@@ -1232,24 +1237,6 @@ namespace Circuit_Mod_Manager
             if(customRadioButton.Checked == true)
             {
                 customDatabaseComboBox.Visible = true;
-                if (Properties.Settings.Default.customDatabasesExist == true)
-                {
-                    customDatabaseComboBox.Items.Clear();
-                    String databaseName;
-                    foreach (String fileName in Directory.GetFiles("custom_databases"))
-                    {
-                        if(fileName == "")
-                        {
-                            MessageBox.Show("Null database name: " + fileName, "Error: Null database name", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            databaseName = Path.GetFileNameWithoutExtension(fileName);
-                            customDatabaseComboBox.Items.Add(databaseName);
-                            vManager.getCustomDatabaseListNoExt().Add(databaseName);
-                        }
-                    }
-                }
             }
             else
             {
@@ -1259,12 +1246,16 @@ namespace Circuit_Mod_Manager
 
         private void iTalk_TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["databasesPage"])
+            if (iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["databasesPage"])
             {
-                if(Properties.Settings.Default.customDatabasesExist == true)
+                if (cdbHandler.doCustomDatabasesExist() == true)
                 {
+                    databaseComboBox.Items.Clear();
+                    cdbHandler.reloadDatabaseArray();
                     createNewDatabaseButton.Visible = false;
                     noCustomDatabaseLabel.Visible = false;
+                    refreshButton1.Visible = false;
+                    refreshButton.Visible = true;
                     createNewDatabase2Button.Visible = true;
                     databaseActionLabel.Visible = true;
                     databaseActionComboBox.Visible = true;
@@ -1274,20 +1265,18 @@ namespace Circuit_Mod_Manager
                     databaseExecuteButton.Visible = true;
                     databaseLabel.Visible = true;
                     databaseModListBox.Visible = true;
-                    databaseComboBox.Items.Clear();
-                    refreshCustomDatabaseList();
-                    foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                    foreach (String database in cdbHandler.getCustomDatabases())
                     {
-                        if (!databaseComboBox.Items.Contains(databaseEntry))
-                        {
-                            databaseComboBox.Items.Add(databaseEntry);
-                        }
+                        databaseComboBox.Items.Add(database);
                     }
                 }
                 else
                 {
+                    databaseComboBox.Items.Clear();
                     createNewDatabaseButton.Visible = true;
                     noCustomDatabaseLabel.Visible = true;
+                    refreshButton1.Visible = true;
+                    refreshButton.Visible = false;
                     createNewDatabase2Button.Visible = false;
                     databaseActionLabel.Visible = false;
                     databaseActionComboBox.Visible = false;
@@ -1298,11 +1287,11 @@ namespace Circuit_Mod_Manager
                     databaseLabel.Visible = false;
                     databaseModListBox.Visible = false;
                 }
-
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["launchPage"])
             {
-                if(Properties.Settings.Default.usingPersonalFolder == true)
+                //checkCustomDatabases();
+                if (Properties.Settings.Default.usingPersonalFolder == true)
                 {
                     mxExeLocationTextbox.Text = Properties.Settings.Default.mxExeLocation;
                 }
@@ -1313,7 +1302,8 @@ namespace Circuit_Mod_Manager
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["settingsPage"])
             {
-                if(Properties.Settings.Default.usingPersonalFolder == true)
+                //checkCustomDatabases();
+                if (Properties.Settings.Default.usingPersonalFolder == true)
                 {
                     personalFolderCB.Checked = true;
                 }
@@ -1324,7 +1314,20 @@ namespace Circuit_Mod_Manager
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["installerPage"])
             {
-                if(Properties.Settings.Default.alwaysDeleteFileAfterInstall == true)
+                if (cdbHandler.doCustomDatabasesExist() == true)
+                {
+                    cdbHandler.reloadDatabaseArray();
+                    customDatabaseComboBox.Items.Clear();
+                    foreach(String database in cdbHandler.getCustomDatabases())
+                    {
+                        customDatabaseComboBox.Items.Add(database);
+                    }
+                }
+                else
+                {
+
+                }
+                if (Properties.Settings.Default.alwaysDeleteFileAfterInstall == true)
                 {
                     alwaysDeleteFileAfterInstallCB.Checked = true;
                     deleteFileAfterCheckbox.Checked = true;
@@ -1334,35 +1337,25 @@ namespace Circuit_Mod_Manager
                     alwaysDeleteFileAfterInstallCB.Checked = false;
                     deleteFileAfterCheckbox.Checked = false;
                 }
-                if (Properties.Settings.Default.customDatabasesExist == true)
-                {
-                    customDatabaseComboBox.Items.Clear();
-                    refreshCustomDatabaseList();
-                    foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
-                    {
-                        if (!customDatabaseComboBox.Items.Contains(databaseEntry))
-                        {
-                            customDatabaseComboBox.Items.Add(databaseEntry);
-                        }
-                    }
-                }
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["modPage"])
             {
-                if (Properties.Settings.Default.customDatabasesExist == true)
+                if (cdbHandler.doCustomDatabasesExist() == true)
                 {
+                    cdbHandler.reloadDatabaseArray();
                     filterModComboBox.Items.Clear();
-                    refreshCustomDatabaseList();
                     filterModComboBox.Items.Add("Gear");
                     filterModComboBox.Items.Add("Track");
                     filterModComboBox.Items.Add("Bike");
-                    foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                    foreach(String database in cdbHandler.getCustomDatabases())
                     {
-                        if(!filterModComboBox.Items.Contains(databaseEntry))
-                        {
-                            filterModComboBox.Items.Add(databaseEntry);
-                        }
+                        filterModComboBox.Items.Add(database);
                     }
+                }
+                else
+                {
+                    modComboBox.Items.Clear();
+                    modListBox.Items.Clear();
                 }
             }
         }
@@ -1371,8 +1364,6 @@ namespace Circuit_Mod_Manager
         {
             newDatabaseForm newDBform = new newDatabaseForm();
             newDBform.Show();
-            Properties.Settings.Default.customDatabasesExist = true;
-            Properties.Settings.Default.Save();
         }
 
         private void launchMXS_Click(object sender, EventArgs e)
@@ -1721,19 +1712,17 @@ namespace Circuit_Mod_Manager
         {
             newDatabaseForm newDBform = new newDatabaseForm();
             newDBform.Show();
-            Properties.Settings.Default.customDatabasesExist = true;
-            Properties.Settings.Default.Save();
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            databaseComboBox.Items.Clear();
-            refreshCustomDatabaseList();
-            foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+            if (cdbHandler.doCustomDatabasesExist() == true)
             {
-                if (!databaseComboBox.Items.Contains(databaseEntry))
+                cdbHandler.reloadDatabaseArray();
+                databaseComboBox.Items.Clear();
+                foreach (String database in cdbHandler.getCustomDatabases())
                 {
-                    databaseComboBox.Items.Add(databaseEntry);
+                    databaseComboBox.Items.Add(database);
                 }
             }
         }
@@ -1760,12 +1749,11 @@ namespace Circuit_Mod_Manager
 
         private void databaseComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (String databaseName in vManager.getCustomDatabaseListNoExt())
+            foreach (String database in cdbHandler.getCustomDatabases())
             {
-                if ((string)databaseComboBox.SelectedItem == databaseName)
+                if ((string)databaseComboBox.SelectedItem == database)
                 {
-                    loadModsFromCustomDatabase(true, databaseName);
-                    break;
+                    loadModsFromCustomDatabase(true, database);
                 }
             }
         }
@@ -1780,19 +1768,32 @@ namespace Circuit_Mod_Manager
             {
                 if ((string)databaseActionComboBox.SelectedItem == "Delete Database")
                 {
-
                     databaseActionStatusLabel.Visible = true;
                     DialogResult result = MessageBox.Show("This action will delete the mod files associated with this database, do you want to continue?", "Database deletion confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.Yes)
                     {
                         SQLiteConnection customCon = null;
                         deleteMod(true, true, (string)databaseComboBox.SelectedItem, customCon, "customConnection");
-                        vManager.getCustomDatabaseListNoExt().Remove((string)databaseComboBox.SelectedItem);
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
                         File.Delete(Directory.GetCurrentDirectory() + "\\custom_databases\\" + (string)databaseComboBox.SelectedItem + ".db");
-                        databaseComboBox.Items.Remove(databaseComboBox.SelectedItem);
-                        databaseModListBox.Items.Clear();
+                        cdbHandler.removeDatabaseFromArray((string)databaseComboBox.SelectedItem);
+                        if (cdbHandler.doCustomDatabasesExist() == true)
+                        {
+                            cdbHandler.reloadDatabaseArray();
+                            customDatabaseComboBox.Items.Remove((string)databaseComboBox.SelectedItem);
+                            filterModComboBox.Items.Remove((string)databaseComboBox.SelectedItem);
+                            databaseComboBox.Items.Remove((string)databaseComboBox.SelectedItem);
+                            databaseModListBox.Items.Clear();
+                        }
+                        else
+                        {
+                            customDatabaseComboBox.Items.Remove((string)databaseComboBox.SelectedItem);
+                            filterModComboBox.Items.Remove((string)databaseComboBox.SelectedItem);
+                            databaseComboBox.Items.Remove((string)databaseComboBox.SelectedItem);
+                            databaseComboBox.Items.Clear();
+                            databaseModListBox.Items.Clear();
+                        }
                     }
                     else
                     {
@@ -1813,6 +1814,73 @@ namespace Circuit_Mod_Manager
             {
                 Process.Start(mxDirTbox.Text);
             }
+        }
+
+        private void refreshButton1_Click(object sender, EventArgs e)
+        {
+            if (cdbHandler.doCustomDatabasesExist() == true)
+            {
+                createNewDatabaseButton.Visible = false;
+                noCustomDatabaseLabel.Visible = false;
+                refreshButton1.Visible = false;
+                refreshButton.Visible = true;
+                createNewDatabase2Button.Visible = true;
+                databaseActionLabel.Visible = true;
+                databaseActionComboBox.Visible = true;
+                databaseBackupNameLabel.Visible = false;
+                databaseBackupNameTextbox.Visible = false;
+                databaseComboBox.Visible = true;
+                databaseExecuteButton.Visible = true;
+                databaseLabel.Visible = true;
+                databaseModListBox.Visible = true;
+                cdbHandler.reloadDatabaseArray();
+                databaseComboBox.Items.Clear();
+                foreach(String database in cdbHandler.getCustomDatabases())
+                {
+                    databaseComboBox.Items.Add(database);
+                }
+            }
+            else
+            {
+                createNewDatabaseButton.Visible = true;
+                noCustomDatabaseLabel.Visible = true;
+                refreshButton1.Visible = true;
+                refreshButton.Visible = false;
+                createNewDatabase2Button.Visible = false;
+                databaseActionLabel.Visible = false;
+                databaseActionComboBox.Visible = false;
+                databaseBackupNameLabel.Visible = false;
+                databaseBackupNameTextbox.Visible = false;
+                databaseComboBox.Visible = false;
+                databaseExecuteButton.Visible = false;
+                databaseLabel.Visible = false;
+                databaseModListBox.Visible = false;
+            }
+        }
+
+        private void refreshButton1_MouseEnter(object sender, EventArgs e)
+        {
+            refreshButton1.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void refreshButton1_MouseDown(object sender, MouseEventArgs e)
+        {
+            refreshButton1.Image = Properties.Resources.refresh_clicked;
+        }
+
+        private void refreshButton1_MouseLeave(object sender, EventArgs e)
+        {
+            refreshButton1.Image = Properties.Resources.refresh;
+        }
+
+        private void refreshButton1_MouseUp(object sender, MouseEventArgs e)
+        {
+            refreshButton1.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void databaseActionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

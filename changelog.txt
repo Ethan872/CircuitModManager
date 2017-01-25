@@ -17,3 +17,5 @@ Alpha 0.1.7.1
 -Database is properly deleted after removal
 -Moved "open mxs directory" button to settings page
 -Code slightly polished
+Alpha 0.2
+-Reworked custom database handling
