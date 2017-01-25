@@ -380,12 +380,12 @@ namespace Circuit_Mod_Manager
             {
                 if (modExtension == ".zip")
                 {
-                    using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                    using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
                     {
                         try
                         {
-                            bikeCon.Open();
-                            if (bikeCon.State == System.Data.ConnectionState.Open)
+                            customCon.Open();
+                            if (customCon.State == System.Data.ConnectionState.Open)
                             {
                                 //MessageBox.Show("Successfully connected to bike database");
                                 using (ZipFile zip1 = ZipFile.Read(modToInstallWithPath))
@@ -394,14 +394,14 @@ namespace Circuit_Mod_Manager
                                     // based on entry name, size, date, checkbox status, etc.  
                                     foreach (ZipEntry e in zip1)
                                     {
-                                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", bikeCon);
+                                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", customCon);
                                         cmd.ExecuteNonQuery();
                                         e.Extract(mxDirectory, ExtractExistingFileAction.OverwriteSilently);
                                     }
                                 }
                             }
                             MessageBox.Show("Successfully installed " + modToInstallWithoutPath, "Mod Installed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            bikeCon.Close();
+                            customCon.Close();
                         }
                         catch (Exception ex)
                         {
@@ -411,12 +411,12 @@ namespace Circuit_Mod_Manager
                 }
                 else if (modExtension == ".rar")
                 {
-                    using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                    using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
                     {
                         try
                         {
-                            bikeCon.Open();
-                            if (bikeCon.State == System.Data.ConnectionState.Open)
+                            customCon.Open();
+                            if (customCon.State == System.Data.ConnectionState.Open)
                             {
                                 //MessageBox.Show("Successfully connected to bike database");
                                 using (Stream stream = File.OpenRead(modToInstallWithPath))
@@ -431,7 +431,7 @@ namespace Circuit_Mod_Manager
                                         else
                                         {
                                             //MessageBox.Show(entry.FilePath + " is a dir");
-                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + entry.FilePath + "'" + ");", bikeCon);
+                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + entry.FilePath + "'" + ");", customCon);
                                             cmd.ExecuteNonQuery();
                                             Directory.CreateDirectory(mxDirectory + "\\" + entry.FilePath);
                                         }
@@ -440,7 +440,7 @@ namespace Circuit_Mod_Manager
                                 RarArchive rar = RarArchive.Open(modToInstallWithPath);
                                 foreach (RarArchiveEntry e in rar.Entries)
                                 {
-                                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FilePath + "'" + ");", bikeCon);
+                                    SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FilePath + "'" + ");", customCon);
                                     cmd.ExecuteNonQuery();
                                     e.ExtractToFile(mxDirectory + "\\" + e.FilePath);
                                 }
@@ -448,7 +448,7 @@ namespace Circuit_Mod_Manager
                                 GC.WaitForPendingFinalizers();
                             }
                             MessageBox.Show("Successfully installed " + modToInstallWithoutPath, "Mod Installed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            bikeCon.Close();
+                            customCon.Close();
                         }
                         catch (Exception ex)
                         {
@@ -465,7 +465,7 @@ namespace Circuit_Mod_Manager
                             customCon.Open();
                             if (customCon.State == System.Data.ConnectionState.Open)
                             {
-                                //MessageBox.Show("Successfully connected to gear database");
+                                //MessageBox.Show("Successfully connected to custom database");
                                 SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + modToInstallWithoutPath + "'" + ");", customCon);
                                 cmd.ExecuteNonQuery();
                                 File.Move(modToInstallWithPath, mxDirectory + "\\" + modToInstallWithoutPath);
@@ -595,7 +595,7 @@ namespace Circuit_Mod_Manager
             }
             else if (modType == "custom")
             {
-                customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + customDatabaseName + ".db;" + "version=3;";
+                customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + customDatabaseName + ".db;version=3;";
                 using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
                 {
                     try
@@ -624,7 +624,7 @@ namespace Circuit_Mod_Manager
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message, ex.Message + " 115", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

@@ -36,17 +36,10 @@
             this.iTalk_TabControl1 = new iTalk.iTalk_TabControl();
             this.launchPage = new System.Windows.Forms.TabPage();
             this.browseMxExeLocationButton = new iTalk.iTalk_Button_1();
-            this.iTalk_Separator11 = new iTalk.iTalk_Separator();
-            this.iTalk_Separator10 = new iTalk.iTalk_Separator();
-            this.iTalk_Separator9 = new iTalk.iTalk_Separator();
-            this.iTalk_Separator8 = new iTalk.iTalk_Separator();
-            this.iTalk_Separator15 = new iTalk.iTalk_Separator();
-            this.iTalk_Separator16 = new iTalk.iTalk_Separator();
             this.iTalk_Label20 = new iTalk.iTalk_Label();
             this.iTalk_Label19 = new iTalk.iTalk_Label();
             this.iTalk_Label18 = new iTalk.iTalk_Label();
             this.iTalk_Label17 = new iTalk.iTalk_Label();
-            this.iTalk_Separator7 = new iTalk.iTalk_Separator();
             this.iTalk_Label16 = new iTalk.iTalk_Label();
             this.noVertexArraysCB = new iTalk.iTalk_CheckBox();
             this.aiLearnCB = new iTalk.iTalk_CheckBox();
@@ -91,6 +84,7 @@
             this.iTalk_Separator5 = new iTalk.iTalk_Separator();
             this.launchMXS = new iTalk.iTalk_Button_1();
             this.installerPage = new System.Windows.Forms.TabPage();
+            this.openMxDir = new iTalk.iTalk_Button_1();
             this.alwaysDeleteFileAfterInstallCB = new iTalk.iTalk_CheckBox();
             this.iTalk_Label21 = new iTalk.iTalk_Label();
             this.iTalk_Separator12 = new iTalk.iTalk_Separator();
@@ -105,6 +99,8 @@
             this.trackRadioButton = new iTalk.iTalk_RadioButton();
             this.installModButton = new iTalk.iTalk_Button_1();
             this.modPage = new System.Windows.Forms.TabPage();
+            this.customDatabaseStatusLabel = new iTalk.iTalk_Label();
+            this.iTalk_Label24 = new iTalk.iTalk_Label();
             this.executeActionButton = new iTalk.iTalk_Button_1();
             this.selectNoneRadioButton = new iTalk.iTalk_RadioButton();
             this.selectAllRadioButton = new iTalk.iTalk_RadioButton();
@@ -125,18 +121,19 @@
             this.modLabel = new iTalk.iTalk_Label();
             this.modComboBox = new iTalk.iTalk_ComboBox();
             this.databasesPage = new System.Windows.Forms.TabPage();
+            this.databaseActionStatusLabel = new iTalk.iTalk_Label();
+            this.refreshButton = new System.Windows.Forms.PictureBox();
+            this.createNewDatabase2Button = new iTalk.iTalk_Button_1();
             this.noCustomDatabaseLabel = new iTalk.iTalk_HeaderLabel();
             this.createNewDatabaseButton = new iTalk.iTalk_Button_1();
             this.databaseExecuteButton = new iTalk.iTalk_Button_1();
-            this.databaseSelectNoneRadioButton = new iTalk.iTalk_RadioButton();
-            this.databaseSelectAllRadioButton = new iTalk.iTalk_RadioButton();
             this.databaseBackupNameLabel = new iTalk.iTalk_Label();
             this.databaseBackupNameTextbox = new iTalk.iTalk_TextBox_Small();
             this.databaseActionComboBox = new iTalk.iTalk_ComboBox();
             this.databaseActionLabel = new iTalk.iTalk_Label();
-            this.databaseModListBox = new System.Windows.Forms.CheckedListBox();
             this.databaseLabel = new iTalk.iTalk_Label();
             this.databaseComboBox = new iTalk.iTalk_ComboBox();
+            this.databaseModListBox = new System.Windows.Forms.ListBox();
             this.settingsPage = new System.Windows.Forms.TabPage();
             this.iTalk_Label23 = new iTalk.iTalk_Label();
             this.personalFolderCB = new iTalk.iTalk_CheckBox();
@@ -179,6 +176,7 @@
             this.installerPage.SuspendLayout();
             this.modPage.SuspendLayout();
             this.databasesPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).BeginInit();
             this.settingsPage.SuspendLayout();
             this.aboutPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateButton)).BeginInit();
@@ -246,17 +244,10 @@
             // 
             this.launchPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.launchPage.Controls.Add(this.browseMxExeLocationButton);
-            this.launchPage.Controls.Add(this.iTalk_Separator11);
-            this.launchPage.Controls.Add(this.iTalk_Separator10);
-            this.launchPage.Controls.Add(this.iTalk_Separator9);
-            this.launchPage.Controls.Add(this.iTalk_Separator8);
-            this.launchPage.Controls.Add(this.iTalk_Separator15);
-            this.launchPage.Controls.Add(this.iTalk_Separator16);
             this.launchPage.Controls.Add(this.iTalk_Label20);
             this.launchPage.Controls.Add(this.iTalk_Label19);
             this.launchPage.Controls.Add(this.iTalk_Label18);
             this.launchPage.Controls.Add(this.iTalk_Label17);
-            this.launchPage.Controls.Add(this.iTalk_Separator7);
             this.launchPage.Controls.Add(this.iTalk_Label16);
             this.launchPage.Controls.Add(this.noVertexArraysCB);
             this.launchPage.Controls.Add(this.aiLearnCB);
@@ -312,62 +303,14 @@
             // 
             this.browseMxExeLocationButton.BackColor = System.Drawing.Color.Transparent;
             this.browseMxExeLocationButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.browseMxExeLocationButton.Image = global::Circuit_Mod_Manager.Properties.Resources.dots_horizontal;
+            this.browseMxExeLocationButton.Image = ((System.Drawing.Image)(resources.GetObject("browseMxExeLocationButton.Image")));
             this.browseMxExeLocationButton.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.browseMxExeLocationButton.Location = new System.Drawing.Point(469, 421);
+            this.browseMxExeLocationButton.Location = new System.Drawing.Point(469, 420);
             this.browseMxExeLocationButton.Name = "browseMxExeLocationButton";
             this.browseMxExeLocationButton.Size = new System.Drawing.Size(53, 40);
             this.browseMxExeLocationButton.TabIndex = 67;
             this.browseMxExeLocationButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.browseMxExeLocationButton.Click += new System.EventHandler(this.browseMxExeLocationButton_Click);
-            // 
-            // iTalk_Separator11
-            // 
-            this.iTalk_Separator11.Location = new System.Drawing.Point(634, 78);
-            this.iTalk_Separator11.Name = "iTalk_Separator11";
-            this.iTalk_Separator11.Size = new System.Drawing.Size(60, 10);
-            this.iTalk_Separator11.TabIndex = 66;
-            this.iTalk_Separator11.Text = "iTalk_Separator11";
-            // 
-            // iTalk_Separator10
-            // 
-            this.iTalk_Separator10.Location = new System.Drawing.Point(437, 78);
-            this.iTalk_Separator10.Name = "iTalk_Separator10";
-            this.iTalk_Separator10.Size = new System.Drawing.Size(132, 10);
-            this.iTalk_Separator10.TabIndex = 65;
-            this.iTalk_Separator10.Text = "iTalk_Separator10";
-            // 
-            // iTalk_Separator9
-            // 
-            this.iTalk_Separator9.Location = new System.Drawing.Point(282, 78);
-            this.iTalk_Separator9.Name = "iTalk_Separator9";
-            this.iTalk_Separator9.Size = new System.Drawing.Size(123, 10);
-            this.iTalk_Separator9.TabIndex = 64;
-            this.iTalk_Separator9.Text = "iTalk_Separator9";
-            // 
-            // iTalk_Separator8
-            // 
-            this.iTalk_Separator8.Location = new System.Drawing.Point(132, 78);
-            this.iTalk_Separator8.Name = "iTalk_Separator8";
-            this.iTalk_Separator8.Size = new System.Drawing.Size(100, 10);
-            this.iTalk_Separator8.TabIndex = 63;
-            this.iTalk_Separator8.Text = "iTalk_Separator8";
-            // 
-            // iTalk_Separator15
-            // 
-            this.iTalk_Separator15.Location = new System.Drawing.Point(634, 183);
-            this.iTalk_Separator15.Name = "iTalk_Separator15";
-            this.iTalk_Separator15.Size = new System.Drawing.Size(41, 10);
-            this.iTalk_Separator15.TabIndex = 62;
-            this.iTalk_Separator15.Text = "iTalk_Separator15";
-            // 
-            // iTalk_Separator16
-            // 
-            this.iTalk_Separator16.Location = new System.Drawing.Point(535, 183);
-            this.iTalk_Separator16.Name = "iTalk_Separator16";
-            this.iTalk_Separator16.Size = new System.Drawing.Size(41, 10);
-            this.iTalk_Separator16.TabIndex = 61;
-            this.iTalk_Separator16.Text = "iTalk_Separator16";
             // 
             // iTalk_Label20
             // 
@@ -375,7 +318,7 @@
             this.iTalk_Label20.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label20.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_Label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label20.Location = new System.Drawing.Point(582, 180);
+            this.iTalk_Label20.Location = new System.Drawing.Point(575, 183);
             this.iTalk_Label20.Name = "iTalk_Label20";
             this.iTalk_Label20.Size = new System.Drawing.Size(46, 13);
             this.iTalk_Label20.TabIndex = 60;
@@ -416,14 +359,6 @@
             this.iTalk_Label17.Size = new System.Drawing.Size(38, 13);
             this.iTalk_Label17.TabIndex = 51;
             this.iTalk_Label17.Text = "Visual";
-            // 
-            // iTalk_Separator7
-            // 
-            this.iTalk_Separator7.Location = new System.Drawing.Point(22, 78);
-            this.iTalk_Separator7.Name = "iTalk_Separator7";
-            this.iTalk_Separator7.Size = new System.Drawing.Size(41, 10);
-            this.iTalk_Separator7.TabIndex = 49;
-            this.iTalk_Separator7.Text = "iTalk_Separator7";
             // 
             // iTalk_Label16
             // 
@@ -696,7 +631,7 @@
             this.detailValue.BackColor = System.Drawing.Color.Transparent;
             this.detailValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.detailValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.detailValue.Location = new System.Drawing.Point(586, 301);
+            this.detailValue.Location = new System.Drawing.Point(579, 304);
             this.detailValue.Name = "detailValue";
             this.detailValue.Size = new System.Drawing.Size(13, 13);
             this.detailValue.TabIndex = 47;
@@ -708,7 +643,7 @@
             this.roostFreqValue.BackColor = System.Drawing.Color.Transparent;
             this.roostFreqValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.roostFreqValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.roostFreqValue.Location = new System.Drawing.Point(586, 267);
+            this.roostFreqValue.Location = new System.Drawing.Point(579, 270);
             this.roostFreqValue.Name = "roostFreqValue";
             this.roostFreqValue.Size = new System.Drawing.Size(13, 13);
             this.roostFreqValue.TabIndex = 46;
@@ -720,7 +655,7 @@
             this.lodBiasValue.BackColor = System.Drawing.Color.Transparent;
             this.lodBiasValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lodBiasValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.lodBiasValue.Location = new System.Drawing.Point(586, 235);
+            this.lodBiasValue.Location = new System.Drawing.Point(579, 238);
             this.lodBiasValue.Name = "lodBiasValue";
             this.lodBiasValue.Size = new System.Drawing.Size(13, 13);
             this.lodBiasValue.TabIndex = 45;
@@ -732,7 +667,7 @@
             this.rotateLineupValue.BackColor = System.Drawing.Color.Transparent;
             this.rotateLineupValue.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.rotateLineupValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.rotateLineupValue.Location = new System.Drawing.Point(586, 203);
+            this.rotateLineupValue.Location = new System.Drawing.Point(579, 206);
             this.rotateLineupValue.Name = "rotateLineupValue";
             this.rotateLineupValue.Size = new System.Drawing.Size(13, 13);
             this.rotateLineupValue.TabIndex = 44;
@@ -743,7 +678,7 @@
             this.lockFPSTextbox.BackColor = System.Drawing.Color.Transparent;
             this.lockFPSTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
             this.lockFPSTextbox.ForeColor = System.Drawing.Color.DimGray;
-            this.lockFPSTextbox.Location = new System.Drawing.Point(605, 326);
+            this.lockFPSTextbox.Location = new System.Drawing.Point(598, 329);
             this.lockFPSTextbox.MaxLength = 32767;
             this.lockFPSTextbox.Multiline = false;
             this.lockFPSTextbox.Name = "lockFPSTextbox";
@@ -759,7 +694,7 @@
             this.rotateLineupTrackbar.DrawValueString = false;
             this.rotateLineupTrackbar.Enabled = false;
             this.rotateLineupTrackbar.JumpToMouse = true;
-            this.rotateLineupTrackbar.Location = new System.Drawing.Point(605, 200);
+            this.rotateLineupTrackbar.Location = new System.Drawing.Point(598, 203);
             this.rotateLineupTrackbar.Maximum = 100;
             this.rotateLineupTrackbar.Minimum = 0;
             this.rotateLineupTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
@@ -778,7 +713,7 @@
             this.rotateLineupCB.BackColor = System.Drawing.Color.Transparent;
             this.rotateLineupCB.Checked = false;
             this.rotateLineupCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.rotateLineupCB.Location = new System.Drawing.Point(469, 203);
+            this.rotateLineupCB.Location = new System.Drawing.Point(462, 206);
             this.rotateLineupCB.Name = "rotateLineupCB";
             this.rotateLineupCB.Size = new System.Drawing.Size(104, 15);
             this.rotateLineupCB.TabIndex = 32;
@@ -790,7 +725,7 @@
             this.lockFPSCB.BackColor = System.Drawing.Color.Transparent;
             this.lockFPSCB.Checked = false;
             this.lockFPSCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lockFPSCB.Location = new System.Drawing.Point(469, 333);
+            this.lockFPSCB.Location = new System.Drawing.Point(462, 336);
             this.lockFPSCB.Name = "lockFPSCB";
             this.lockFPSCB.Size = new System.Drawing.Size(89, 15);
             this.lockFPSCB.TabIndex = 26;
@@ -802,7 +737,7 @@
             this.lodBiasTrackbar.DrawValueString = false;
             this.lodBiasTrackbar.Enabled = false;
             this.lodBiasTrackbar.JumpToMouse = true;
-            this.lodBiasTrackbar.Location = new System.Drawing.Point(605, 232);
+            this.lodBiasTrackbar.Location = new System.Drawing.Point(598, 235);
             this.lodBiasTrackbar.Maximum = 10;
             this.lodBiasTrackbar.Minimum = 0;
             this.lodBiasTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
@@ -821,7 +756,7 @@
             this.lodBiasCB.BackColor = System.Drawing.Color.Transparent;
             this.lodBiasCB.Checked = false;
             this.lodBiasCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lodBiasCB.Location = new System.Drawing.Point(469, 235);
+            this.lodBiasCB.Location = new System.Drawing.Point(462, 238);
             this.lodBiasCB.Name = "lodBiasCB";
             this.lodBiasCB.Size = new System.Drawing.Size(78, 15);
             this.lodBiasCB.TabIndex = 24;
@@ -834,7 +769,7 @@
             this.detailTrackbar.DrawValueString = false;
             this.detailTrackbar.Enabled = false;
             this.detailTrackbar.JumpToMouse = true;
-            this.detailTrackbar.Location = new System.Drawing.Point(605, 296);
+            this.detailTrackbar.Location = new System.Drawing.Point(598, 299);
             this.detailTrackbar.Maximum = 1;
             this.detailTrackbar.Minimum = 0;
             this.detailTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
@@ -853,7 +788,7 @@
             this.detailCB.BackColor = System.Drawing.Color.Transparent;
             this.detailCB.Checked = false;
             this.detailCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.detailCB.Location = new System.Drawing.Point(469, 299);
+            this.detailCB.Location = new System.Drawing.Point(462, 302);
             this.detailCB.Name = "detailCB";
             this.detailCB.Size = new System.Drawing.Size(66, 15);
             this.detailCB.TabIndex = 22;
@@ -866,7 +801,7 @@
             this.roostFreqTrackbar.DrawValueString = false;
             this.roostFreqTrackbar.Enabled = false;
             this.roostFreqTrackbar.JumpToMouse = true;
-            this.roostFreqTrackbar.Location = new System.Drawing.Point(605, 264);
+            this.roostFreqTrackbar.Location = new System.Drawing.Point(598, 267);
             this.roostFreqTrackbar.Maximum = 1000;
             this.roostFreqTrackbar.Minimum = 0;
             this.roostFreqTrackbar.MinimumSize = new System.Drawing.Size(37, 22);
@@ -885,7 +820,7 @@
             this.roostFreqCB.BackColor = System.Drawing.Color.Transparent;
             this.roostFreqCB.Checked = false;
             this.roostFreqCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.roostFreqCB.Location = new System.Drawing.Point(469, 267);
+            this.roostFreqCB.Location = new System.Drawing.Point(462, 270);
             this.roostFreqCB.Name = "roostFreqCB";
             this.roostFreqCB.Size = new System.Drawing.Size(122, 15);
             this.roostFreqCB.TabIndex = 18;
@@ -918,7 +853,7 @@
             this.mxExeLocationTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
             this.mxExeLocationTextbox.ForeColor = System.Drawing.Color.DimGray;
             this.mxExeLocationTextbox.Image = null;
-            this.mxExeLocationTextbox.Location = new System.Drawing.Point(22, 420);
+            this.mxExeLocationTextbox.Location = new System.Drawing.Point(22, 419);
             this.mxExeLocationTextbox.MaxLength = 32767;
             this.mxExeLocationTextbox.Multiline = false;
             this.mxExeLocationTextbox.Name = "mxExeLocationTextbox";
@@ -952,6 +887,7 @@
             // installerPage
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.installerPage.Controls.Add(this.openMxDir);
             this.installerPage.Controls.Add(this.alwaysDeleteFileAfterInstallCB);
             this.installerPage.Controls.Add(this.iTalk_Label21);
             this.installerPage.Controls.Add(this.iTalk_Separator12);
@@ -973,6 +909,19 @@
             this.installerPage.TabIndex = 0;
             this.installerPage.Text = "Installer";
             this.installerPage.ToolTipText = "Install your mods";
+            // 
+            // openMxDir
+            // 
+            this.openMxDir.BackColor = System.Drawing.Color.Transparent;
+            this.openMxDir.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.openMxDir.Image = global::Circuit_Mod_Manager.Properties.Resources.folder_open;
+            this.openMxDir.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.openMxDir.Location = new System.Drawing.Point(22, 420);
+            this.openMxDir.Name = "openMxDir";
+            this.openMxDir.Size = new System.Drawing.Size(166, 40);
+            this.openMxDir.TabIndex = 24;
+            this.openMxDir.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.openMxDir.Click += new System.EventHandler(this.openMxDir_Click);
             // 
             // alwaysDeleteFileAfterInstallCB
             // 
@@ -1136,6 +1085,8 @@
             // modPage
             // 
             this.modPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.modPage.Controls.Add(this.customDatabaseStatusLabel);
+            this.modPage.Controls.Add(this.iTalk_Label24);
             this.modPage.Controls.Add(this.executeActionButton);
             this.modPage.Controls.Add(this.selectNoneRadioButton);
             this.modPage.Controls.Add(this.selectAllRadioButton);
@@ -1163,6 +1114,30 @@
             this.modPage.TabIndex = 1;
             this.modPage.Text = "Mods";
             this.modPage.ToolTipText = "Manage your mods";
+            // 
+            // customDatabaseStatusLabel
+            // 
+            this.customDatabaseStatusLabel.AutoSize = true;
+            this.customDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.customDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.customDatabaseStatusLabel.Location = new System.Drawing.Point(87, 448);
+            this.customDatabaseStatusLabel.Name = "customDatabaseStatusLabel";
+            this.customDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
+            this.customDatabaseStatusLabel.TabIndex = 21;
+            this.customDatabaseStatusLabel.Text = "Idle";
+            // 
+            // iTalk_Label24
+            // 
+            this.iTalk_Label24.AutoSize = true;
+            this.iTalk_Label24.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label24.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label24.Location = new System.Drawing.Point(23, 448);
+            this.iTalk_Label24.Name = "iTalk_Label24";
+            this.iTalk_Label24.Size = new System.Drawing.Size(49, 13);
+            this.iTalk_Label24.TabIndex = 20;
+            this.iTalk_Label24.Text = "Custom:";
             // 
             // executeActionButton
             // 
@@ -1236,7 +1211,7 @@
             this.bikeDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
             this.bikeDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.bikeDatabaseStatusLabel.Location = new System.Drawing.Point(59, 441);
+            this.bikeDatabaseStatusLabel.Location = new System.Drawing.Point(87, 435);
             this.bikeDatabaseStatusLabel.Name = "bikeDatabaseStatusLabel";
             this.bikeDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
             this.bikeDatabaseStatusLabel.TabIndex = 14;
@@ -1248,7 +1223,7 @@
             this.trackDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
             this.trackDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.trackDatabaseStatusLabel.Location = new System.Drawing.Point(59, 425);
+            this.trackDatabaseStatusLabel.Location = new System.Drawing.Point(87, 419);
             this.trackDatabaseStatusLabel.Name = "trackDatabaseStatusLabel";
             this.trackDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
             this.trackDatabaseStatusLabel.TabIndex = 13;
@@ -1260,7 +1235,7 @@
             this.gearDatabaseStatusLabel.BackColor = System.Drawing.Color.Transparent;
             this.gearDatabaseStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.gearDatabaseStatusLabel.Location = new System.Drawing.Point(59, 410);
+            this.gearDatabaseStatusLabel.Location = new System.Drawing.Point(87, 404);
             this.gearDatabaseStatusLabel.Name = "gearDatabaseStatusLabel";
             this.gearDatabaseStatusLabel.Size = new System.Drawing.Size(26, 13);
             this.gearDatabaseStatusLabel.TabIndex = 12;
@@ -1272,7 +1247,7 @@
             this.iTalk_Label11.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label11.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_Label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label11.Location = new System.Drawing.Point(23, 440);
+            this.iTalk_Label11.Location = new System.Drawing.Point(23, 434);
             this.iTalk_Label11.Name = "iTalk_Label11";
             this.iTalk_Label11.Size = new System.Drawing.Size(32, 13);
             this.iTalk_Label11.TabIndex = 11;
@@ -1284,7 +1259,7 @@
             this.iTalk_Label10.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label10.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_Label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label10.Location = new System.Drawing.Point(23, 425);
+            this.iTalk_Label10.Location = new System.Drawing.Point(23, 419);
             this.iTalk_Label10.Name = "iTalk_Label10";
             this.iTalk_Label10.Size = new System.Drawing.Size(35, 13);
             this.iTalk_Label10.TabIndex = 10;
@@ -1296,7 +1271,7 @@
             this.statusLabel2.BackColor = System.Drawing.Color.Transparent;
             this.statusLabel2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.statusLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.statusLabel2.Location = new System.Drawing.Point(23, 410);
+            this.statusLabel2.Location = new System.Drawing.Point(23, 404);
             this.statusLabel2.Name = "statusLabel2";
             this.statusLabel2.Size = new System.Drawing.Size(34, 13);
             this.statusLabel2.TabIndex = 9;
@@ -1429,18 +1404,19 @@
             // databasesPage
             // 
             this.databasesPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.databasesPage.Controls.Add(this.databaseActionStatusLabel);
+            this.databasesPage.Controls.Add(this.refreshButton);
+            this.databasesPage.Controls.Add(this.createNewDatabase2Button);
             this.databasesPage.Controls.Add(this.noCustomDatabaseLabel);
             this.databasesPage.Controls.Add(this.createNewDatabaseButton);
             this.databasesPage.Controls.Add(this.databaseExecuteButton);
-            this.databasesPage.Controls.Add(this.databaseSelectNoneRadioButton);
-            this.databasesPage.Controls.Add(this.databaseSelectAllRadioButton);
             this.databasesPage.Controls.Add(this.databaseBackupNameLabel);
             this.databasesPage.Controls.Add(this.databaseBackupNameTextbox);
             this.databasesPage.Controls.Add(this.databaseActionComboBox);
             this.databasesPage.Controls.Add(this.databaseActionLabel);
-            this.databasesPage.Controls.Add(this.databaseModListBox);
             this.databasesPage.Controls.Add(this.databaseLabel);
             this.databasesPage.Controls.Add(this.databaseComboBox);
+            this.databasesPage.Controls.Add(this.databaseModListBox);
             this.databasesPage.ImageIndex = 4;
             this.databasesPage.Location = new System.Drawing.Point(139, 4);
             this.databasesPage.Name = "databasesPage";
@@ -1448,17 +1424,60 @@
             this.databasesPage.TabIndex = 4;
             this.databasesPage.Text = "Databases";
             // 
+            // databaseActionStatusLabel
+            // 
+            this.databaseActionStatusLabel.AutoSize = true;
+            this.databaseActionStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.databaseActionStatusLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.databaseActionStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.databaseActionStatusLabel.Location = new System.Drawing.Point(322, 389);
+            this.databaseActionStatusLabel.Name = "databaseActionStatusLabel";
+            this.databaseActionStatusLabel.Size = new System.Drawing.Size(73, 13);
+            this.databaseActionStatusLabel.TabIndex = 44;
+            this.databaseActionStatusLabel.Text = "Please wait...";
+            this.databaseActionStatusLabel.Visible = false;
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.Image = global::Circuit_Mod_Manager.Properties.Resources.refresh;
+            this.refreshButton.Location = new System.Drawing.Point(404, 22);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(25, 26);
+            this.refreshButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.refreshButton.TabIndex = 42;
+            this.refreshButton.TabStop = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            this.refreshButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.refreshButton_MouseDown);
+            this.refreshButton.MouseEnter += new System.EventHandler(this.refreshButton_MouseEnter);
+            this.refreshButton.MouseLeave += new System.EventHandler(this.refreshButton_MouseLeave);
+            this.refreshButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.refreshButton_MouseUp);
+            // 
+            // createNewDatabase2Button
+            // 
+            this.createNewDatabase2Button.BackColor = System.Drawing.Color.Transparent;
+            this.createNewDatabase2Button.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.createNewDatabase2Button.Image = null;
+            this.createNewDatabase2Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.createNewDatabase2Button.Location = new System.Drawing.Point(26, 420);
+            this.createNewDatabase2Button.Name = "createNewDatabase2Button";
+            this.createNewDatabase2Button.Size = new System.Drawing.Size(166, 40);
+            this.createNewDatabase2Button.TabIndex = 41;
+            this.createNewDatabase2Button.Text = "Create new Database";
+            this.createNewDatabase2Button.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.createNewDatabase2Button.Visible = false;
+            this.createNewDatabase2Button.Click += new System.EventHandler(this.createNewDatabase2Button_Click);
+            // 
             // noCustomDatabaseLabel
             // 
             this.noCustomDatabaseLabel.AutoSize = true;
             this.noCustomDatabaseLabel.BackColor = System.Drawing.Color.Transparent;
             this.noCustomDatabaseLabel.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.noCustomDatabaseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.noCustomDatabaseLabel.Location = new System.Drawing.Point(136, 142);
+            this.noCustomDatabaseLabel.Location = new System.Drawing.Point(131, 142);
             this.noCustomDatabaseLabel.Name = "noCustomDatabaseLabel";
-            this.noCustomDatabaseLabel.Size = new System.Drawing.Size(444, 46);
+            this.noCustomDatabaseLabel.Size = new System.Drawing.Size(455, 46);
             this.noCustomDatabaseLabel.TabIndex = 40;
-            this.noCustomDatabaseLabel.Text = "No custom Databases found";
+            this.noCustomDatabaseLabel.Text = "No Custom Databases Found";
             // 
             // createNewDatabaseButton
             // 
@@ -1486,30 +1505,7 @@
             this.databaseExecuteButton.TabIndex = 38;
             this.databaseExecuteButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.databaseExecuteButton.Visible = false;
-            // 
-            // databaseSelectNoneRadioButton
-            // 
-            this.databaseSelectNoneRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.databaseSelectNoneRadioButton.Checked = false;
-            this.databaseSelectNoneRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.databaseSelectNoneRadioButton.Location = new System.Drawing.Point(353, 392);
-            this.databaseSelectNoneRadioButton.Name = "databaseSelectNoneRadioButton";
-            this.databaseSelectNoneRadioButton.Size = new System.Drawing.Size(94, 15);
-            this.databaseSelectNoneRadioButton.TabIndex = 37;
-            this.databaseSelectNoneRadioButton.Text = "Select None";
-            this.databaseSelectNoneRadioButton.Visible = false;
-            // 
-            // databaseSelectAllRadioButton
-            // 
-            this.databaseSelectAllRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.databaseSelectAllRadioButton.Checked = false;
-            this.databaseSelectAllRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.databaseSelectAllRadioButton.Location = new System.Drawing.Point(270, 392);
-            this.databaseSelectAllRadioButton.Name = "databaseSelectAllRadioButton";
-            this.databaseSelectAllRadioButton.Size = new System.Drawing.Size(77, 15);
-            this.databaseSelectAllRadioButton.TabIndex = 36;
-            this.databaseSelectAllRadioButton.Text = "Select All";
-            this.databaseSelectAllRadioButton.Visible = false;
+            this.databaseExecuteButton.Click += new System.EventHandler(this.databaseExecuteButton_Click);
             // 
             // databaseBackupNameLabel
             // 
@@ -1517,7 +1513,7 @@
             this.databaseBackupNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.databaseBackupNameLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.databaseBackupNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseBackupNameLabel.Location = new System.Drawing.Point(137, 433);
+            this.databaseBackupNameLabel.Location = new System.Drawing.Point(201, 433);
             this.databaseBackupNameLabel.Name = "databaseBackupNameLabel";
             this.databaseBackupNameLabel.Size = new System.Drawing.Size(80, 13);
             this.databaseBackupNameLabel.TabIndex = 35;
@@ -1529,12 +1525,12 @@
             this.databaseBackupNameTextbox.BackColor = System.Drawing.Color.Transparent;
             this.databaseBackupNameTextbox.Font = new System.Drawing.Font("Tahoma", 11F);
             this.databaseBackupNameTextbox.ForeColor = System.Drawing.Color.DimGray;
-            this.databaseBackupNameTextbox.Location = new System.Drawing.Point(223, 426);
+            this.databaseBackupNameTextbox.Location = new System.Drawing.Point(287, 426);
             this.databaseBackupNameTextbox.MaxLength = 32767;
             this.databaseBackupNameTextbox.Multiline = false;
             this.databaseBackupNameTextbox.Name = "databaseBackupNameTextbox";
             this.databaseBackupNameTextbox.ReadOnly = false;
-            this.databaseBackupNameTextbox.Size = new System.Drawing.Size(263, 28);
+            this.databaseBackupNameTextbox.Size = new System.Drawing.Size(199, 28);
             this.databaseBackupNameTextbox.TabIndex = 34;
             this.databaseBackupNameTextbox.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.databaseBackupNameTextbox.UseSystemPasswordChar = false;
@@ -1555,9 +1551,9 @@
             this.databaseActionComboBox.Items.AddRange(new object[] {
             "Delete Database",
             "Backup Database"});
-            this.databaseActionComboBox.Location = new System.Drawing.Point(515, 22);
+            this.databaseActionComboBox.Location = new System.Drawing.Point(481, 22);
             this.databaseActionComboBox.Name = "databaseActionComboBox";
-            this.databaseActionComboBox.Size = new System.Drawing.Size(178, 26);
+            this.databaseActionComboBox.Size = new System.Drawing.Size(213, 26);
             this.databaseActionComboBox.StartIndex = 0;
             this.databaseActionComboBox.TabIndex = 24;
             this.databaseActionComboBox.Visible = false;
@@ -1568,21 +1564,12 @@
             this.databaseActionLabel.BackColor = System.Drawing.Color.Transparent;
             this.databaseActionLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.databaseActionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.databaseActionLabel.Location = new System.Drawing.Point(469, 28);
+            this.databaseActionLabel.Location = new System.Drawing.Point(435, 28);
             this.databaseActionLabel.Name = "databaseActionLabel";
             this.databaseActionLabel.Size = new System.Drawing.Size(40, 13);
             this.databaseActionLabel.TabIndex = 23;
             this.databaseActionLabel.Text = "Action";
             this.databaseActionLabel.Visible = false;
-            // 
-            // databaseModListBox
-            // 
-            this.databaseModListBox.FormattingEnabled = true;
-            this.databaseModListBox.Location = new System.Drawing.Point(26, 63);
-            this.databaseModListBox.Name = "databaseModListBox";
-            this.databaseModListBox.Size = new System.Drawing.Size(667, 310);
-            this.databaseModListBox.TabIndex = 22;
-            this.databaseModListBox.Visible = false;
             // 
             // databaseLabel
             // 
@@ -1611,10 +1598,20 @@
             this.databaseComboBox.ItemHeight = 20;
             this.databaseComboBox.Location = new System.Drawing.Point(86, 22);
             this.databaseComboBox.Name = "databaseComboBox";
-            this.databaseComboBox.Size = new System.Drawing.Size(377, 26);
+            this.databaseComboBox.Size = new System.Drawing.Size(312, 26);
             this.databaseComboBox.StartIndex = 0;
             this.databaseComboBox.TabIndex = 20;
             this.databaseComboBox.Visible = false;
+            this.databaseComboBox.SelectedIndexChanged += new System.EventHandler(this.databaseComboBox_SelectedIndexChanged);
+            // 
+            // databaseModListBox
+            // 
+            this.databaseModListBox.FormattingEnabled = true;
+            this.databaseModListBox.Location = new System.Drawing.Point(26, 63);
+            this.databaseModListBox.Name = "databaseModListBox";
+            this.databaseModListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.databaseModListBox.Size = new System.Drawing.Size(668, 303);
+            this.databaseModListBox.TabIndex = 43;
             // 
             // settingsPage
             // 
@@ -1838,7 +1835,7 @@
             this.iTalk_HeaderLabel4.Name = "iTalk_HeaderLabel4";
             this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(309, 46);
             this.iTalk_HeaderLabel4.TabIndex = 18;
-            this.iTalk_HeaderLabel4.Text = "Version: Alpha 0.1.6";
+            this.iTalk_HeaderLabel4.Text = "Version: Alpha 0.1.7";
             // 
             // dotNetZipLink
             // 
@@ -2110,6 +2107,7 @@
             this.modPage.PerformLayout();
             this.databasesPage.ResumeLayout(false);
             this.databasesPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshButton)).EndInit();
             this.settingsPage.ResumeLayout(false);
             this.settingsPage.PerformLayout();
             this.aboutPage.ResumeLayout(false);
@@ -2190,25 +2188,19 @@
         private iTalk.iTalk_RadioButton customRadioButton;
         private iTalk.iTalk_ComboBox customDatabaseComboBox;
         private iTalk.iTalk_Button_1 databaseExecuteButton;
-        private iTalk.iTalk_RadioButton databaseSelectNoneRadioButton;
-        private iTalk.iTalk_RadioButton databaseSelectAllRadioButton;
         private iTalk.iTalk_Label databaseBackupNameLabel;
         private iTalk.iTalk_TextBox_Small databaseBackupNameTextbox;
         private iTalk.iTalk_ComboBox databaseActionComboBox;
         private iTalk.iTalk_Label databaseActionLabel;
-        private System.Windows.Forms.CheckedListBox databaseModListBox;
         private iTalk.iTalk_Label databaseLabel;
         private iTalk.iTalk_ComboBox databaseComboBox;
         private iTalk.iTalk_HeaderLabel noCustomDatabaseLabel;
         private iTalk.iTalk_Button_1 createNewDatabaseButton;
         private System.Windows.Forms.TabPage launchPage;
-        private iTalk.iTalk_Separator iTalk_Separator15;
-        private iTalk.iTalk_Separator iTalk_Separator16;
         private iTalk.iTalk_Label iTalk_Label20;
         private iTalk.iTalk_Label iTalk_Label19;
         private iTalk.iTalk_Label iTalk_Label18;
         private iTalk.iTalk_Label iTalk_Label17;
-        private iTalk.iTalk_Separator iTalk_Separator7;
         private iTalk.iTalk_Label iTalk_Label16;
         private iTalk.iTalk_CheckBox noVertexArraysCB;
         private iTalk.iTalk_CheckBox aiLearnCB;
@@ -2252,10 +2244,6 @@
         private iTalk.iTalk_TextBox_Big mxExeLocationTextbox;
         private iTalk.iTalk_Separator iTalk_Separator5;
         private iTalk.iTalk_Button_1 launchMXS;
-        private iTalk.iTalk_Separator iTalk_Separator11;
-        private iTalk.iTalk_Separator iTalk_Separator10;
-        private iTalk.iTalk_Separator iTalk_Separator9;
-        private iTalk.iTalk_Separator iTalk_Separator8;
         private iTalk.iTalk_Label iTalk_Label21;
         private iTalk.iTalk_Separator iTalk_Separator12;
         private iTalk.iTalk_Label iTalk_Label22;
@@ -2264,6 +2252,13 @@
         private iTalk.iTalk_CheckBox personalFolderCB;
         private iTalk.iTalk_CheckBox alwaysDeleteFileAfterInstallCB;
         private iTalk.iTalk_Button_1 browseMxExeLocationButton;
+        private iTalk.iTalk_Button_1 createNewDatabase2Button;
+        private iTalk.iTalk_Label customDatabaseStatusLabel;
+        private iTalk.iTalk_Label iTalk_Label24;
+        private System.Windows.Forms.PictureBox refreshButton;
+        private System.Windows.Forms.ListBox databaseModListBox;
+        private iTalk.iTalk_Label databaseActionStatusLabel;
+        private iTalk.iTalk_Button_1 openMxDir;
     }
 }
 

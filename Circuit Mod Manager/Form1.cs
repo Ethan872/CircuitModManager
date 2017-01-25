@@ -50,6 +50,7 @@ namespace Circuit_Mod_Manager
 {
     public partial class Form1 : Form
     {
+        String mxsimmmVersion = "0.1.7";
 
         DatabaseManager dbManager = new DatabaseManager();
         StartupRoutine sr = new StartupRoutine();
@@ -57,8 +58,11 @@ namespace Circuit_Mod_Manager
         String gearConnection;
         String trackConnection;
         String bikeConnection;
+        String customConnection;
         String desktopPath;
         ArrayList paramList = new ArrayList();
+        ArrayList customDatabaseList = new ArrayList();
+        ArrayList customDatabaseListNoExt = new ArrayList();
 
         public Form1()
         {
@@ -69,6 +73,8 @@ namespace Circuit_Mod_Manager
             iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages[Properties.Settings.Default.defaultPage];
             sr.CheckCircuitData();
             mxDirTbox.Text = sr.CheckMXdir();
+            //Properties.Settings.Default.customDatabasesExist = false;
+            //Properties.Settings.Default.Save();
             if (Properties.Settings.Default.usingPersonalFolder == true)
             {
                 mxExeLocationTextbox.Text = Properties.Settings.Default.mxExeLocation;
@@ -84,6 +90,16 @@ namespace Circuit_Mod_Manager
             else
             {
                 lockFPSTextbox.Text = Properties.Settings.Default.lockFps;
+            }
+            refreshCustomDatabaseList();
+        }
+        private void refreshCustomDatabaseList()
+        {
+            String databaseName;
+            foreach (String fileName in Directory.GetFiles("custom_databases"))
+            {
+                databaseName = Path.GetFileNameWithoutExtension(fileName);
+                vManager.getCustomDatabaseListNoExt().Add(databaseName);
             }
         }
 
@@ -335,6 +351,72 @@ namespace Circuit_Mod_Manager
                     bikeCon.Close();
                 }
             }
+            else
+            {
+                foreach (String databaseName in vManager.getCustomDatabaseListNoExt())
+                {
+                    if ((string)filterModComboBox.SelectedItem == databaseName)
+                    {
+                        trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                        trackDatabaseStatusLabel.Text = "Idle";
+                        gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                        gearDatabaseStatusLabel.Text = "Idle";
+                        bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                        bikeDatabaseStatusLabel.Text = "Idle";
+                        customDatabaseStatusLabel.Text = "Loaded";
+                        customDatabaseStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
+                        loadModsFromCustomDatabase(false, databaseName);
+                        break;
+                    }
+                }
+            }
+            
+        }
+
+        private void loadModsFromCustomDatabase(Boolean databaseView, String databaseName)
+        {
+            customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + databaseName + ".db;version=3;";
+            using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
+            {
+                try
+                {
+                    customCon.Open();
+                    if (customCon.State == System.Data.ConnectionState.Open)
+                    {
+                        if(databaseView == false)
+                        {
+                            MessageBox.Show("Successfully connected to custom database");
+                            modComboBox.Items.Clear();
+                            modListBox.Items.Clear();
+                            SQLiteCommand cmd = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type = 'table'", customCon);
+                            using (SQLiteDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    modComboBox.Items.Add(reader["name"]);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            databaseModListBox.Items.Clear();
+                            SQLiteCommand cmd = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type = 'table'", customCon);
+                            using (SQLiteDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    databaseModListBox.Items.Add(reader["name"]);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                customCon.Close();
+            }
         }
 
         private void modComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -427,6 +509,41 @@ namespace Circuit_Mod_Manager
                         MessageBox.Show(ex.Message);
                     }
                     bikeCon.Close();
+                }
+            }
+            else
+            {
+                foreach(String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                {
+                    if((string)filterModComboBox.SelectedItem == databaseEntry)
+                    {
+                        modListBox.Items.Clear();
+                        customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + databaseEntry + ".db;version=3;";
+                        using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
+                        {
+                            try
+                            {
+                                customCon.Open();
+                                if (customCon.State == System.Data.ConnectionState.Open)
+                                {
+                                    //MessageBox.Show("Successfully connected");
+                                    SQLiteCommand cmd = new SQLiteCommand("SELECT modFiles FROM " + "'" + (string)modComboBox.SelectedItem + "';", customCon);
+                                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            modListBox.Items.Add(reader["modFiles"]);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            customCon.Close();
+                        }
+                    }
                 }
             }
         }
@@ -522,405 +639,353 @@ namespace Circuit_Mod_Manager
                 {
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
-                        gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
-                        using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
-                        {
-                            try
-                            {
-                                gearCon.Open();
-                                if (gearCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    deleteModFiles();
-                                    SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + (string)modComboBox.SelectedItem + "'", gearCon);
-                                    cmd.ExecuteNonQuery();
-                                    modListBox.Items.Clear();
-                                    modComboBox.Items.Remove(modComboBox.SelectedItem);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            gearCon.Close();
-                        }
+                        SQLiteConnection gearCon = null;
+                        deleteMod(false, false, "gear_mods", gearCon, "gearConnection");
                     }
                     else if(trackDatabaseStatusLabel.Text == "Loaded")
                     {
-                        trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
-                        using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
-                        {
-                            try
-                            {
-                                trackCon.Open();
-                                if (trackCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    deleteModFiles();
-                                    SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + (string)modComboBox.SelectedItem + "'", trackCon);
-                                    cmd.ExecuteNonQuery();
-                                    modListBox.Items.Clear();
-                                    modComboBox.Items.Remove(modComboBox.SelectedItem);
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                //MessageBox.Show(ex.Message);
-                            }
-                            trackCon.Close();
-                        }
+                        SQLiteConnection trackCon = null;
+                        deleteMod(false, false, "track_mods", trackCon, "trackConnection");
                     }
                     else if(bikeDatabaseStatusLabel.Text == "Loaded")
                     {
-                        bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
-                        using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
-                        {
-                            try
-                            {
-                                bikeCon.Open();
-                                if (bikeCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    deleteModFiles();
-                                    SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + (string)modComboBox.SelectedItem + "'", bikeCon);
-                                    cmd.ExecuteNonQuery();
-                                    modListBox.Items.Clear();
-                                    modComboBox.Items.Remove(modComboBox.SelectedItem);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            bikeCon.Close();
-                        }
+                        SQLiteConnection bikeCon = null;
+                        deleteMod(false, false, "bike_mods", bikeCon, "bikeConnection");
+                    }
+                    else if(customDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        SQLiteConnection customCon = null;
+                        deleteMod(false, true, (string)filterModComboBox.SelectedItem, customCon, "customConnection");
                     }
                 }
                 else if((string)actionComboBox.SelectedItem == "Delete Selected Files")
                 {
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
-                        gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
-                        using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
-                        {
-                            try
-                            {
-                                gearCon.Open();
-                                if (gearCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    deleteSelectedModFiles();
-                                    for (int counter = 0; counter < modListBox.CheckedItems.Count; counter++)
-                                    {
-                                        SQLiteCommand cmd = new SQLiteCommand("DELETE FROM " + "'" + (string)modComboBox.SelectedItem + "'" + " WHERE modFiles = " + "'" + modListBox.CheckedItems[counter].ToString() + "';", gearCon);
-                                        cmd.ExecuteNonQuery();
-                                    }
-                                    foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                                    {
-                                        modListBox.Items.Remove(item);
-                                    }
-
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            gearCon.Close();
-                        }
+                        SQLiteConnection gearCon = null;
+                        deleteSelectedFiles(false, "gear_mods", gearCon, "gearConnection");
                     }
                     else if(trackDatabaseStatusLabel.Text == "Loaded")
                     {
-                        trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
-                        using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
-                        {
-                            try
-                            {
-                                trackCon.Open();
-                                if (trackCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    deleteSelectedModFiles();
-                                    for (int counter = 0; counter < modListBox.CheckedItems.Count; counter++)
-                                    {
-                                        SQLiteCommand cmd = new SQLiteCommand("DELETE FROM " + "'" + (string)modComboBox.SelectedItem + "'" + " WHERE modFiles = " + "'" + modListBox.CheckedItems[counter].ToString() + "';", trackCon);
-                                        cmd.ExecuteNonQuery();
-                                    }
-                                    foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                                    {
-                                        modListBox.Items.Remove(item);
-                                    }
-
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            trackCon.Close();
-                        }
+                        SQLiteConnection trackCon = null;
+                        deleteSelectedFiles(false, "track_mods", trackCon, "trackConnection");
                     }
                     else if(bikeDatabaseStatusLabel.Text == "Loaded")
                     {
-                        bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
-                        using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
-                        {
-                            try
-                            {
-                                bikeCon.Open();
-                                if (bikeCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    deleteSelectedModFiles();
-                                    for (int counter = 0; counter < modListBox.CheckedItems.Count; counter++)
-                                    {
-                                        SQLiteCommand cmd = new SQLiteCommand("DELETE FROM " + "'" + (string)modComboBox.SelectedItem + "'" + " WHERE modFiles = " + "'" + modListBox.CheckedItems[counter].ToString() + "';", bikeCon);
-                                        cmd.ExecuteNonQuery();
-                                    }
-                                    foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                                    {
-                                        modListBox.Items.Remove(item);
-                                    }
-
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            bikeCon.Close();
-                        }
+                        SQLiteConnection bikeCon = null;
+                        deleteSelectedFiles(false, "bike_mods", bikeCon, "bikeConnection");
+                    }
+                    else if(customDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        SQLiteConnection customCon = null;
+                        deleteSelectedFiles(true, (string)filterModComboBox.SelectedItem, customCon, "customConnection");
                     }
                 }
                 else if((string)actionComboBox.SelectedItem == "Backup Mod")
                 {
+                    
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
-                        gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
-                        using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
-                        {
-                            try
-                            {
-                                gearCon.Open();
-                                if (gearCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                                    using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                                    {
-                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
-                                        {
-                                            FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                                            if (attr.HasFlag(FileAttributes.Directory))
-                                            {
-
-                                            }
-                                            else
-                                            {
-                                                zip.AddFile(mxDirTbox.Text + "\\" + item);
-                                            }
-                                            
-                                        }
-                                        zip.Comment = "Gear Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                                        zip.Save();
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                //MessageBox.Show(ex.Message);
-                            }
-                            gearCon.Close();
-                        }
+                        SQLiteConnection gearCon = null;
+                        backupMod(false, false, "gear_mods", gearCon, "gearConnection");
                     }
                     else if (trackDatabaseStatusLabel.Text == "Loaded")
                     {
-                        trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
-                        using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
-                        {
-                            try
-                            {
-                                trackCon.Open();
-                                if (trackCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                                    using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                                    {
-                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
-                                        {
-                                            FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                                            if (attr.HasFlag(FileAttributes.Directory))
-                                            {
-
-                                            }
-                                            else
-                                            {
-                                                zip.AddFile(mxDirTbox.Text + "\\" + item);
-                                            }
-
-                                        }
-                                        zip.Comment = "Track Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                                        zip.Save();
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                //MessageBox.Show(ex.Message);
-                            }
-                            trackCon.Close();
-                        }
+                        SQLiteConnection trackCon = null;
+                        backupMod(false, false, "track_mods", trackCon, "trackConnection");
                     }
                     else if (bikeDatabaseStatusLabel.Text == "Loaded")
                     {
-                        bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
-                        using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
-                        {
-                            try
-                            {
-                                bikeCon.Open();
-                                if (bikeCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                                    using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                                    {
-                                        foreach (var item in modListBox.Items.OfType<string>().ToList())
-                                        {
-                                            FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                                            if (attr.HasFlag(FileAttributes.Directory))
-                                            {
-
-                                            }
-                                            else
-                                            {
-                                                zip.AddFile(mxDirTbox.Text + "\\" + item);
-                                            }
-
-                                        }
-                                        zip.Comment = "Bike Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                                        zip.Save();
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            bikeCon.Close();
-                        }
+                        SQLiteConnection bikeCon = null;
+                        backupMod(false, false, "bike_mods", bikeCon, "bikeConnection");
+                    }
+                    else if (customDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        SQLiteConnection customCon = null;
+                        backupMod(true, false, (string)filterModComboBox.SelectedItem, customCon, "customConnection");
                     }
                 }
                 else if((string)actionComboBox.SelectedItem == "Backup Selected Files")
                 {
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
-                        gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
-                        using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
-                        {
-                            try
-                            {
-                                gearCon.Open();
-                                if (gearCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                                    using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                                    {
-                                        foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                                        {
-                                            FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                                            if (attr.HasFlag(FileAttributes.Directory))
-                                            {
+                        SQLiteConnection gearCon = null;
+                        backupMod(false, true, "gear_mods", gearCon, "gearConnection");
+                        //gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                        //using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
+                        //{
+                        //    try
+                        //    {
+                        //        gearCon.Open();
+                        //        if (gearCon.State == System.Data.ConnectionState.Open)
+                        //        {
+                        //            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        //            using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
+                        //            {
+                        //                foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                        //                {
+                        //                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                        //                    if (attr.HasFlag(FileAttributes.Directory))
+                        //                    {
 
-                                            }
-                                            else
-                                            {
-                                                zip.AddFile(mxDirTbox.Text + "\\" + item);
-                                            }
-                                        }
-                                        zip.Comment = "Gear Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                                        zip.Save();
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            gearCon.Close();
-                        }
+                        //                    }
+                        //                    else
+                        //                    {
+                        //                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                        //                    }
+                        //                }
+                        //                zip.Comment = "Gear Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
+                        //                zip.Save();
+                        //            }
+                        //        }
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        MessageBox.Show(ex.Message);
+                        //    }
+                        //    gearCon.Close();
+                        //}
                     }
                     else if (trackDatabaseStatusLabel.Text == "Loaded")
                     {
-                        trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
-                        using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
-                        {
-                            try
-                            {
-                                trackCon.Open();
-                                if (trackCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                                    using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                                    {
-                                        foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                                        {
-                                            FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                                            if (attr.HasFlag(FileAttributes.Directory))
-                                            {
+                        SQLiteConnection trackCon = null;
+                        backupMod(false, true, "track_mods", trackCon, "trackConnection");
+                        //trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
+                        //using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
+                        //{
+                        //    try
+                        //    {
+                        //        trackCon.Open();
+                        //        if (trackCon.State == System.Data.ConnectionState.Open)
+                        //        {
+                        //            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        //            using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
+                        //            {
+                        //                foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                        //                {
+                        //                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                        //                    if (attr.HasFlag(FileAttributes.Directory))
+                        //                    {
 
-                                            }
-                                            else
-                                            {
-                                                zip.AddFile(mxDirTbox.Text + "\\" + item);
-                                            }
-                                        }
-                                        zip.Comment = "Gear Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                                        zip.Save();
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            trackCon.Close();
-                        }
+                        //                    }
+                        //                    else
+                        //                    {
+                        //                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                        //                    }
+                        //                }
+                        //                zip.Comment = "Gear Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
+                        //                zip.Save();
+                        //            }
+                        //        }
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        MessageBox.Show(ex.Message);
+                        //    }
+                        //    trackCon.Close();
+                        //}
                     }
                     else if (bikeDatabaseStatusLabel.Text == "Loaded")
                     {
-                        bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
-                        using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
-                        {
-                            try
-                            {
-                                bikeCon.Open();
-                                if (bikeCon.State == System.Data.ConnectionState.Open)
-                                {
-                                    desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                                    using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                                    {
-                                        foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                                        {
-                                            FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                                            if (attr.HasFlag(FileAttributes.Directory))
-                                            {
+                        SQLiteConnection bikeCon = null;
+                        backupMod(false, true, "bike_mods", bikeCon, "bikeConnection");
+                        //bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                        //using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
+                        //{
+                        //    try
+                        //    {
+                        //        bikeCon.Open();
+                        //        if (bikeCon.State == System.Data.ConnectionState.Open)
+                        //        {
+                        //            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        //            using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
+                        //            {
+                        //                foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                        //                {
+                        //                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                        //                    if (attr.HasFlag(FileAttributes.Directory))
+                        //                    {
 
-                                            }
-                                            else
-                                            {
-                                                zip.AddFile(mxDirTbox.Text + "\\" + item);
-                                            }
-                                        }
-                                        zip.Comment = "Bike Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                                        zip.Save();
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
-                            bikeCon.Close();
-                        }
+                        //                    }
+                        //                    else
+                        //                    {
+                        //                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                        //                    }
+                        //                }
+                        //                zip.Comment = "Bike Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
+                        //                zip.Save();
+                        //            }
+                        //        }
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        MessageBox.Show(ex.Message);
+                        //    }
+                        //    bikeCon.Close();
+                        //}
+                    }
+                    else if (customDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        SQLiteConnection customCon = null;
+                        backupMod(true, true, (string)filterModComboBox.SelectedItem, customCon, "customConnection");
                     }
                 }
                 else if((string)actionComboBox.SelectedItem == "Backup Entire MXS Install")
                 {
                     backupMXSInstall();
                 }
+            }
+        }
+
+        private void backupMod(Boolean isCustom, Boolean selectedFiles, String databaseName, SQLiteConnection sqliteCon, String sqliteConnectionString)
+        {
+            if(isCustom == true)
+            {
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + databaseName + ".db;version=3;";
+            }
+            else
+            {
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + databaseName + "db;version=3;";
+            }
+            
+            using (sqliteCon = new SQLiteConnection(sqliteConnectionString))
+            {
+                try
+                {
+                    sqliteCon.Open();
+                    if (sqliteCon.State == System.Data.ConnectionState.Open)
+                    {
+                        desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
+                        {
+                            if(selectedFiles == true)
+                            {
+                                foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                                {
+                                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                                    if (attr.HasFlag(FileAttributes.Directory))
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                                    }
+
+                                }
+                                zip.Comment = " Backup by MXSIM:MM " + mxsimmmVersion + ", Date: " + System.DateTime.Now.ToString("G");
+                                zip.Save();
+                            }
+                            else
+                            {
+                                foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                {
+                                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                                    if (attr.HasFlag(FileAttributes.Directory))
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                                    }
+
+                                }
+                                zip.Comment = " Backup by MXSIM:MM " + mxsimmmVersion + ", Date: " + System.DateTime.Now.ToString("G");
+                                zip.Save();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
+                sqliteCon.Close();
+            }
+        }
+
+        private void deleteSelectedFiles(Boolean isCustom, String databaseName, SQLiteConnection sqliteCon, String sqliteConnectionString)
+        {
+            if(isCustom == true)
+            {
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + databaseName + ".db;version=3;";
+            }
+            else
+            {
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + databaseName + ".db;version=3;";
+            }
+            using (sqliteCon = new SQLiteConnection(sqliteConnectionString))
+            {
+                try
+                {
+                    sqliteCon.Open();
+                    if (sqliteCon.State == System.Data.ConnectionState.Open)
+                    {
+                        deleteSelectedModFiles();
+                        for (int counter = 0; counter < modListBox.CheckedItems.Count; counter++)
+                        {
+                            SQLiteCommand cmd = new SQLiteCommand("DELETE FROM " + "'" + (string)modComboBox.SelectedItem + "'" + " WHERE modFiles = " + "'" + modListBox.CheckedItems[counter].ToString() + "';", sqliteCon);
+                            cmd.ExecuteNonQuery();
+                        }
+                        foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
+                        {
+                            modListBox.Items.Remove(item);
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                sqliteCon.Close();
+            }
+        }
+
+        private void deleteMod(Boolean databaseView, Boolean isCustom, String databaseName, SQLiteConnection sqliteCon, String sqliteConnectionString)
+        {
+            if(isCustom == true)
+            {
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + databaseName + ".db;version=3;";
+            }
+            else
+            {
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + databaseName + ".db;version=3;";
+            }
+            using (sqliteCon = new SQLiteConnection(sqliteConnectionString))
+            {
+                try
+                {
+                    sqliteCon.Open();
+                    if (sqliteCon.State == System.Data.ConnectionState.Open)
+                    {
+                        if(databaseView == false)
+                        {
+                            deleteModFiles(false);
+                            SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + (string)modComboBox.SelectedItem + "'", sqliteCon);
+                            cmd.ExecuteNonQuery();
+                            modListBox.Items.Clear();
+                            modComboBox.Items.Remove(modComboBox.SelectedItem);
+                        }
+                        else
+                        {
+                            foreach(String modInDatabase in databaseModListBox.Items)
+                            {
+                                deleteModFiles(modInDatabase);
+                                SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + modInDatabase + "'", sqliteCon);
+                                cmd.ExecuteNonQuery();
+                            }
+                            databaseComboBox.Items.Remove(databaseComboBox.SelectedItem);
+                            databaseModListBox.Items.Clear();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                sqliteCon.Close();
             }
         }
 
@@ -950,34 +1015,127 @@ namespace Circuit_Mod_Manager
             }
         }
 
-        private void deleteModFiles()
+        private void deleteModFiles(Boolean databaseView)
         {
-            for (int counter = 0; counter < modListBox.Items.Count; counter++)
+            if(databaseView == false)
             {
-                try
+                for (int counter = 0; counter < modListBox.Items.Count; counter++)
                 {
-                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString());
-                    if (attr.HasFlag(FileAttributes.Directory))
+                    try
                     {
-                        if (modListBox.Items[counter].ToString().Contains("/"))
+                        FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString());
+                        if (attr.HasFlag(FileAttributes.Directory))
                         {
-                            modListBox.Items[counter].ToString().Replace("/", "\\");
-                            Directory.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString(), true);
+                            if (modListBox.Items[counter].ToString().Contains("/"))
+                            {
+                                modListBox.Items[counter].ToString().Replace("/", "\\");
+                                Directory.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString(), true);
+                            }
+                            else
+                            {
+                                Directory.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString(), true);
+                            }
                         }
                         else
                         {
-                            Directory.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString(), true);
+                            File.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString());
                         }
                     }
-                    else
+                    catch (Exception)
                     {
-                        File.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString());
+
                     }
                 }
-                catch (Exception)
+            }
+            else
+            {
+                for (int counter = 0; counter < databaseModListBox.Items.Count; counter++)
                 {
+                    try
+                    {
+                        FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString());
+                        if (attr.HasFlag(FileAttributes.Directory))
+                        {
+                            if (databaseModListBox.Items[counter].ToString().Contains("/"))
+                            {
+                                databaseModListBox.Items[counter].ToString().Replace("/", "\\");
+                                Directory.Delete(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString(), true);
+                            }
+                            else
+                            {
+                                Directory.Delete(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString(), true);
+                            }
+                        }
+                        else
+                        {
+                            File.Delete(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString());
+                        }
+                    }
+                    catch (Exception)
+                    {
 
+                    }
                 }
+            }
+        }
+
+        private void deleteModFiles(String modName)
+        {
+            customConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\custom_databases\\" + (string)databaseComboBox.SelectedItem + ".db;version=3;";
+            using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
+            {
+                try
+                {
+                    customCon.Open();
+                    if (customCon.State == System.Data.ConnectionState.Open)
+                    {
+                        ArrayList fileList = new ArrayList();
+                        SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM '" + modName + "';", customCon);
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                fileList.Add(reader[1]);
+                            }
+                        }
+                        foreach (String fileName in fileList)
+                        {
+                            for (int counter = 0; counter < fileList.Count; counter++)
+                            {
+                                try
+                                {
+                                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + fileName);
+                                    if (attr.HasFlag(FileAttributes.Directory))
+                                    {
+                                        if (fileName.Contains("/"))
+                                        {
+                                            fileName.Replace("/", "\\");
+                                            Directory.Delete(mxDirTbox.Text + "\\" + fileName, true);
+                                        }
+                                        else
+                                        {
+                                            Directory.Delete(mxDirTbox.Text + "\\" + fileName, true);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        File.Delete(mxDirTbox.Text + "\\" + fileName);
+                                    }
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                customCon.Close();
             }
         }
 
@@ -1074,6 +1232,24 @@ namespace Circuit_Mod_Manager
             if(customRadioButton.Checked == true)
             {
                 customDatabaseComboBox.Visible = true;
+                if (Properties.Settings.Default.customDatabasesExist == true)
+                {
+                    customDatabaseComboBox.Items.Clear();
+                    String databaseName;
+                    foreach (String fileName in Directory.GetFiles("custom_databases"))
+                    {
+                        if(fileName == "")
+                        {
+                            MessageBox.Show("Null database name: " + fileName, "Error: Null database name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            databaseName = Path.GetFileNameWithoutExtension(fileName);
+                            customDatabaseComboBox.Items.Add(databaseName);
+                            vManager.getCustomDatabaseListNoExt().Add(databaseName);
+                        }
+                    }
+                }
             }
             else
             {
@@ -1089,21 +1265,34 @@ namespace Circuit_Mod_Manager
                 {
                     createNewDatabaseButton.Visible = false;
                     noCustomDatabaseLabel.Visible = false;
+                    createNewDatabase2Button.Visible = true;
                     databaseActionLabel.Visible = true;
                     databaseActionComboBox.Visible = true;
-                    databaseBackupNameLabel.Visible = true;
-                    databaseBackupNameTextbox.Visible = true;
+                    databaseBackupNameLabel.Visible = false;
+                    databaseBackupNameTextbox.Visible = false;
                     databaseComboBox.Visible = true;
                     databaseExecuteButton.Visible = true;
                     databaseLabel.Visible = true;
                     databaseModListBox.Visible = true;
-                    databaseSelectAllRadioButton.Visible = true;
-                    databaseSelectNoneRadioButton.Visible = true;
+                    databaseComboBox.Items.Clear();
+                    refreshCustomDatabaseList();
+                    foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                    {
+                        if (databaseComboBox.Items.Contains(databaseEntry))
+                        {
+
+                        }
+                        else
+                        {
+                            databaseComboBox.Items.Add(databaseEntry);
+                        }
+                    }
                 }
                 else
                 {
                     createNewDatabaseButton.Visible = true;
                     noCustomDatabaseLabel.Visible = true;
+                    createNewDatabase2Button.Visible = false;
                     databaseActionLabel.Visible = false;
                     databaseActionComboBox.Visible = false;
                     databaseBackupNameLabel.Visible = false;
@@ -1112,8 +1301,6 @@ namespace Circuit_Mod_Manager
                     databaseExecuteButton.Visible = false;
                     databaseLabel.Visible = false;
                     databaseModListBox.Visible = false;
-                    databaseSelectAllRadioButton.Visible = false;
-                    databaseSelectNoneRadioButton.Visible = false;
                 }
 
             }
@@ -1151,11 +1338,51 @@ namespace Circuit_Mod_Manager
                     alwaysDeleteFileAfterInstallCB.Checked = false;
                     deleteFileAfterCheckbox.Checked = false;
                 }
+                if (Properties.Settings.Default.customDatabasesExist == true)
+                {
+                    customDatabaseComboBox.Items.Clear();
+                    refreshCustomDatabaseList();
+                    foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                    {
+                        if (customDatabaseComboBox.Items.Contains(databaseEntry))
+                        {
+
+                        }
+                        else
+                        {
+                            customDatabaseComboBox.Items.Add(databaseEntry);
+                        }
+                    }
+                }
+            }
+            else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["modPage"])
+            {
+                if (Properties.Settings.Default.customDatabasesExist == true)
+                {
+                    filterModComboBox.Items.Clear();
+                    refreshCustomDatabaseList();
+                    filterModComboBox.Items.Add("Gear");
+                    filterModComboBox.Items.Add("Track");
+                    filterModComboBox.Items.Add("Bike");
+                    foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+                    {
+                        if(filterModComboBox.Items.Contains(databaseEntry))
+                        {
+
+                        }
+                        else
+                        {
+                            filterModComboBox.Items.Add(databaseEntry);
+                        }
+                    }
+                }
             }
         }
 
         private void createNewDatabaseButton_Click(object sender, EventArgs e)
         {
+            newDatabaseForm newDBform = new newDatabaseForm();
+            newDBform.Show();
             Properties.Settings.Default.customDatabasesExist = true;
             Properties.Settings.Default.Save();
         }
@@ -1392,8 +1619,16 @@ namespace Circuit_Mod_Manager
                 {
                     sb.Append(parameter);   
                 }
-                Process.Start(mxExeLocationTextbox.Text, sb.ToString());
-                paramList.Clear();
+                try
+                {
+                    Process.Start(mxExeLocationTextbox.Text, sb.ToString());
+                    paramList.Clear();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error loading MX Simulator, verify path", "Error loading MX.exe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             
         }
@@ -1492,6 +1727,102 @@ namespace Circuit_Mod_Manager
             mxExeLocationTextbox.Text = ofd.FileName;
             Properties.Settings.Default.mxExeLocation = ofd.FileName;
             Properties.Settings.Default.Save();
+        }
+
+        private void createNewDatabase2Button_Click(object sender, EventArgs e)
+        {
+            newDatabaseForm newDBform = new newDatabaseForm();
+            newDBform.Show();
+            Properties.Settings.Default.customDatabasesExist = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            databaseComboBox.Items.Clear();
+            refreshCustomDatabaseList();
+            foreach (String databaseEntry in vManager.getCustomDatabaseListNoExt())
+            {
+                if (databaseComboBox.Items.Contains(databaseEntry))
+                {
+
+                }
+                else
+                {
+                    databaseComboBox.Items.Add(databaseEntry);
+                }
+            }
+        }
+
+        private void refreshButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            refreshButton.Image = Properties.Resources.refresh_clicked;
+        }
+
+        private void refreshButton_MouseEnter(object sender, EventArgs e)
+        {
+            refreshButton.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void refreshButton_MouseLeave(object sender, EventArgs e)
+        {
+            refreshButton.Image = Properties.Resources.refresh;
+        }
+
+        private void refreshButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            refreshButton.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void databaseComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (String databaseName in vManager.getCustomDatabaseListNoExt())
+            {
+                if ((string)databaseComboBox.SelectedItem == databaseName)
+                {
+                    loadModsFromCustomDatabase(true, databaseName);
+                    break;
+                }
+            }
+        }
+
+        private void databaseExecuteButton_Click(object sender, EventArgs e)
+        {
+            if((string)databaseComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("No Database Selected!", "MXSIM Mod Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if ((string)databaseActionComboBox.SelectedItem == "Delete Database")
+                {
+
+                    databaseActionStatusLabel.Visible = true;
+                    DialogResult result = MessageBox.Show("This action will delete the mod files associated with this database, do you want to continue?", "Database deletion confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        SQLiteConnection customCon = null;
+                        deleteMod(true, true, (string)databaseComboBox.SelectedItem, customCon, "customConnection");
+                    }
+                    else
+                    {
+
+                    }
+                    databaseActionStatusLabel.Visible = false;
+                }
+            }
+        }
+
+        private void openMxDir_Click(object sender, EventArgs e)
+        {
+            if(mxDirTbox.Text == "")
+            {
+                MessageBox.Show("Please set your MXS Directory in settings", "Couldn't open directory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Process.Start(mxDirTbox.Text);
+            }
         }
     }
 }

@@ -67,6 +67,10 @@ namespace Circuit_Mod_Manager
                 MessageBox.Show("Bike Database doesn't exist, will create one now", "No Bike DB", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 File.Create("bike_mods.db").Close();
             }
+            if(!Directory.Exists("custom_databases"))
+            {
+                Directory.CreateDirectory("custom_databases");
+            }
         }
         public String CheckMXdir()
         {
