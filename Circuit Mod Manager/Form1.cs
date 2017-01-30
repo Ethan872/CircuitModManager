@@ -66,27 +66,48 @@ namespace Circuit_Mod_Manager
         public Form1()
         {
             InitializeComponent();
-            this.Icon = Circuit_Mod_Manager.Properties.Resources.mxsim_mod_manager;
+            this.Icon = Properties.Resources.mxsim_mod_manager;
             this.ShowIcon = true;
             this.ShowInTaskbar = true;
-            if(cdbHandler.doCustomDatabasesExist() == true)
+            sr.CheckCircuitData();
+            initializeSettings();
+            if (cdbHandler.doCustomDatabasesExist() == true)
             {
                 cdbHandler.reloadDatabaseArray();
             }
+        }
+
+        private void initializeSettings()
+        {
+            //Check if default page setting is set
+            if (Properties.Settings.Default.defaultPage == "")
+            {
+                iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages["settingsPage"];
+            }
             else
             {
+                iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages[Properties.Settings.Default.defaultPage];
             }
-            iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages[Properties.Settings.Default.defaultPage];
-            sr.CheckCircuitData();
-            mxDirTbox.Text = sr.CheckMXdir();
+            //Check if MX Simulator directory has been set
+            if (Properties.Settings.Default.mxSimDir == "")
+            {
+                MessageBox.Show("Your MX Simulator directory hasn't been set, please set it now", "Settings are invalid", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                iTalk_TabControl1.SelectedTab = iTalk_TabControl1.TabPages["settingsPage"];
+            }
+            else
+            {
+                mxDirTbox.Text = Properties.Settings.Default.mxSimDir;
+            }
+            //Check if "using personal folder" setting is set
             if (Properties.Settings.Default.usingPersonalFolder == true)
             {
                 mxExeLocationTextbox.Text = Properties.Settings.Default.mxExeLocation;
             }
             else
             {
-                mxExeLocationTextbox.Text = mxDirTbox.Text + "\\" + "mx.exe";
+                mxExeLocationTextbox.Text = Properties.Settings.Default.mxSimDir + "\\" + "mx.exe";
             }
+            //Check if LockFPS setting is set
             if (Properties.Settings.Default.lockFps == "")
             {
                 lockFPSTextbox.Text = "";
@@ -120,26 +141,27 @@ namespace Circuit_Mod_Manager
             }
             else
             {
+                pleaseWaitLabel.Visible = true;
                 if (trackRadioButton.Checked == true)
                 {
                     if (deleteFileAfterCheckbox.Checked == true)
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "track", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
+                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "track", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, true, (string)customDatabaseComboBox.SelectedItem);
                     }
                     else
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "track", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
+                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "track", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, false, (string)customDatabaseComboBox.SelectedItem);
                     }
                 }
                 else if (gearRadioButton.Checked == true)
                 {
                     if (deleteFileAfterCheckbox.Checked == true)
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
+                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, true, (string)customDatabaseComboBox.SelectedItem);
                     }
                     else
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
+                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "gear", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, false, (string)customDatabaseComboBox.SelectedItem);
                     }
 
                 }
@@ -147,11 +169,11 @@ namespace Circuit_Mod_Manager
                 {
                     if (deleteFileAfterCheckbox.Checked == true)
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "bike", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
+                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "bike", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, true, (string)customDatabaseComboBox.SelectedItem);
                     }
                     else
                     {
-                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "bike", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
+                        dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "bike", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, false, (string)customDatabaseComboBox.SelectedItem);
                     }
                 }
                 else if (customRadioButton.Checked == true)
@@ -164,15 +186,15 @@ namespace Circuit_Mod_Manager
                     {
                         if (deleteFileAfterCheckbox.Checked == true)
                         {
-                            dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), mxDirTbox.Text, true, (string)customDatabaseComboBox.SelectedItem);
+                            dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, true, (string)customDatabaseComboBox.SelectedItem);
                         }
                         else
                         {
-                            dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), mxDirTbox.Text, false, (string)customDatabaseComboBox.SelectedItem);
+                            dbManager.StartInstallProcess(vManager.getInstallingModWithoutPath(), vManager.getInstallingMod(), "custom", vManager.getInstallingModExtension(), Properties.Settings.Default.mxSimDir, false, (string)customDatabaseComboBox.SelectedItem);
                         }
                     }
                 }
-
+                pleaseWaitLabel.Visible = false;
             }
         }
 
@@ -193,8 +215,9 @@ namespace Circuit_Mod_Manager
 
         private void saveMXdirButton_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("mxdir.txt");
-            sw.WriteLine(mxDirTbox.Text);
+            Properties.Settings.Default.mxSimDir = mxDirTbox.Text;
+            Properties.Settings.Default.Save();
+            vManager.setMxDirectory(Properties.Settings.Default.mxSimDir);
             if (installerRadioButton.Checked == true)
             {
                 Properties.Settings.Default.defaultPage = "installerPage";
@@ -220,7 +243,6 @@ namespace Circuit_Mod_Manager
                 Properties.Settings.Default.defaultPage = "launchPage";
                 Properties.Settings.Default.Save();
             }
-            sw.Close();
             if(personalFolderCB.Checked == true)
             {
                 Properties.Settings.Default.usingPersonalFolder = true;
@@ -231,7 +253,6 @@ namespace Circuit_Mod_Manager
                 Properties.Settings.Default.usingPersonalFolder = false;
                 Properties.Settings.Default.Save();
             }
-            vManager.setMxDirectory(mxDirTbox.Text);
             notifyIconSettings.ShowBalloonTip(2000);
         }
 
@@ -260,7 +281,7 @@ namespace Circuit_Mod_Manager
                 bikeDatabaseStatusLabel.Text = "Idle";
                 customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
                 customDatabaseStatusLabel.Text = "Idle";
-                trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
+                String trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\track_mods.db;version=3;";
                 using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                 {
                     try
@@ -298,7 +319,7 @@ namespace Circuit_Mod_Manager
                 bikeDatabaseStatusLabel.Text = "Idle";
                 customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
                 customDatabaseStatusLabel.Text = "Idle";
-                String gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                String gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\gear_mods.db;version=3;";
                 using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                 {
                     try
@@ -306,7 +327,6 @@ namespace Circuit_Mod_Manager
                         gearCon.Open();
                         if (gearCon.State == System.Data.ConnectionState.Open)
                         {
-                            //MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
                             modComboBox.Items.Clear();
                             modListBox.Items.Clear();
                             SQLiteCommand cmd = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type = 'table'", gearCon);
@@ -336,7 +356,7 @@ namespace Circuit_Mod_Manager
                 bikeDatabaseStatusLabel.Text = "Loaded";
                 customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
                 customDatabaseStatusLabel.Text = "Idle";
-                String bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                String bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\bike_mods.db;version=3;";
                 using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
                 {
                     try
@@ -439,7 +459,7 @@ namespace Circuit_Mod_Manager
             if ((string)filterModComboBox.SelectedItem == "Track")
             {
                 modListBox.Items.Clear();
-                trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
+                trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\track_mods.db;version=3;";
                 using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                 {
                     try
@@ -467,7 +487,7 @@ namespace Circuit_Mod_Manager
             else if ((string)filterModComboBox.SelectedItem == "Gear")
             {
                 modListBox.Items.Clear();
-                gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\gear_mods.db;version=3;";
                 using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                 {
                     try
@@ -495,7 +515,7 @@ namespace Circuit_Mod_Manager
             else if ((string)filterModComboBox.SelectedItem == "Bike")
             {
                 modListBox.Items.Clear();
-                bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\bike_mods.db;version=3;";
                 using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
                 {
                     try
@@ -573,7 +593,7 @@ namespace Circuit_Mod_Manager
             {
                 if ((string)actionComboBox.SelectedItem == "Remove From Database")
                 {
-                    if ((string)filterModComboBox.SelectedItem == "Gear")
+                    if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
                         using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                         {
@@ -596,7 +616,7 @@ namespace Circuit_Mod_Manager
                             gearCon.Close();
                         }
                     }
-                    else if ((string)filterModComboBox.SelectedItem == "Track")
+                    else if (trackDatabaseStatusLabel.Text == "Loaded")
                     {
                         using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                         {
@@ -619,7 +639,7 @@ namespace Circuit_Mod_Manager
                             trackCon.Close();
                         }
                     }
-                    else if ((string)filterModComboBox.SelectedItem == "Bike")
+                    else if (bikeDatabaseStatusLabel.Text == "Loaded")
                     {
                         using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
                         {
@@ -642,23 +662,47 @@ namespace Circuit_Mod_Manager
                             bikeCon.Close();
                         }
                     }
+                    else if (customDatabaseStatusLabel.Text == "Loaded")
+                    {
+                        using (SQLiteConnection customCon = new SQLiteConnection(customConnection))
+                        {
+                            try
+                            {
+                                customCon.Open();
+                                if (customCon.State == System.Data.ConnectionState.Open)
+                                {
+                                    SQLiteCommand cmd = new SQLiteCommand("DROP TABLE " + "'" + (string)modComboBox.SelectedItem + "'", customCon);
+                                    cmd.ExecuteNonQuery();
+                                    MessageBox.Show("Removed " + (string)modComboBox.SelectedItem + " from custom database", "Removed mod from Database", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    modComboBox.Items.Remove(modComboBox.SelectedItem);
+                                    modListBox.Items.Clear();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            customCon.Close();
+                        }
+                    }
+
                 }
                 else if((string)actionComboBox.SelectedItem == "Delete Mod")
                 {
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection gearCon = null;
-                        deleteMod(false, false, "gear_mods", gearCon, "gearConnection");
+                        deleteMod(false, false, "default_databases\\gear_mods", gearCon, "gearConnection");
                     }
                     else if(trackDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection trackCon = null;
-                        deleteMod(false, false, "track_mods", trackCon, "trackConnection");
+                        deleteMod(false, false, "default_databases\\track_mods", trackCon, "trackConnection");
                     }
                     else if(bikeDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection bikeCon = null;
-                        deleteMod(false, false, "bike_mods", bikeCon, "bikeConnection");
+                        deleteMod(false, false, "default_databases\\bike_mods", bikeCon, "bikeConnection");
                     }
                     else if(customDatabaseStatusLabel.Text == "Loaded")
                     {
@@ -671,17 +715,17 @@ namespace Circuit_Mod_Manager
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection gearCon = null;
-                        deleteSelectedFiles(false, "gear_mods", gearCon, "gearConnection");
+                        deleteSelectedFiles(false, "default_databases\\gear_mods", gearCon, "gearConnection");
                     }
                     else if(trackDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection trackCon = null;
-                        deleteSelectedFiles(false, "track_mods", trackCon, "trackConnection");
+                        deleteSelectedFiles(false, "default_databases\\track_mods", trackCon, "trackConnection");
                     }
                     else if(bikeDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection bikeCon = null;
-                        deleteSelectedFiles(false, "bike_mods", bikeCon, "bikeConnection");
+                        deleteSelectedFiles(false, "default_databases\\bike_mods", bikeCon, "bikeConnection");
                     }
                     else if(customDatabaseStatusLabel.Text == "Loaded")
                     {
@@ -695,17 +739,17 @@ namespace Circuit_Mod_Manager
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection gearCon = null;
-                        backupMod(false, false, "gear_mods", gearCon, "gearConnection");
+                        backupMod(false, false, "default_databases\\gear_mods", gearCon, "gearConnection");
                     }
                     else if (trackDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection trackCon = null;
-                        backupMod(false, false, "track_mods", trackCon, "trackConnection");
+                        backupMod(false, false, "default_databases\\track_mods", trackCon, "trackConnection");
                     }
                     else if (bikeDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection bikeCon = null;
-                        backupMod(false, false, "bike_mods", bikeCon, "bikeConnection");
+                        backupMod(false, false, "default_databases\\bike_mods", bikeCon, "bikeConnection");
                     }
                     else if (customDatabaseStatusLabel.Text == "Loaded")
                     {
@@ -718,47 +762,13 @@ namespace Circuit_Mod_Manager
                     if (gearDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection gearCon = null;
-                        backupMod(false, true, "gear_mods", gearCon, "gearConnection");
-                        //gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
-                        //using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
-                        //{
-                        //    try
-                        //    {
-                        //        gearCon.Open();
-                        //        if (gearCon.State == System.Data.ConnectionState.Open)
-                        //        {
-                        //            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        //            using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                        //            {
-                        //                foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                        //                {
-                        //                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                        //                    if (attr.HasFlag(FileAttributes.Directory))
-                        //                    {
-
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        zip.AddFile(mxDirTbox.Text + "\\" + item);
-                        //                    }
-                        //                }
-                        //                zip.Comment = "Gear Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                        //                zip.Save();
-                        //            }
-                        //        }
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        MessageBox.Show(ex.Message);
-                        //    }
-                        //    gearCon.Close();
-                        //}
+                        backupMod(false, true, "default_databases\\gear_mods", gearCon, "gearConnection");
                     }
                     else if (trackDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection trackCon = null;
-                        backupMod(false, true, "track_mods", trackCon, "trackConnection");
-                        //trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
+                        backupMod(false, true, "default_databases\\track_mods", trackCon, "trackConnection");
+                        //trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\track_mods.db;version=3;";
                         //using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                         //{
                         //    try
@@ -796,41 +806,7 @@ namespace Circuit_Mod_Manager
                     else if (bikeDatabaseStatusLabel.Text == "Loaded")
                     {
                         SQLiteConnection bikeCon = null;
-                        backupMod(false, true, "bike_mods", bikeCon, "bikeConnection");
-                        //bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
-                        //using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
-                        //{
-                        //    try
-                        //    {
-                        //        bikeCon.Open();
-                        //        if (bikeCon.State == System.Data.ConnectionState.Open)
-                        //        {
-                        //            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        //            using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
-                        //            {
-                        //                foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
-                        //                {
-                        //                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
-                        //                    if (attr.HasFlag(FileAttributes.Directory))
-                        //                    {
-
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        zip.AddFile(mxDirTbox.Text + "\\" + item);
-                        //                    }
-                        //                }
-                        //                zip.Comment = "Bike Backup by MXSIM:MM, Date: " + System.DateTime.Now.ToString("G");
-                        //                zip.Save();
-                        //            }
-                        //        }
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        MessageBox.Show(ex.Message);
-                        //    }
-                        //    bikeCon.Close();
-                        //}
+                        backupMod(false, true, "default_databases\\bike_mods", bikeCon, "bikeConnection");
                     }
                     else if (customDatabaseStatusLabel.Text == "Loaded")
                     {
@@ -853,9 +829,8 @@ namespace Circuit_Mod_Manager
             }
             else
             {
-                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + databaseName + "db;version=3;";
+                sqliteConnectionString = "Data Source=" + Directory.GetCurrentDirectory() + "\\" + databaseName + ".db;version=3;";
             }
-            
             using (sqliteCon = new SQLiteConnection(sqliteConnectionString))
             {
                 try
@@ -864,20 +839,21 @@ namespace Circuit_Mod_Manager
                     if (sqliteCon.State == System.Data.ConnectionState.Open)
                     {
                         desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        using (ZipFile zip = new ZipFile(desktopPath + "\\" + backupNameTextbox.Text + ".zip"))
+                        using (ZipFile zip = new ZipFile())
                         {
-                            if(selectedFiles == true)
+                            zip.UseZip64WhenSaving = Zip64Option.Always;
+                            if (selectedFiles == true)
                             {
                                 foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
                                 {
-                                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                                    FileAttributes attr = File.GetAttributes(Properties.Settings.Default.mxSimDir + "\\" + item);
                                     if (attr.HasFlag(FileAttributes.Directory))
                                     {
 
                                     }
                                     else
                                     {
-                                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                                        zip.AddFile(Properties.Settings.Default.mxSimDir + "\\" + item);
                                     }
 
                                 }
@@ -886,28 +862,28 @@ namespace Circuit_Mod_Manager
                             }
                             else
                             {
-                                foreach (var item in modListBox.Items.OfType<string>().ToList())
+                                foreach (String item in modListBox.Items.OfType<string>().ToList())
                                 {
-                                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + item);
+                                    
+                                    FileAttributes attr = File.GetAttributes(Properties.Settings.Default.mxSimDir + "\\" + item);
                                     if (attr.HasFlag(FileAttributes.Directory))
                                     {
-
+                                        zip.AddDirectory(Properties.Settings.Default.mxSimDir + "\\" + item);
                                     }
                                     else
                                     {
-                                        zip.AddFile(mxDirTbox.Text + "\\" + item);
+                                        zip.AddFile(Properties.Settings.Default.mxSimDir + "\\" + item);
                                     }
-
                                 }
-                                zip.Comment = " Backup by MXSIM:MM " + mxsimmmVersion + ", Date: " + System.DateTime.Now.ToString("G");
-                                zip.Save();
+                                zip.Comment = "Backup by MXSIM:MM " + mxsimmmVersion + ", Date: " + System.DateTime.Now.ToString("G");
+                                zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
                 sqliteCon.Close();
             }
@@ -933,14 +909,13 @@ namespace Circuit_Mod_Manager
                         deleteSelectedModFiles();
                         for (int counter = 0; counter < modListBox.CheckedItems.Count; counter++)
                         {
-                            SQLiteCommand cmd = new SQLiteCommand("DELETE FROM " + "'" + (string)modComboBox.SelectedItem + "'" + " WHERE modFiles = " + "'" + modListBox.CheckedItems[counter].ToString() + "';", sqliteCon);
+                            SQLiteCommand cmd = new SQLiteCommand("DELETE FROM '" + (string)modComboBox.SelectedItem + "' WHERE modFiles = '" + modListBox.CheckedItems[counter].ToString() + "';", sqliteCon);
                             cmd.ExecuteNonQuery();
                         }
                         foreach (var item in modListBox.CheckedItems.OfType<string>().ToList())
                         {
                             modListBox.Items.Remove(item);
                         }
-
                     }
                 }
                 catch (Exception ex)
@@ -1016,7 +991,7 @@ namespace Circuit_Mod_Manager
             //Zip mod
             using (ZipFile zip = new ZipFile())
             {
-                zip.AddDirectory(mxDirTbox.Text);
+                zip.AddDirectory(Properties.Settings.Default.mxSimDir);
                 zip.Save(desktopPath + "\\" + backupNameTextbox.Text + ".zip");
             }
         }
@@ -1029,22 +1004,22 @@ namespace Circuit_Mod_Manager
                 {
                     try
                     {
-                        FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString());
+                        FileAttributes attr = File.GetAttributes(Properties.Settings.Default.mxSimDir + "\\" + modListBox.Items[counter].ToString());
                         if (attr.HasFlag(FileAttributes.Directory))
                         {
                             if (modListBox.Items[counter].ToString().Contains("/"))
                             {
                                 modListBox.Items[counter].ToString().Replace("/", "\\");
-                                Directory.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString(), true);
+                                Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + modListBox.Items[counter].ToString(), true);
                             }
                             else
                             {
-                                Directory.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString(), true);
+                                Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + modListBox.Items[counter].ToString(), true);
                             }
                         }
                         else
                         {
-                            File.Delete(mxDirTbox.Text + "\\" + modListBox.Items[counter].ToString());
+                            File.Delete(Properties.Settings.Default.mxSimDir + "\\" + modListBox.Items[counter].ToString());
                         }
                     }
                     catch (Exception)
@@ -1059,22 +1034,22 @@ namespace Circuit_Mod_Manager
                 {
                     try
                     {
-                        FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString());
+                        FileAttributes attr = File.GetAttributes(Properties.Settings.Default.mxSimDir + "\\" + databaseModListBox.Items[counter].ToString());
                         if (attr.HasFlag(FileAttributes.Directory))
                         {
                             if (databaseModListBox.Items[counter].ToString().Contains("/"))
                             {
                                 databaseModListBox.Items[counter].ToString().Replace("/", "\\");
-                                Directory.Delete(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString(), true);
+                                Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + databaseModListBox.Items[counter].ToString(), true);
                             }
                             else
                             {
-                                Directory.Delete(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString(), true);
+                                Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + databaseModListBox.Items[counter].ToString(), true);
                             }
                         }
                         else
                         {
-                            File.Delete(mxDirTbox.Text + "\\" + databaseModListBox.Items[counter].ToString());
+                            File.Delete(Properties.Settings.Default.mxSimDir + "\\" + databaseModListBox.Items[counter].ToString());
                         }
                     }
                     catch (Exception)
@@ -1110,22 +1085,22 @@ namespace Circuit_Mod_Manager
                             {
                                 try
                                 {
-                                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + fileName);
+                                    FileAttributes attr = File.GetAttributes(Properties.Settings.Default.mxSimDir + "\\" + fileName);
                                     if (attr.HasFlag(FileAttributes.Directory))
                                     {
                                         if (fileName.Contains("/"))
                                         {
                                             fileName.Replace("/", "\\");
-                                            Directory.Delete(mxDirTbox.Text + "\\" + fileName, true);
+                                            Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + fileName, true);
                                         }
                                         else
                                         {
-                                            Directory.Delete(mxDirTbox.Text + "\\" + fileName, true);
+                                            Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + fileName, true);
                                         }
                                     }
                                     else
                                     {
-                                        File.Delete(mxDirTbox.Text + "\\" + fileName);
+                                        File.Delete(Properties.Settings.Default.mxSimDir + "\\" + fileName);
                                     }
                                 }
                                 catch (Exception)
@@ -1150,22 +1125,22 @@ namespace Circuit_Mod_Manager
             {
                 try
                 {
-                    FileAttributes attr = File.GetAttributes(mxDirTbox.Text + "\\" + modListBox.CheckedItems[counter].ToString());
+                    FileAttributes attr = File.GetAttributes(Properties.Settings.Default.mxSimDir + "\\" + modListBox.CheckedItems[counter].ToString());
                     if (attr.HasFlag(FileAttributes.Directory))
                     {
                         if (modListBox.CheckedItems[counter].ToString().Contains("/"))
                         {
                             modListBox.CheckedItems[counter].ToString().Replace("/", "\\");
-                            Directory.Delete(mxDirTbox.Text + "\\" + modListBox.CheckedItems[counter].ToString(), true);
+                            Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + modListBox.CheckedItems[counter].ToString(), true);
                         }
                         else
                         {
-                            Directory.Delete(mxDirTbox.Text + "\\" + modListBox.CheckedItems[counter].ToString(), true);
+                            Directory.Delete(Properties.Settings.Default.mxSimDir + "\\" + modListBox.CheckedItems[counter].ToString(), true);
                         }
                     }
                     else
                     {
-                        File.Delete(mxDirTbox.Text + "\\" + modListBox.CheckedItems[counter].ToString());
+                        File.Delete(Properties.Settings.Default.mxSimDir + "\\" + modListBox.CheckedItems[counter].ToString());
                     }
                 }
                 catch (Exception)
@@ -1251,6 +1226,7 @@ namespace Circuit_Mod_Manager
                 if (cdbHandler.doCustomDatabasesExist() == true)
                 {
                     databaseComboBox.Items.Clear();
+                    databaseModListBox.Items.Clear();
                     cdbHandler.reloadDatabaseArray();
                     createNewDatabaseButton.Visible = false;
                     noCustomDatabaseLabel.Visible = false;
@@ -1273,6 +1249,7 @@ namespace Circuit_Mod_Manager
                 else
                 {
                     databaseComboBox.Items.Clear();
+                    databaseModListBox.Items.Clear();
                     createNewDatabaseButton.Visible = true;
                     noCustomDatabaseLabel.Visible = true;
                     refreshButton1.Visible = true;
@@ -1297,7 +1274,7 @@ namespace Circuit_Mod_Manager
                 }
                 else
                 {
-                    mxExeLocationTextbox.Text = mxDirTbox.Text + "\\" + "mx.exe";
+                    mxExeLocationTextbox.Text = Properties.Settings.Default.mxSimDir + "\\" + "mx.exe";
                 }
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["settingsPage"])
@@ -1344,6 +1321,7 @@ namespace Circuit_Mod_Manager
                 {
                     cdbHandler.reloadDatabaseArray();
                     filterModComboBox.Items.Clear();
+                    modComboBox.Items.Clear();
                     filterModComboBox.Items.Add("Gear");
                     filterModComboBox.Items.Add("Track");
                     filterModComboBox.Items.Add("Bike");
@@ -1806,13 +1784,13 @@ namespace Circuit_Mod_Manager
 
         private void openMxDir_Click(object sender, EventArgs e)
         {
-            if(mxDirTbox.Text == "")
+            if(Properties.Settings.Default.mxSimDir == "")
             {
                 MessageBox.Show("Please set your MXS Directory in settings", "Couldn't open directory", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                Process.Start(mxDirTbox.Text);
+                Process.Start(Properties.Settings.Default.mxSimDir);
             }
         }
 

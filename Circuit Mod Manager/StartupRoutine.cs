@@ -52,51 +52,26 @@ namespace Circuit_Mod_Manager
 
         public void CheckCircuitData()
         {
-            if(!File.Exists("gear_mods.db"))
+            if(!Directory.Exists("default_databases"))
             {
-                MessageBox.Show("Gear Database doesn't exist, will create one now", "No Gear DB", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                File.Create("gear_mods.db").Close();
-            }
-            if(!File.Exists("track_mods.db"))
-            {
-                MessageBox.Show("Track Database doesn't exist, will create one now", "No Track DB", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                File.Create("track_mods.db").Close();
-            }
-            if(!File.Exists("bike_mods.db"))
-            {
-                MessageBox.Show("Bike Database doesn't exist, will create one now", "No Bike DB", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                File.Create("bike_mods.db").Close();
+                MessageBox.Show("Default Databases Don't Exist, Creating Them Now", "Creating default databases...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Directory.CreateDirectory("default_databases");
+                if (!File.Exists("default_databases\\gear_mods.db"))
+                {
+                    File.Create("default_databases\\gear_mods.db").Close();
+                }
+                if (!File.Exists("default_databases\\track_mods.db"))
+                {
+                    File.Create("default_databases\\track_mods.db").Close();
+                }
+                if (!File.Exists("default_databases\\bike_mods.db"))
+                {
+                    File.Create("default_databases\\bike_mods.db").Close();
+                }
             }
             if(!Directory.Exists("custom_databases"))
             {
                 Directory.CreateDirectory("custom_databases");
-            }
-        }
-        public String CheckMXdir()
-        {
-            String line = "";
-            try
-            {
-                using (StreamReader sr = new StreamReader("mxdir.txt"))
-                {
-                    line = sr.ReadLine();
-                    sr.Close();
-                    return line;
-                }
-            }
-            catch (Exception e)
-            {
-                if(!File.Exists("mxdir.txt"))
-                {
-                    File.Create("mxdir.txt").Close();
-                    return "";
-                }
-                else
-                {
-                    MessageBox.Show("Settings couldn't be read!", "Error 0100");
-                    MessageBox.Show("Send this error message to me: " + e.Message);
-                    return "Couldn't Read Settings";
-                }
             }
         }
     }

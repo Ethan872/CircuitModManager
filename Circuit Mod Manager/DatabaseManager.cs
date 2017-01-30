@@ -54,7 +54,6 @@ namespace Circuit_Mod_Manager
 {
     class DatabaseManager
     {
-
         VariableManager vManager = new VariableManager();
         String gearConnection;
         String trackConnection;
@@ -490,7 +489,7 @@ namespace Circuit_Mod_Manager
         {
             if (modType == "gear")
             {
-                gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\gear_mods.db;version=3;";
+                gearConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\gear_mods.db;version=3;";
                 using (SQLiteConnection gearCon = new SQLiteConnection(gearConnection))
                 {
                     try
@@ -498,8 +497,6 @@ namespace Circuit_Mod_Manager
                         gearCon.Open();
                         if (gearCon.State == System.Data.ConnectionState.Open)
                         {
-                            //MessageBox.Show("Successfully connected to gear data base at: " + Directory.GetCurrentDirectory() + "\\gear_mods.db");
-                            //Check if mod exists in database
                             SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE IF NOT EXISTS " + "'" + modToInstall + "'" + "(modName TEXT, modFiles TEXT);", gearCon);
                             cmd.ExecuteNonQuery();
                             installMod(modType, modExtension, modToInstallWithPath, modToInstall, mxDir);
@@ -511,7 +508,7 @@ namespace Circuit_Mod_Manager
                                 }
                                 catch (Exception)
                                 {
-
+                                    
                                 }
                             }
                         }
@@ -525,7 +522,7 @@ namespace Circuit_Mod_Manager
             }
             else if (modType == "track")
             {
-                trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\track_mods.db;version=3;";
+                trackConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\track_mods.db;version=3;";
                 using (SQLiteConnection trackCon = new SQLiteConnection(trackConnection))
                 {
                     try
@@ -560,7 +557,7 @@ namespace Circuit_Mod_Manager
             }
             else if (modType == "bike")
             {
-                bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\bike_mods.db;version=3;";
+                bikeConnection = "Data Source=" + Directory.GetCurrentDirectory() + "\\default_databases\\bike_mods.db;version=3;";
                 using (SQLiteConnection bikeCon = new SQLiteConnection(bikeConnection))
                 {
                     try

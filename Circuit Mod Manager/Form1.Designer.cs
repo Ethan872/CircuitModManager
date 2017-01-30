@@ -84,6 +84,7 @@
             this.iTalk_Separator5 = new iTalk.iTalk_Separator();
             this.launchMXS = new iTalk.iTalk_Button_1();
             this.installerPage = new System.Windows.Forms.TabPage();
+            this.pleaseWaitLabel = new iTalk.iTalk_Label();
             this.alwaysDeleteFileAfterInstallCB = new iTalk.iTalk_CheckBox();
             this.iTalk_Label21 = new iTalk.iTalk_Label();
             this.iTalk_Separator12 = new iTalk.iTalk_Separator();
@@ -151,6 +152,7 @@
             this.saveMXdirButton = new iTalk.iTalk_Button_1();
             this.mxDirTbox = new iTalk.iTalk_TextBox_Big();
             this.aboutPage = new System.Windows.Forms.TabPage();
+            this.iTalk_Label25 = new iTalk.iTalk_Label();
             this.iTalk_HeaderLabel4 = new iTalk.iTalk_HeaderLabel();
             this.dotNetZipLink = new iTalk.iTalk_LinkLabel();
             this.iTalk_Label14 = new iTalk.iTalk_Label();
@@ -171,7 +173,6 @@
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
-            this.iTalk_Label25 = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.launchPage.SuspendLayout();
@@ -890,6 +891,7 @@
             // installerPage
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.installerPage.Controls.Add(this.pleaseWaitLabel);
             this.installerPage.Controls.Add(this.alwaysDeleteFileAfterInstallCB);
             this.installerPage.Controls.Add(this.iTalk_Label21);
             this.installerPage.Controls.Add(this.iTalk_Separator12);
@@ -911,6 +913,19 @@
             this.installerPage.TabIndex = 0;
             this.installerPage.Text = "Installer";
             this.installerPage.ToolTipText = "Install your mods";
+            // 
+            // pleaseWaitLabel
+            // 
+            this.pleaseWaitLabel.AutoSize = true;
+            this.pleaseWaitLabel.BackColor = System.Drawing.Color.Transparent;
+            this.pleaseWaitLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.pleaseWaitLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.pleaseWaitLabel.Location = new System.Drawing.Point(321, 431);
+            this.pleaseWaitLabel.Name = "pleaseWaitLabel";
+            this.pleaseWaitLabel.Size = new System.Drawing.Size(75, 13);
+            this.pleaseWaitLabel.TabIndex = 24;
+            this.pleaseWaitLabel.Text = "Please Wait...";
+            this.pleaseWaitLabel.Visible = false;
             // 
             // alwaysDeleteFileAfterInstallCB
             // 
@@ -1417,7 +1432,7 @@
             // refreshButton1
             // 
             this.refreshButton1.Image = global::Circuit_Mod_Manager.Properties.Resources.refresh;
-            this.refreshButton1.Location = new System.Drawing.Point(346, 288);
+            this.refreshButton1.Location = new System.Drawing.Point(669, 15);
             this.refreshButton1.Name = "refreshButton1";
             this.refreshButton1.Size = new System.Drawing.Size(25, 26);
             this.refreshButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1480,7 +1495,7 @@
             this.noCustomDatabaseLabel.BackColor = System.Drawing.Color.Transparent;
             this.noCustomDatabaseLabel.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.noCustomDatabaseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.noCustomDatabaseLabel.Location = new System.Drawing.Point(131, 142);
+            this.noCustomDatabaseLabel.Location = new System.Drawing.Point(131, 180);
             this.noCustomDatabaseLabel.Name = "noCustomDatabaseLabel";
             this.noCustomDatabaseLabel.Size = new System.Drawing.Size(455, 46);
             this.noCustomDatabaseLabel.TabIndex = 40;
@@ -1492,7 +1507,7 @@
             this.createNewDatabaseButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.createNewDatabaseButton.Image = null;
             this.createNewDatabaseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createNewDatabaseButton.Location = new System.Drawing.Point(275, 217);
+            this.createNewDatabaseButton.Location = new System.Drawing.Point(275, 255);
             this.createNewDatabaseButton.Name = "createNewDatabaseButton";
             this.createNewDatabaseButton.Size = new System.Drawing.Size(166, 40);
             this.createNewDatabaseButton.TabIndex = 39;
@@ -1849,17 +1864,30 @@
             this.aboutPage.TabIndex = 3;
             this.aboutPage.Text = "About";
             // 
+            // iTalk_Label25
+            // 
+            this.iTalk_Label25.AutoSize = true;
+            this.iTalk_Label25.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label25.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label25.Location = new System.Drawing.Point(260, 152);
+            this.iTalk_Label25.Name = "iTalk_Label25";
+            this.iTalk_Label25.Size = new System.Drawing.Size(196, 13);
+            this.iTalk_Label25.TabIndex = 19;
+            this.iTalk_Label25.Text = "May contain bugs! Report any to me!";
+            this.iTalk_Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // iTalk_HeaderLabel4
             // 
             this.iTalk_HeaderLabel4.AutoSize = true;
             this.iTalk_HeaderLabel4.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_HeaderLabel4.Font = new System.Drawing.Font("Segoe UI", 25F);
             this.iTalk_HeaderLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.iTalk_HeaderLabel4.Location = new System.Drawing.Point(167, 97);
+            this.iTalk_HeaderLabel4.Location = new System.Drawing.Point(154, 97);
             this.iTalk_HeaderLabel4.Name = "iTalk_HeaderLabel4";
-            this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(383, 46);
+            this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(408, 46);
             this.iTalk_HeaderLabel4.TabIndex = 18;
-            this.iTalk_HeaderLabel4.Text = "Version: Public Alpha 0.2";
+            this.iTalk_HeaderLabel4.Text = "Version: Public Alpha 0.2.1";
             // 
             // dotNetZipLink
             // 
@@ -2109,19 +2137,6 @@
             this.notifyIconSettings.Text = "MXSIM:MM";
             this.notifyIconSettings.Visible = true;
             // 
-            // iTalk_Label25
-            // 
-            this.iTalk_Label25.AutoSize = true;
-            this.iTalk_Label25.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label25.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.iTalk_Label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label25.Location = new System.Drawing.Point(260, 152);
-            this.iTalk_Label25.Name = "iTalk_Label25";
-            this.iTalk_Label25.Size = new System.Drawing.Size(196, 13);
-            this.iTalk_Label25.TabIndex = 19;
-            this.iTalk_Label25.Text = "May contain bugs! Report any to me!";
-            this.iTalk_Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2299,6 +2314,7 @@
         private iTalk.iTalk_Button_1 openMxDir;
         private System.Windows.Forms.PictureBox refreshButton1;
         private iTalk.iTalk_Label iTalk_Label25;
+        private iTalk.iTalk_Label pleaseWaitLabel;
     }
 }
 
