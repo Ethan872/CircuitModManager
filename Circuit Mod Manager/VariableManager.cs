@@ -54,6 +54,8 @@ namespace Circuit_Mod_Manager
         public String installingModExtension = null;
         public String mxDirectory = null;
         public String backupModName = null;
+        public static String zipPassword = null;
+        public static String rarPassword = null;
 
         //Getters and Setters
         public String getInstallingMod()

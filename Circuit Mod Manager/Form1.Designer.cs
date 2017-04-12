@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
             this.iTalk_ControlBox1 = new iTalk.iTalk_ControlBox();
             this.iTalk_TabControl1 = new iTalk.iTalk_TabControl();
@@ -85,7 +87,6 @@
             this.launchMXS = new iTalk.iTalk_Button_1();
             this.installerPage = new System.Windows.Forms.TabPage();
             this.pleaseWaitLabel = new iTalk.iTalk_Label();
-            this.alwaysDeleteFileAfterInstallCB = new iTalk.iTalk_CheckBox();
             this.iTalk_Label21 = new iTalk.iTalk_Label();
             this.iTalk_Separator12 = new iTalk.iTalk_Separator();
             this.customRadioButton = new iTalk.iTalk_RadioButton();
@@ -136,17 +137,21 @@
             this.databaseComboBox = new iTalk.iTalk_ComboBox();
             this.databaseModListBox = new System.Windows.Forms.ListBox();
             this.settingsPage = new System.Windows.Forms.TabPage();
+            this.alwaysDeleteFileAfterInstallCB = new iTalk.iTalk_CheckBox();
+            this.iTalk_Label26 = new iTalk.iTalk_Label();
+            this.hideDefaultDatabasesCB = new iTalk.iTalk_CheckBox();
+            this.resetSettingsButton = new iTalk.iTalk_Button_1();
             this.openMxDir = new iTalk.iTalk_Button_1();
             this.iTalk_Label23 = new iTalk.iTalk_Label();
             this.personalFolderCB = new iTalk.iTalk_CheckBox();
             this.iTalk_Label22 = new iTalk.iTalk_Label();
             this.iTalk_Separator13 = new iTalk.iTalk_Separator();
-            this.DatabasesRadioButton = new iTalk.iTalk_RadioButton();
-            this.LaunchRadioButton = new iTalk.iTalk_RadioButton();
+            this.databasesRadioButton = new iTalk.iTalk_RadioButton();
+            this.launchRadioButton = new iTalk.iTalk_RadioButton();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
             this.iTalk_Label4 = new iTalk.iTalk_Label();
-            this.SettingsRadioButton = new iTalk.iTalk_RadioButton();
-            this.ManagerRadioButton = new iTalk.iTalk_RadioButton();
+            this.settingsRadioButton = new iTalk.iTalk_RadioButton();
+            this.managerRadioButton = new iTalk.iTalk_RadioButton();
             this.installerRadioButton = new iTalk.iTalk_RadioButton();
             this.browseMXdirButton = new iTalk.iTalk_Button_1();
             this.saveMXdirButton = new iTalk.iTalk_Button_1();
@@ -171,8 +176,8 @@
             this.iTalk_Label5 = new iTalk.iTalk_Label();
             this.iTalk_Label6 = new iTalk.iTalk_Label();
             this.iTalk_HeaderLabel3 = new iTalk.iTalk_HeaderLabel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.notifyIconSettings = new System.Windows.Forms.NotifyIcon(this.components);
+            this.mxsimSizeMainLabel = new iTalk.iTalk_Label();
+            this.mxsimSizeLabel = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.iTalk_TabControl1.SuspendLayout();
             this.launchPage.SuspendLayout();
@@ -195,6 +200,28 @@
             this.notifyIcon.Text = "MXSIM:MM";
             this.notifyIcon.Visible = true;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "download.png");
+            this.imageList1.Images.SetKeyName(1, "menu.png");
+            this.imageList1.Images.SetKeyName(2, "settings.png");
+            this.imageList1.Images.SetKeyName(3, "information-outline.png");
+            this.imageList1.Images.SetKeyName(4, "storage.png");
+            this.imageList1.Images.SetKeyName(5, "sort.png");
+            this.imageList1.Images.SetKeyName(6, "database.png");
+            this.imageList1.Images.SetKeyName(7, "play.png");
+            // 
+            // notifyIconSettings
+            // 
+            this.notifyIconSettings.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIconSettings.BalloonTipText = "Successfully saved your settings";
+            this.notifyIconSettings.BalloonTipTitle = "Settings Saved";
+            this.notifyIconSettings.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconSettings.Icon")));
+            this.notifyIconSettings.Text = "MXSIM:MM";
+            this.notifyIconSettings.Visible = true;
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
@@ -209,7 +236,7 @@
             this.iTalk_ThemeContainer1.Sizable = false;
             this.iTalk_ThemeContainer1.Size = new System.Drawing.Size(863, 527);
             this.iTalk_ThemeContainer1.SmartBounds = false;
-            this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "MXSIM Mod Manager";
             // 
@@ -892,7 +919,6 @@
             // 
             this.installerPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.installerPage.Controls.Add(this.pleaseWaitLabel);
-            this.installerPage.Controls.Add(this.alwaysDeleteFileAfterInstallCB);
             this.installerPage.Controls.Add(this.iTalk_Label21);
             this.installerPage.Controls.Add(this.iTalk_Separator12);
             this.installerPage.Controls.Add(this.customRadioButton);
@@ -926,18 +952,6 @@
             this.pleaseWaitLabel.TabIndex = 24;
             this.pleaseWaitLabel.Text = "Please Wait...";
             this.pleaseWaitLabel.Visible = false;
-            // 
-            // alwaysDeleteFileAfterInstallCB
-            // 
-            this.alwaysDeleteFileAfterInstallCB.BackColor = System.Drawing.Color.Transparent;
-            this.alwaysDeleteFileAfterInstallCB.Checked = false;
-            this.alwaysDeleteFileAfterInstallCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.alwaysDeleteFileAfterInstallCB.Location = new System.Drawing.Point(500, 371);
-            this.alwaysDeleteFileAfterInstallCB.Name = "alwaysDeleteFileAfterInstallCB";
-            this.alwaysDeleteFileAfterInstallCB.Size = new System.Drawing.Size(194, 15);
-            this.alwaysDeleteFileAfterInstallCB.TabIndex = 23;
-            this.alwaysDeleteFileAfterInstallCB.Text = "Always delete file after install";
-            this.alwaysDeleteFileAfterInstallCB.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.alwaysDeleteFileAfterInstallCB_CheckedChanged);
             // 
             // iTalk_Label21
             // 
@@ -995,7 +1009,7 @@
             this.deleteFileAfterCheckbox.BackColor = System.Drawing.Color.Transparent;
             this.deleteFileAfterCheckbox.Checked = false;
             this.deleteFileAfterCheckbox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.deleteFileAfterCheckbox.Location = new System.Drawing.Point(543, 350);
+            this.deleteFileAfterCheckbox.Location = new System.Drawing.Point(543, 368);
             this.deleteFileAfterCheckbox.Name = "deleteFileAfterCheckbox";
             this.deleteFileAfterCheckbox.Size = new System.Drawing.Size(151, 15);
             this.deleteFileAfterCheckbox.TabIndex = 13;
@@ -1089,6 +1103,8 @@
             // modPage
             // 
             this.modPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.modPage.Controls.Add(this.mxsimSizeLabel);
+            this.modPage.Controls.Add(this.mxsimSizeMainLabel);
             this.modPage.Controls.Add(this.customDatabaseStatusLabel);
             this.modPage.Controls.Add(this.iTalk_Label24);
             this.modPage.Controls.Add(this.executeActionButton);
@@ -1438,7 +1454,6 @@
             this.refreshButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.refreshButton1.TabIndex = 45;
             this.refreshButton1.TabStop = false;
-            this.refreshButton1.Visible = false;
             this.refreshButton1.Click += new System.EventHandler(this.refreshButton1_Click);
             this.refreshButton1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.refreshButton1_MouseDown);
             this.refreshButton1.MouseEnter += new System.EventHandler(this.refreshButton1_MouseEnter);
@@ -1640,17 +1655,21 @@
             // settingsPage
             // 
             this.settingsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.settingsPage.Controls.Add(this.alwaysDeleteFileAfterInstallCB);
+            this.settingsPage.Controls.Add(this.iTalk_Label26);
+            this.settingsPage.Controls.Add(this.hideDefaultDatabasesCB);
+            this.settingsPage.Controls.Add(this.resetSettingsButton);
             this.settingsPage.Controls.Add(this.openMxDir);
             this.settingsPage.Controls.Add(this.iTalk_Label23);
             this.settingsPage.Controls.Add(this.personalFolderCB);
             this.settingsPage.Controls.Add(this.iTalk_Label22);
             this.settingsPage.Controls.Add(this.iTalk_Separator13);
-            this.settingsPage.Controls.Add(this.DatabasesRadioButton);
-            this.settingsPage.Controls.Add(this.LaunchRadioButton);
+            this.settingsPage.Controls.Add(this.databasesRadioButton);
+            this.settingsPage.Controls.Add(this.launchRadioButton);
             this.settingsPage.Controls.Add(this.iTalk_Separator3);
             this.settingsPage.Controls.Add(this.iTalk_Label4);
-            this.settingsPage.Controls.Add(this.SettingsRadioButton);
-            this.settingsPage.Controls.Add(this.ManagerRadioButton);
+            this.settingsPage.Controls.Add(this.settingsRadioButton);
+            this.settingsPage.Controls.Add(this.managerRadioButton);
             this.settingsPage.Controls.Add(this.installerRadioButton);
             this.settingsPage.Controls.Add(this.browseMXdirButton);
             this.settingsPage.Controls.Add(this.saveMXdirButton);
@@ -1661,6 +1680,53 @@
             this.settingsPage.Size = new System.Drawing.Size(717, 474);
             this.settingsPage.TabIndex = 2;
             this.settingsPage.Text = "Settings";
+            // 
+            // alwaysDeleteFileAfterInstallCB
+            // 
+            this.alwaysDeleteFileAfterInstallCB.BackColor = System.Drawing.Color.Transparent;
+            this.alwaysDeleteFileAfterInstallCB.Checked = false;
+            this.alwaysDeleteFileAfterInstallCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.alwaysDeleteFileAfterInstallCB.Location = new System.Drawing.Point(202, 267);
+            this.alwaysDeleteFileAfterInstallCB.Name = "alwaysDeleteFileAfterInstallCB";
+            this.alwaysDeleteFileAfterInstallCB.Size = new System.Drawing.Size(194, 15);
+            this.alwaysDeleteFileAfterInstallCB.TabIndex = 29;
+            this.alwaysDeleteFileAfterInstallCB.Text = "Always delete file after install";
+            // 
+            // iTalk_Label26
+            // 
+            this.iTalk_Label26.AutoSize = true;
+            this.iTalk_Label26.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label26.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.iTalk_Label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label26.Location = new System.Drawing.Point(199, 214);
+            this.iTalk_Label26.Name = "iTalk_Label26";
+            this.iTalk_Label26.Size = new System.Drawing.Size(37, 13);
+            this.iTalk_Label26.TabIndex = 28;
+            this.iTalk_Label26.Text = "Other";
+            // 
+            // hideDefaultDatabasesCB
+            // 
+            this.hideDefaultDatabasesCB.BackColor = System.Drawing.Color.Transparent;
+            this.hideDefaultDatabasesCB.Checked = false;
+            this.hideDefaultDatabasesCB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.hideDefaultDatabasesCB.Location = new System.Drawing.Point(202, 244);
+            this.hideDefaultDatabasesCB.Name = "hideDefaultDatabasesCB";
+            this.hideDefaultDatabasesCB.Size = new System.Drawing.Size(159, 15);
+            this.hideDefaultDatabasesCB.TabIndex = 27;
+            this.hideDefaultDatabasesCB.Text = "Hide Default Databases";
+            // 
+            // resetSettingsButton
+            // 
+            this.resetSettingsButton.BackColor = System.Drawing.Color.Transparent;
+            this.resetSettingsButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.resetSettingsButton.Image = global::Circuit_Mod_Manager.Properties.Resources.delete_sweep;
+            this.resetSettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resetSettingsButton.Location = new System.Drawing.Point(275, 420);
+            this.resetSettingsButton.Name = "resetSettingsButton";
+            this.resetSettingsButton.Size = new System.Drawing.Size(166, 40);
+            this.resetSettingsButton.TabIndex = 26;
+            this.resetSettingsButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.resetSettingsButton.Click += new System.EventHandler(this.resetSettingsButton_Click);
             // 
             // openMxDir
             // 
@@ -1692,7 +1758,7 @@
             this.personalFolderCB.BackColor = System.Drawing.Color.Transparent;
             this.personalFolderCB.Checked = false;
             this.personalFolderCB.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.personalFolderCB.Location = new System.Drawing.Point(574, 371);
+            this.personalFolderCB.Location = new System.Drawing.Point(202, 290);
             this.personalFolderCB.Name = "personalFolderCB";
             this.personalFolderCB.Size = new System.Drawing.Size(120, 15);
             this.personalFolderCB.TabIndex = 20;
@@ -1718,27 +1784,27 @@
             this.iTalk_Separator13.TabIndex = 15;
             this.iTalk_Separator13.Text = "iTalk_Separator13";
             // 
-            // DatabasesRadioButton
+            // databasesRadioButton
             // 
-            this.DatabasesRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.DatabasesRadioButton.Checked = false;
-            this.DatabasesRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.DatabasesRadioButton.Location = new System.Drawing.Point(93, 313);
-            this.DatabasesRadioButton.Name = "DatabasesRadioButton";
-            this.DatabasesRadioButton.Size = new System.Drawing.Size(87, 15);
-            this.DatabasesRadioButton.TabIndex = 14;
-            this.DatabasesRadioButton.Text = "Databases";
+            this.databasesRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.databasesRadioButton.Checked = false;
+            this.databasesRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.databasesRadioButton.Location = new System.Drawing.Point(93, 313);
+            this.databasesRadioButton.Name = "databasesRadioButton";
+            this.databasesRadioButton.Size = new System.Drawing.Size(87, 15);
+            this.databasesRadioButton.TabIndex = 14;
+            this.databasesRadioButton.Text = "Databases";
             // 
-            // LaunchRadioButton
+            // launchRadioButton
             // 
-            this.LaunchRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.LaunchRadioButton.Checked = false;
-            this.LaunchRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.LaunchRadioButton.Location = new System.Drawing.Point(93, 244);
-            this.LaunchRadioButton.Name = "LaunchRadioButton";
-            this.LaunchRadioButton.Size = new System.Drawing.Size(74, 15);
-            this.LaunchRadioButton.TabIndex = 13;
-            this.LaunchRadioButton.Text = "Launch";
+            this.launchRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.launchRadioButton.Checked = false;
+            this.launchRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.launchRadioButton.Location = new System.Drawing.Point(93, 244);
+            this.launchRadioButton.Name = "launchRadioButton";
+            this.launchRadioButton.Size = new System.Drawing.Size(74, 15);
+            this.launchRadioButton.TabIndex = 13;
+            this.launchRadioButton.Text = "Launch";
             // 
             // iTalk_Separator3
             // 
@@ -1760,27 +1826,27 @@
             this.iTalk_Label4.TabIndex = 7;
             this.iTalk_Label4.Text = "Default Screen";
             // 
-            // SettingsRadioButton
+            // settingsRadioButton
             // 
-            this.SettingsRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.SettingsRadioButton.Checked = false;
-            this.SettingsRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.SettingsRadioButton.Location = new System.Drawing.Point(93, 336);
-            this.SettingsRadioButton.Name = "SettingsRadioButton";
-            this.SettingsRadioButton.Size = new System.Drawing.Size(74, 15);
-            this.SettingsRadioButton.TabIndex = 6;
-            this.SettingsRadioButton.Text = "Settings";
+            this.settingsRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.settingsRadioButton.Checked = false;
+            this.settingsRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.settingsRadioButton.Location = new System.Drawing.Point(93, 336);
+            this.settingsRadioButton.Name = "settingsRadioButton";
+            this.settingsRadioButton.Size = new System.Drawing.Size(74, 15);
+            this.settingsRadioButton.TabIndex = 6;
+            this.settingsRadioButton.Text = "Settings";
             // 
-            // ManagerRadioButton
+            // managerRadioButton
             // 
-            this.ManagerRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerRadioButton.Checked = false;
-            this.ManagerRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ManagerRadioButton.Location = new System.Drawing.Point(93, 290);
-            this.ManagerRadioButton.Name = "ManagerRadioButton";
-            this.ManagerRadioButton.Size = new System.Drawing.Size(74, 15);
-            this.ManagerRadioButton.TabIndex = 5;
-            this.ManagerRadioButton.Text = "Mods";
+            this.managerRadioButton.BackColor = System.Drawing.Color.Transparent;
+            this.managerRadioButton.Checked = false;
+            this.managerRadioButton.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.managerRadioButton.Location = new System.Drawing.Point(93, 290);
+            this.managerRadioButton.Name = "managerRadioButton";
+            this.managerRadioButton.Size = new System.Drawing.Size(74, 15);
+            this.managerRadioButton.TabIndex = 5;
+            this.managerRadioButton.Text = "Mods";
             // 
             // installerRadioButton
             // 
@@ -1887,7 +1953,7 @@
             this.iTalk_HeaderLabel4.Name = "iTalk_HeaderLabel4";
             this.iTalk_HeaderLabel4.Size = new System.Drawing.Size(408, 46);
             this.iTalk_HeaderLabel4.TabIndex = 18;
-            this.iTalk_HeaderLabel4.Text = "Version: Public Alpha 0.2.1";
+            this.iTalk_HeaderLabel4.Text = "Version: Public Alpha 0.2.2";
             // 
             // dotNetZipLink
             // 
@@ -2115,27 +2181,29 @@
             this.iTalk_HeaderLabel3.TabIndex = 0;
             this.iTalk_HeaderLabel3.Text = "MXSIM Mod Manager";
             // 
-            // imageList1
+            // mxsimSizeMainLabel
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "download.png");
-            this.imageList1.Images.SetKeyName(1, "menu.png");
-            this.imageList1.Images.SetKeyName(2, "settings.png");
-            this.imageList1.Images.SetKeyName(3, "information-outline.png");
-            this.imageList1.Images.SetKeyName(4, "storage.png");
-            this.imageList1.Images.SetKeyName(5, "sort.png");
-            this.imageList1.Images.SetKeyName(6, "database.png");
-            this.imageList1.Images.SetKeyName(7, "play.png");
+            this.mxsimSizeMainLabel.AutoSize = true;
+            this.mxsimSizeMainLabel.BackColor = System.Drawing.Color.Transparent;
+            this.mxsimSizeMainLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.mxsimSizeMainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.mxsimSizeMainLabel.Location = new System.Drawing.Point(525, 392);
+            this.mxsimSizeMainLabel.Name = "mxsimSizeMainLabel";
+            this.mxsimSizeMainLabel.Size = new System.Drawing.Size(68, 13);
+            this.mxsimSizeMainLabel.TabIndex = 22;
+            this.mxsimSizeMainLabel.Text = "MXSIM Size:";
             // 
-            // notifyIconSettings
+            // mxsimSizeLabel
             // 
-            this.notifyIconSettings.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIconSettings.BalloonTipText = "Successfully saved your settings";
-            this.notifyIconSettings.BalloonTipTitle = "Settings Saved";
-            this.notifyIconSettings.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconSettings.Icon")));
-            this.notifyIconSettings.Text = "MXSIM:MM";
-            this.notifyIconSettings.Visible = true;
+            this.mxsimSizeLabel.AutoSize = true;
+            this.mxsimSizeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.mxsimSizeLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.mxsimSizeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.mxsimSizeLabel.Location = new System.Drawing.Point(599, 392);
+            this.mxsimSizeLabel.Name = "mxsimSizeLabel";
+            this.mxsimSizeLabel.Size = new System.Drawing.Size(68, 13);
+            this.mxsimSizeLabel.TabIndex = 23;
+            this.mxsimSizeLabel.Text = "MXSIM Size:";
             // 
             // Form1
             // 
@@ -2146,7 +2214,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(126, 39);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MXSIM Mod Manager";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.iTalk_ThemeContainer1.ResumeLayout(false);
@@ -2196,8 +2263,8 @@
         private iTalk.iTalk_ComboBox filterModComboBox;
         private iTalk.iTalk_Label iTalk_Label3;
         private iTalk.iTalk_Label iTalk_Label4;
-        private iTalk.iTalk_RadioButton SettingsRadioButton;
-        private iTalk.iTalk_RadioButton ManagerRadioButton;
+        private iTalk.iTalk_RadioButton settingsRadioButton;
+        private iTalk.iTalk_RadioButton managerRadioButton;
         private iTalk.iTalk_RadioButton installerRadioButton;
         private System.Windows.Forms.TabPage aboutPage;
         private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel3;
@@ -2236,8 +2303,8 @@
         private iTalk.iTalk_HeaderLabel iTalk_HeaderLabel4;
         private iTalk.iTalk_CheckBox deleteFileAfterCheckbox;
         private System.Windows.Forms.TabPage databasesPage;
-        private iTalk.iTalk_RadioButton LaunchRadioButton;
-        private iTalk.iTalk_RadioButton DatabasesRadioButton;
+        private iTalk.iTalk_RadioButton launchRadioButton;
+        private iTalk.iTalk_RadioButton databasesRadioButton;
         private iTalk.iTalk_RadioButton customRadioButton;
         private iTalk.iTalk_ComboBox customDatabaseComboBox;
         private iTalk.iTalk_Button_1 databaseExecuteButton;
@@ -2303,7 +2370,6 @@
         private iTalk.iTalk_Separator iTalk_Separator13;
         private iTalk.iTalk_Label iTalk_Label23;
         private iTalk.iTalk_CheckBox personalFolderCB;
-        private iTalk.iTalk_CheckBox alwaysDeleteFileAfterInstallCB;
         private iTalk.iTalk_Button_1 browseMxExeLocationButton;
         private iTalk.iTalk_Button_1 createNewDatabase2Button;
         private iTalk.iTalk_Label customDatabaseStatusLabel;
@@ -2315,6 +2381,12 @@
         private System.Windows.Forms.PictureBox refreshButton1;
         private iTalk.iTalk_Label iTalk_Label25;
         private iTalk.iTalk_Label pleaseWaitLabel;
+        private iTalk.iTalk_Button_1 resetSettingsButton;
+        private iTalk.iTalk_Label iTalk_Label26;
+        private iTalk.iTalk_CheckBox hideDefaultDatabasesCB;
+        private iTalk.iTalk_CheckBox alwaysDeleteFileAfterInstallCB;
+        private iTalk.iTalk_Label mxsimSizeLabel;
+        private iTalk.iTalk_Label mxsimSizeMainLabel;
     }
 }
 

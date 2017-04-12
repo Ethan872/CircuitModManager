@@ -106,5 +106,17 @@ namespace Circuit_Mod_Manager.Properties {
                 this["mxSimDir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hideDefaultDatabases {
+            get {
+                return ((bool)(this["hideDefaultDatabases"]));
+            }
+            set {
+                this["hideDefaultDatabases"] = value;
+            }
+        }
     }
 }

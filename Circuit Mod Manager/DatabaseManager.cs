@@ -9,6 +9,7 @@ using SharpCompress.Common;
 using SharpCompress.Reader;
 using SharpCompress.Writer;
 using Ionic.Zip;
+using System.Media;
 #region License
 /*
 Circuit Manager Source Code File
@@ -59,6 +60,7 @@ namespace Circuit_Mod_Manager
         String trackConnection;
         String bikeConnection;
         String customConnection;
+
         private void installMod(String modType, String modExtension, String modToInstallWithPath, String modToInstallWithoutPath, String mxDirectory)
         {
             if (modType == "gear")
@@ -77,11 +79,26 @@ namespace Circuit_Mod_Manager
                                 {
                                     // here, we extract every entry, but we could extract conditionally
                                     // based on entry name, size, date, checkbox status, etc.  
-                                    foreach (ZipEntry e in zip1)
+                                    if (isEncrypted(zip1))
                                     {
-                                        SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", gearCon);
-                                        cmd.ExecuteNonQuery();
-                                        e.Extract(mxDirectory, ExtractExistingFileAction.OverwriteSilently);
+                                        PasswordManager pManager = new PasswordManager(1);
+                                        SystemSounds.Hand.Play();
+                                        pManager.ShowDialog();
+                                        foreach(ZipEntry e in zip1)
+                                        {
+                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", gearCon);
+                                            cmd.ExecuteNonQuery();
+                                            e.ExtractWithPassword(mxDirectory, ExtractExistingFileAction.OverwriteSilently, VariableManager.zipPassword);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (ZipEntry e in zip1)
+                                        {
+                                            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + "'" + modToInstallWithoutPath + "'" + "(modFiles) VALUES (" + "'" + e.FileName + "'" + ");", gearCon);
+                                            cmd.ExecuteNonQuery();
+                                            e.Extract(mxDirectory, ExtractExistingFileAction.OverwriteSilently);
+                                        }
                                     }
                                 }
                             }
@@ -106,7 +123,9 @@ namespace Circuit_Mod_Manager
                                 //MessageBox.Show("Successfully connected to gear database");
                                 using (Stream stream = File.OpenRead(modToInstallWithPath))
                                 {
+                                    
                                     var archive = ArchiveFactory.Open(stream);
+                                    
                                     foreach (var entry in archive.Entries)
                                     {
                                         if (!entry.IsDirectory)
@@ -629,6 +648,21 @@ namespace Circuit_Mod_Manager
             {
                 MessageBox.Show("Unknown Error!", "Error 115");
             }
+        }
+        private bool isEncrypted(ZipFile zipFile)
+        {
+            foreach(ZipEntry e in zipFile)
+            {
+                if(e.UsesEncryption)
+                {
+                    return true;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return false;
         }
     }
 }

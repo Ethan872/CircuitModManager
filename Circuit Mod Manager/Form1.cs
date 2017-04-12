@@ -50,7 +50,7 @@ namespace Circuit_Mod_Manager
 {
     public partial class Form1 : Form
     {
-        String mxsimmmVersion = "0.2";
+        String mxsimmmVersion = "0.2.2";
 
         DatabaseManager dbManager = new DatabaseManager();
         CustomDatabaseHandler cdbHandler = new CustomDatabaseHandler();
@@ -115,6 +115,25 @@ namespace Circuit_Mod_Manager
             else
             {
                 lockFPSTextbox.Text = Properties.Settings.Default.lockFps;
+            }
+            //Check if "hide default databases" setting is set
+            if (Properties.Settings.Default.hideDefaultDatabases == true && Properties.Settings.Default.defaultPage == "modPage")
+            {
+                filterModComboBox.Items.Remove("Gear");
+                filterModComboBox.Items.Remove("Track");
+                filterModComboBox.Items.Remove("Bike");
+            }
+            if (Properties.Settings.Default.hideDefaultDatabases == true)
+            {
+                gearRadioButton.Enabled = false;
+                trackRadioButton.Enabled = false;
+                bikeRadioButton.Enabled = false;
+            }
+            else
+            {
+                gearRadioButton.Enabled = true;
+                trackRadioButton.Enabled = true;
+                bikeRadioButton.Enabled = true;
             }
         }
 
@@ -223,22 +242,22 @@ namespace Circuit_Mod_Manager
                 Properties.Settings.Default.defaultPage = "installerPage";
                 Properties.Settings.Default.Save();
             }
-            else if (ManagerRadioButton.Checked == true)
+            else if (managerRadioButton.Checked == true)
             {
                 Properties.Settings.Default.defaultPage = "modPage";
                 Properties.Settings.Default.Save();
             }
-            else if (SettingsRadioButton.Checked == true)
+            else if (settingsRadioButton.Checked == true)
             {
                 Properties.Settings.Default.defaultPage = "settingsPage";
                 Properties.Settings.Default.Save();
             }
-            else if (DatabasesRadioButton.Checked == true)
+            else if (databasesRadioButton.Checked == true)
             {
                 Properties.Settings.Default.defaultPage = "databasesPage";
                 Properties.Settings.Default.Save();
             }
-            else if (LaunchRadioButton.Checked == true)
+            else if (launchRadioButton.Checked == true)
             {
                 Properties.Settings.Default.defaultPage = "launchPage";
                 Properties.Settings.Default.Save();
@@ -253,6 +272,17 @@ namespace Circuit_Mod_Manager
                 Properties.Settings.Default.usingPersonalFolder = false;
                 Properties.Settings.Default.Save();
             }
+            if(hideDefaultDatabasesCB.Checked == true)
+            {
+                Properties.Settings.Default.hideDefaultDatabases = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.hideDefaultDatabases = false;
+                Properties.Settings.Default.Save();
+            }
+
             notifyIconSettings.ShowBalloonTip(2000);
         }
 
@@ -1288,6 +1318,35 @@ namespace Circuit_Mod_Manager
                 {
                     personalFolderCB.Checked = false;
                 }
+                if (Properties.Settings.Default.hideDefaultDatabases == true)
+                {
+                    hideDefaultDatabasesCB.Checked = true;
+                }
+                else
+                {
+                    hideDefaultDatabasesCB.Checked = false;
+                }
+                //Check default pages
+                if (Properties.Settings.Default.defaultPage == "launchPage")
+                {
+                    launchRadioButton.Checked = true;
+                }
+                else if (Properties.Settings.Default.defaultPage == "installerPage")
+                {
+                    installerRadioButton.Checked = true;
+                }
+                else if (Properties.Settings.Default.defaultPage == "modPage")
+                {
+                    managerRadioButton.Checked = true;
+                }
+                else if (Properties.Settings.Default.defaultPage == "databasesPage")
+                {
+                    databasesRadioButton.Checked = true;
+                }
+                else if (Properties.Settings.Default.defaultPage == "settingsPage")
+                {
+                    settingsRadioButton.Checked = true;
+                }
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["installerPage"])
             {
@@ -1314,6 +1373,18 @@ namespace Circuit_Mod_Manager
                     alwaysDeleteFileAfterInstallCB.Checked = false;
                     deleteFileAfterCheckbox.Checked = false;
                 }
+                if (Properties.Settings.Default.hideDefaultDatabases == true)
+                {
+                    gearRadioButton.Enabled = false;
+                    trackRadioButton.Enabled = false;
+                    bikeRadioButton.Enabled = false;
+                }
+                else
+                {
+                    gearRadioButton.Enabled = true;
+                    trackRadioButton.Enabled = true;
+                    bikeRadioButton.Enabled = true;
+                }
             }
             else if(iTalk_TabControl1.SelectedTab == iTalk_TabControl1.TabPages["modPage"])
             {
@@ -1335,8 +1406,60 @@ namespace Circuit_Mod_Manager
                     modComboBox.Items.Clear();
                     modListBox.Items.Clear();
                 }
+                if(Properties.Settings.Default.hideDefaultDatabases == true)
+                {
+                    filterModComboBox.Items.Remove("Gear");
+                    filterModComboBox.Items.Remove("Track");
+                    filterModComboBox.Items.Remove("Bike");
+                }
+                else
+                {
+                    if(!filterModComboBox.Items.Contains("Gear"))
+                    {
+                        filterModComboBox.Items.Add("Gear");
+                    }
+                    if(!filterModComboBox.Items.Contains("Track"))
+                    {
+                        filterModComboBox.Items.Add("Track");
+                    }
+                    if(!filterModComboBox.Items.Contains("Bike"))
+                    {
+                        filterModComboBox.Items.Add("Bike");
+                    }
+                }
+                if((string)filterModComboBox.SelectedItem == "" || (string)filterModComboBox.SelectedItem == null)
+                {
+                    trackDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                    trackDatabaseStatusLabel.Text = "Idle";
+                    gearDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                    gearDatabaseStatusLabel.Text = "Idle";
+                    bikeDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                    bikeDatabaseStatusLabel.Text = "Idle";
+                    customDatabaseStatusLabel.ForeColor = System.Drawing.Color.FromArgb(142, 142, 142);
+                    customDatabaseStatusLabel.Text = "Idle";
+                }
+                //mxsimSizeLabel.Text = refreshMxsimSize(vManager.getMxDirectory()).ToString();
             }
         }
+
+        //public static long refreshMxsimSize(String mxSimDir)
+        //{
+        //    DirectoryInfo d = new DirectoryInfo(mxSimDir);
+        //    long size = 0;
+        //    // Add file sizes.
+        //    FileInfo[] fis = d.GetFiles();
+        //    foreach (FileInfo fi in fis)
+        //    {
+        //        size += fi.Length;
+        //    }
+        //    // Add subdirectory sizes.
+        //    DirectoryInfo[] dis = d.GetDirectories();
+        //    foreach (DirectoryInfo di in dis)
+        //    {
+        //        size += refreshMxsimSize(di.ToString());
+        //    }
+        //    return size;
+        //}
 
         private void createNewDatabaseButton_Click(object sender, EventArgs e)
         {
@@ -1859,6 +1982,24 @@ namespace Circuit_Mod_Manager
         private void databaseActionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void resetSettingsButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("This will reset your user settings, do you want to continue?", "Reset settings confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if(result == DialogResult.Yes)
+            {
+                Properties.Settings.Default.Reset();
+                Properties.Settings.Default.Save();
+                mxDirTbox.Text = "";
+                personalFolderCB.Checked = false;
+                hideDefaultDatabasesCB.Checked = false;
+                MessageBox.Show("Your user settings have been reset", "Settings restored", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if(result == DialogResult.No)
+            {
+                //Do nothing
+            }
         }
     }
 }

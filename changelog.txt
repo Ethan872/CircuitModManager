@@ -12,7 +12,7 @@ Alpha 0.1.7
 -Added partial functionality to Database manager
 -Added ability to create a custom database
 -Added ability to open mxs directory
-*Fixed bugs
+-Fixed bugs
 Alpha 0.1.7.1
 -Database is properly deleted after removal
 -Moved "open mxs directory" button to settings page
@@ -20,8 +20,14 @@ Alpha 0.1.7.1
 Alpha 0.2
 -Reworked custom database handling
 Alpha 0.2.1
-*Backup option does not work with large mods (multi-foldered/filed tracks)
+*Backup option does not work with large mods (multi-foldered/filed tracks) *This is due to Sharpcompress
 -Gear, Track and Bike databases now reside in "default_databases" folder
 -MXS Directory is now handled with program settings, not a text file
 -Changed exe icon to be grey
 -Several bug fixes
+Alpha 0.2.2
+-Added option to hide default databases
+-Added option to reset settings
+-Optimized code
+Alpha 0.2.2.1
+-Added support for encrypted zip archives
